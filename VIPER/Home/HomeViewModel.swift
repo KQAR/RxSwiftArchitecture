@@ -21,7 +21,7 @@ enum HomeModule: Int, IdentifiableType {
   case bottom
   
   var identity: Int {
-    return rawValue
+    return UUID().hashValue
   }
 }
 
@@ -48,15 +48,20 @@ class HomeViewModel: ViewModel, ViewModelType {
       .withUnretained(self)
       .flatMap { owner, _ -> Observable<[HomeSectionModel]> in
         return owner.request()
+          .trackActivity(owner.headerLoading)
       }.subscribe(onNext: { sections in
         sectionsRelay.accept(sections)
       }).disposed(by: disposeBag)
     input.footerRefresh
-      .delay(.milliseconds(1000), scheduler: MainScheduler.instance)
-      .trackActivity(footerLoading)
-      .subscribe { _ in
-        printLog("footer refresh ~ ", type: .debug)
-      }.disposed(by: disposeBag)
+      .withUnretained(self)
+      .flatMap { owner, _ -> Observable<[HomeSectionModel]> in
+        return owner.request()
+          .trackActivity(owner.footerLoading)
+      }.subscribe(onNext: { sections in
+        var originSections = sectionsRelay.value
+        originSections.append(contentsOf: sections)
+        sectionsRelay.accept(originSections)
+      }).disposed(by: disposeBag)
     input.selection
       .withUnretained(self)
       .subscribe(onNext: { owner, _ in
@@ -67,6 +72,7 @@ class HomeViewModel: ViewModel, ViewModelType {
   
   func request() -> Observable<[HomeSectionModel]> {
     network.requestDeepModel(.homeInfo, type: HomeModel.self)
+      .trackPage(pagingIndicator)
       .trackActivity(loading)
       .trackError(error)
       .map { _ in [HomeSectionModel(model: .banner, items: [HomeCollectionCellViewModel()])] }

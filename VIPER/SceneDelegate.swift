@@ -19,15 +19,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
     guard let windowScene = (scene as? UIWindowScene) else { return }
     let tabbarViewController = UITabBarController()
-    let homeViewController = Assembly.homeViewController
-    homeViewController.tabBarItem.image = UIImage(systemName: "house")
-    homeViewController.tabBarItem.title = "home"
-    let homeNav = UINavigationController(rootViewController: homeViewController)
-    let profileViewController = Assembly.profileViewController
-    profileViewController.tabBarItem.image = UIImage(systemName: "person.crop.circle")
-    profileViewController.tabBarItem.title = "profile"
-    let profileNav = UINavigationController(rootViewController: profileViewController)
-    tabbarViewController.viewControllers = [homeNav, profileNav]
+    let home = Assembly.homeViewController
+    let profile = Assembly.profileViewController
+    tabbarViewController.viewControllers = [home, profile]
     window = UIWindow(windowScene: windowScene)
     window?.rootViewController = tabbarViewController
     window?.makeKeyAndVisible()

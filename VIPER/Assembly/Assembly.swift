@@ -10,21 +10,27 @@ import Factory
 import BaseView
 
 class Assembly {
-  static var homeViewController: ViewController {
+  static var homeViewController: UIViewController {
     var vc = Container.homeViewController()
     let viewModel = Container.home()
+    vc.tabBarItem.image = UIImage(systemName: "house")
+    vc.tabBarItem.title = "home"
+    let homeNav = UINavigationController(rootViewController: vc)
     vc.bindViewModel(to: viewModel)
-    return vc
+    return homeNav
   }
   
-  static var profileViewController: ViewController {
+  static var profileViewController: UIViewController {
     var vc = Container.profileViewController()
     let viewModel = Container.profile()
+    vc.tabBarItem.image = UIImage(systemName: "person.crop.circle")
+    vc.tabBarItem.title = "profile"
+    let profileNav = UINavigationController(rootViewController: vc)
     vc.bindViewModel(to: viewModel)
-    return vc
+    return profileNav
   }
   
-  static func paymentViewController(id: String, name: String) -> ViewController {
+  static func paymentViewController(id: String, name: String) -> UIViewController {
     let viewModel = Container.payment((id: id, name: name))
     var vc = Container.paymentViewController()
     vc.bindViewModel(to: viewModel)

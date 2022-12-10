@@ -38,31 +38,21 @@ open class CollectionViewController: ViewController {
   open override func configureUI() {
     super.configureUI()
     
-//    collectionView.bindGlobalStyle(forHeadRefreshHandler: { [weak self] in
-//      self?.headerRefreshTrigger.onNext(())
-//    })
-//    collectionView.bindGlobalStyle(forFootRefreshHandler: { [weak self] in
-//      self?.footerRefreshTrigger.onNext(())
-//    })
-//    collectionView.footRefreshControl.setAlertBackgroundColor(.white)
-//    collectionView.footRefreshControl.autoRefreshOnFoot = true
-//    isHeaderLoading.bind(to: collectionView.headRefreshControl.rx.isAnimating).disposed(by: disposeBag)
-//    isFooterLoading.bind(to: collectionView.footRefreshControl.rx.isAnimating).disposed(by: disposeBag)
-//    isNomoreData.bind(to: collectionView.footRefreshControl.rx.isNomoreData).disposed(by: disposeBag)
-    
-    collectionView.mj_header = RefreshHeaderControl(refreshingBlock: {
-      self.headerRefreshTrigger.onNext(())
+    collectionView.mj_header = RefreshHeaderControl(refreshingBlock: { [weak self] in
+      self?.headerRefreshTrigger.onNext(())
     })
-    collectionView.mj_footer = RefreshFooterControl(refreshingBlock: {
-      self.footerRefreshTrigger.onNext(())
+    collectionView.mj_footer = RefreshFooterControl(refreshingBlock: { [weak self] in
+      self?.footerRefreshTrigger.onNext(())
     })
     isHeaderLoading.bind(to: collectionView.mj_header!.rx.isAnimating).disposed(by: disposeBag)
     isFooterLoading.bind(to: collectionView.mj_footer!.rx.isAnimating).disposed(by: disposeBag)
+    isNomoreData.bind(to: collectionView.mj_footer!.rx.noMoreData).disposed(by: disposeBag)
     
+    // error capture
     error
-      .subscribe(onNext: { [weak self] (error) in
-        //      self?.tableView.makeToast(error.description, title: error.title, image: R.image.icon_toast_warning())
-        printLog("==> error: \(error)")
+      .withUnretained(self)
+      .subscribe(onNext: { owner, error in
+        // do something show error
       }).disposed(by: disposeBag)
   }
   
@@ -78,8 +68,9 @@ open class CollectionViewController: ViewController {
       emptyDataSetImageTintColor.map { _ in }
     ).merge()
     updateEmptyDataSet
-      .subscribe(onNext: { [weak self] () in
-        self?.collectionView.reloadEmptyDataSet()
+      .withUnretained(self)
+      .subscribe(onNext: { owner, _ in
+        owner.collectionView.reloadEmptyDataSet()
       }).disposed(by: disposeBag)
   }
 }

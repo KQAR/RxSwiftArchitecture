@@ -505,8 +505,8 @@
 		63A0EEB7294034F4002FB1B5 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				63A0EECC29403D02002FB1B5 /* HomeViewController.swift */,
 				63A0EECE29403D09002FB1B5 /* HomeViewModel.swift */,
+				63A0EECC29403D02002FB1B5 /* HomeViewController.swift */,
 				63A0EEEA294062BA002FB1B5 /* HomeCollectionCell.swift */,
 				63A0EEEC294062C7002FB1B5 /* HomeCollectionCellViewModel.swift */,
 				D5CA38832944C65A00AF4175 /* HomeModel.swift */,

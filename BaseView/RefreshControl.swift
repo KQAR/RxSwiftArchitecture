@@ -9,7 +9,7 @@ import Foundation
 import MJRefresh
 
 public class RefreshHeaderControl: MJRefreshNormalHeader {
-  
+
 }
 
 public class RefreshFooterControl: MJRefreshAutoNormalFooter {

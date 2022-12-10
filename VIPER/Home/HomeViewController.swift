@@ -22,17 +22,14 @@ public final class HomeViewController: CollectionViewController {
     static let sectionInset = UIEdgeInsets(top: 20, left: 15, bottom: 15, right: 15)
   }
   
-  
   public override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .cyan
-//    navigationController?.delegate = self
+    navigationController?.delegate = self
   }
   
   public override func configureUI() {
     super.configureUI()
-    
-//    collectionView.footRefreshControl.endRefreshingAndNoLongerRefreshing(withAlertText: "")
     
     let flowLayout = UICollectionViewFlowLayout()
     flowLayout.itemSize = Metrics.itemSize
@@ -71,3 +68,9 @@ public final class HomeViewController: CollectionViewController {
   }
 }
 
+extension HomeViewController: UINavigationControllerDelegate {
+//  public func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+//    let isHiddenBarPage = viewController.isKind(of: PaymentViewController.self)
+//    navigationController.setNavigationBarHidden(isHiddenBarPage, animated: true)
+//  }
+}

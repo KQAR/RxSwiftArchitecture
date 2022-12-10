@@ -34,32 +34,23 @@ open class TableViewController: ViewController {
   open override func configureUI() {
     super.configureUI()
     
-    // KafkaRefresh
-//    tableView.bindGlobalStyle(forHeadRefreshHandler: { [weak self] in
-//      self?.headerRefreshTrigger.onNext(())
-//    })
-//    tableView.bindGlobalStyle(forFootRefreshHandler: { [weak self] in
-//      self?.footerRefreshTrigger.onNext(())
-//    })
-//    tableView.footRefreshControl.setAlertBackgroundColor(.white)
-//    tableView.footRefreshControl.autoRefreshOnFoot = true
-//    isHeaderLoading.bind(to: tableView.headRefreshControl.rx.isAnimating).disposed(by: disposeBag)
-//    isFooterLoading.bind(to: tableView.footRefreshControl.rx.isAnimating).disposed(by: disposeBag)
-//    isNomoreData.bind(to: tableView.footRefreshControl.rx.isNomoreData).disposed(by: disposeBag)
-    
     // MJRefresh
-    tableView.mj_header = RefreshHeaderControl(refreshingBlock: {
-      self.headerRefreshTrigger.onNext(())
+    tableView.mj_header = RefreshHeaderControl(refreshingBlock: { [weak self] in
+      self?.headerRefreshTrigger.onNext(())
     })
-    tableView.mj_footer = RefreshFooterControl(refreshingBlock: {
-      self.footerRefreshTrigger.onNext(())
+    tableView.mj_footer = RefreshFooterControl(refreshingBlock: { [weak self] in
+      self?.footerRefreshTrigger.onNext(())
     })
     isHeaderLoading.bind(to: tableView.mj_header!.rx.isAnimating).disposed(by: disposeBag)
     isFooterLoading.bind(to: tableView.mj_footer!.rx.isAnimating).disposed(by: disposeBag)
+    isNomoreData.bind(to: tableView.mj_footer!.rx.noMoreData).disposed(by: disposeBag)
     
-    error.subscribe(onNext: { [weak self] (error) in
-      //            self?.tableView.makeToast(error.description, title: error.title, image: R.image.icon_toast_warning())
-    }).disposed(by: disposeBag)
+    // error capture
+    error
+      .withUnretained(self)
+      .subscribe(onNext: { owner, error in
+        // do something show error
+      }).disposed(by: disposeBag)
   }
   
   open override func bindViewModel() {
@@ -74,8 +65,9 @@ open class TableViewController: ViewController {
       emptyDataSetImageTintColor.map { _ in }
     ).merge()
     updateEmptyDataSet
-      .subscribe(onNext: { [weak self] () in
-        self?.tableView.reloadEmptyDataSet()
+      .withUnretained(self)
+      .subscribe(onNext: { owner, _ in
+        owner.tableView.reloadEmptyDataSet()
       }).disposed(by: disposeBag)
   }
 }
