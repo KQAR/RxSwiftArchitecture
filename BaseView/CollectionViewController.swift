@@ -8,7 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import KafkaRefresh
+import MJRefresh
 import Log
 
 open class CollectionViewController: ViewController {
@@ -38,18 +38,26 @@ open class CollectionViewController: ViewController {
   open override func configureUI() {
     super.configureUI()
     
-    collectionView.bindGlobalStyle(forHeadRefreshHandler: { [weak self] in
-      self?.headerRefreshTrigger.onNext(())
-    })
-    collectionView.bindGlobalStyle(forFootRefreshHandler: { [weak self] in
-      self?.footerRefreshTrigger.onNext(())
-    })
-    collectionView.footRefreshControl.setAlertBackgroundColor(.white)
-    collectionView.footRefreshControl.autoRefreshOnFoot = true
+//    collectionView.bindGlobalStyle(forHeadRefreshHandler: { [weak self] in
+//      self?.headerRefreshTrigger.onNext(())
+//    })
+//    collectionView.bindGlobalStyle(forFootRefreshHandler: { [weak self] in
+//      self?.footerRefreshTrigger.onNext(())
+//    })
+//    collectionView.footRefreshControl.setAlertBackgroundColor(.white)
+//    collectionView.footRefreshControl.autoRefreshOnFoot = true
+//    isHeaderLoading.bind(to: collectionView.headRefreshControl.rx.isAnimating).disposed(by: disposeBag)
+//    isFooterLoading.bind(to: collectionView.footRefreshControl.rx.isAnimating).disposed(by: disposeBag)
+//    isNomoreData.bind(to: collectionView.footRefreshControl.rx.isNomoreData).disposed(by: disposeBag)
     
-    isHeaderLoading.bind(to: collectionView.headRefreshControl.rx.isAnimating).disposed(by: disposeBag)
-    isFooterLoading.bind(to: collectionView.footRefreshControl.rx.isAnimating).disposed(by: disposeBag)
-    isNomoreData.bind(to: collectionView.footRefreshControl.rx.isNomoreData).disposed(by: disposeBag)
+    collectionView.mj_header = RefreshHeaderControl(refreshingBlock: {
+      self.headerRefreshTrigger.onNext(())
+    })
+    collectionView.mj_footer = RefreshFooterControl(refreshingBlock: {
+      self.footerRefreshTrigger.onNext(())
+    })
+    isHeaderLoading.bind(to: collectionView.mj_header!.rx.isAnimating).disposed(by: disposeBag)
+    isFooterLoading.bind(to: collectionView.mj_footer!.rx.isAnimating).disposed(by: disposeBag)
     
     error
       .subscribe(onNext: { [weak self] (error) in
@@ -74,16 +82,4 @@ open class CollectionViewController: ViewController {
         self?.collectionView.reloadEmptyDataSet()
       }).disposed(by: disposeBag)
   }
-}
-
-extension Reactive where Base: KafkaFootRefreshControl {
-    public var isNomoreData: Binder<Bool> {
-        return Binder(self.base) { refreshControl, nomoreData in
-            if nomoreData {
-                refreshControl.endRefreshingAndNoLongerRefreshing(withAlertText: "")
-            } else if refreshControl.isShouldNoLongerRefresh {
-                refreshControl.resumeRefreshAvailable()
-            }
-        }
-    }
 }

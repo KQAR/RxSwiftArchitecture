@@ -1,39 +1,71 @@
 platform:ios, '13.0'
 use_frameworks!
 
-def basePods
+## ==> Pods分组 <==
+
+# 依赖注入
+def injectionPods
   pod 'Factory'
-  pod 'RxSwift'
-  pod 'RxDataSources'
-  pod 'Moya'
 end
 
-target 'VIPER' do
-  basePods
+# 视图库
+def viewPods
   pod 'SnapKit'
-end
-
-target 'Authentication' do
-  basePods
-end
-
-target 'BaseView' do
-  basePods
-  # 上下拉刷新
-  pod 'KafkaRefresh'
-  # EmptyDataSet
+  pod 'MJRefresh'
   pod 'EmptyDataSet-Swift'
 end
 
-target 'Bindable' do
-  basePods
-end
-
-target 'RxExtension' do
+# Rx
+def rxPods
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'RxDataSources'
 end
 
+# 网络
+def networkPods
+  pod 'Alamofire'
+  pod 'Moya'
+end
+
+## ==> Target <==
+
+# 主工程
+target 'VIPER' do
+  injectionPods
+  viewPods
+  rxPods
+end
+
+# 认证模块
+target 'Authentication' do
+  injectionPods
+end
+
+# 基础视图库
+target 'BaseView' do
+  injectionPods
+  viewPods
+  rxPods
+end
+
+# 整体框架基础绑定
+target 'Bindable' do
+  rxPods
+  networkPods
+end
+
+# Rx扩展库
+target 'RxExtension' do
+  rxPods
+end
+
+# 模块中介者
 target 'Mediator' do
-  pod 'Factory'
+  injectionPods
+end
+
+# 网络模块
+target 'NetworkManager' do
+  networkPods
 end

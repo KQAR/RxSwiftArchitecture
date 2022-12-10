@@ -32,7 +32,7 @@ public final class HomeViewController: CollectionViewController {
   public override func configureUI() {
     super.configureUI()
     
-    collectionView.footRefreshControl.endRefreshingAndNoLongerRefreshing(withAlertText: "")
+//    collectionView.footRefreshControl.endRefreshingAndNoLongerRefreshing(withAlertText: "")
     
     let flowLayout = UICollectionViewFlowLayout()
     flowLayout.itemSize = Metrics.itemSize

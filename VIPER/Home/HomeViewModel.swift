@@ -11,6 +11,7 @@ import RxDataSources
 import Factory
 import Mediator
 import Bindable
+import Log
 
 enum HomeModule: Int, IdentifiableType {
   case banner
@@ -38,6 +39,18 @@ class HomeViewModel: ViewModel, ViewModelType {
   @Injected(Container.mediator) var mediator: MediatorProtocol
   
   func transform(input: Input) -> Output {
+    input.headerRefresh
+      .delay(.milliseconds(1000), scheduler: MainScheduler.instance)
+      .trackActivity(headerLoading)
+      .subscribe { _ in
+        printLog("header refresh ~ ", type: .debug)
+      }.disposed(by: disposeBag)
+    input.footerRefresh
+      .delay(.milliseconds(1000), scheduler: MainScheduler.instance)
+      .trackActivity(footerLoading)
+      .subscribe { _ in
+        printLog("footer refresh ~ ", type: .debug)
+      }.disposed(by: disposeBag)
     input.selection
       .withUnretained(self)
       .subscribe(onNext: { owner, _ in
