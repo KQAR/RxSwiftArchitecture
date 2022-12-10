@@ -25,7 +25,7 @@ end
 # 网络
 def networkPods
   pod 'Alamofire'
-  pod 'Moya'
+  pod 'Moya/RxSwift'
 end
 
 ## ==> Target <==
@@ -35,6 +35,7 @@ target 'VIPER' do
   injectionPods
   viewPods
   rxPods
+  pod 'R.swift'
 end
 
 # 认证模块
@@ -68,4 +69,5 @@ end
 # 网络模块
 target 'NetworkManager' do
   networkPods
+  rxPods
 end

@@ -55,7 +55,7 @@ public final class PagingIndicator: SharedSequenceConvertibleType {
 }
 
 extension ObservableConvertibleType {
-  func trackPage(_ pageIndicator: PagingIndicator) -> Observable<Element> {
+  public func trackPage(_ pageIndicator: PagingIndicator) -> Observable<Element> {
     return pageIndicator.trackPage(from: self)
   }
 }
