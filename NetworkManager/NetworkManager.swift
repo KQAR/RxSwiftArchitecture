@@ -23,7 +23,7 @@ public struct NetworkManager<T: TargetType>: NetworkManagerType {
       provider: OnlineProvider(
         endpointClosure: endpointsClosure(),
         requestClosure: endpointResolver(),
-        stubClosure: MoyaProvider.delayedStub(3.0),
+        stubClosure: MoyaProvider.delayedStub(1.0),
         online: .just(true)
       )
     )

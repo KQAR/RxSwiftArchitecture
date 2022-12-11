@@ -14,8 +14,6 @@ import Bindable
 import NetworkManager
 import Log
 
-let baseBundle = Bundle(path: "Assets.xcassets")
-
 open class ViewController: UIViewController, BindableType {
   
   open var viewModel: ViewModel!
@@ -52,11 +50,6 @@ open class ViewController: UIViewController, BindableType {
     navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     
     configureUI()
-    
-//    let allBundle = Bundle.allBundles
-//    let allFrameWork = Bundle.allFrameworks
-//    let image = UIImage(named: "empty_state_witdraw", in: bundle, compatibleWith: nil)
-//    printLog("image==> \(allBundle), \(allFrameWork)")
   }
   
   open override func viewDidAppear(_ animated: Bool) {
@@ -79,14 +72,17 @@ open class ViewController: UIViewController, BindableType {
     viewModel?.loading.asObservable().bind(to: isLoading).disposed(by: disposeBag)
     viewModel?.parsedError.asObservable().bind(to: error).disposed(by: disposeBag)
     
+    // Network Activity
     isLoading
       .subscribe(onNext: { isLoading in
-        UIApplication.shared.isNetworkActivityIndicatorVisible = isLoading
+        // Provide a custom network activity UI in your app if desired.
       }).disposed(by: disposeBag)
     
-    error.withUnretained(self)
-      .subscribe(onNext: { (vc, apiError) in
-//        SPAlert.present(message: apiError.title, haptic: .none)
+    // error capture
+    error
+      .withUnretained(self)
+      .subscribe(onNext: { owner, error in
+        // do something show error
       }).disposed(by: disposeBag)
   }
   
