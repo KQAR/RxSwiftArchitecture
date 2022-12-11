@@ -24,7 +24,7 @@ public final class HomeViewController: CollectionViewController {
   
   public override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .cyan
+    view.backgroundColor = .white
     navigationController?.delegate = self
   }
   
@@ -69,8 +69,8 @@ public final class HomeViewController: CollectionViewController {
 }
 
 extension HomeViewController: UINavigationControllerDelegate {
-//  public func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-//    let isHiddenBarPage = viewController.isKind(of: PaymentViewController.self)
-//    navigationController.setNavigationBarHidden(isHiddenBarPage, animated: true)
-//  }
+  public func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+    let isHiddenBarPage = viewController.isKind(of: HomeViewController.self)
+    navigationController.setNavigationBarHidden(isHiddenBarPage, animated: true)
+  }
 }

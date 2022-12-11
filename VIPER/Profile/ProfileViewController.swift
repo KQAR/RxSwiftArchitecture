@@ -15,18 +15,18 @@ public final class ProfileViewController: TableViewController {
   
   public override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .orange
+    view.backgroundColor = .white
   }
   
   public override func configureUI() {
     super.configureUI()
     tableView.separatorColor = .gray
-    tableView.backgroundColor = .systemTeal
+    tableView.backgroundColor = .white
     tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
     tableView.register(ProfileTableViewCell.self, forCellReuseIdentifier: ProfileTableViewCell.reuseIdentifier)
     view.addSubview(tableView)
     tableView.snp.makeConstraints { make in
-      make.edges.equalToSuperview()
+      make.edges.equalTo(view.safeAreaLayoutGuide)
     }
   }
   

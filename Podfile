@@ -13,6 +13,7 @@ def viewPods
   pod 'SnapKit'
   pod 'MJRefresh'
   pod 'EmptyDataSet-Swift'
+  pod "ESTabBarController-swift"
 end
 
 # Rx

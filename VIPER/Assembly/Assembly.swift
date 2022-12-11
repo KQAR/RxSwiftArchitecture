@@ -10,12 +10,17 @@ import Factory
 import BaseView
 
 class Assembly {
+  static var tabbarController: UIViewController {
+    let tabbarItem = Container.tabItems()
+    let tabBarController = Container.tabBar()
+    tabBarController.set(itemsAssembly: tabbarItem)
+    return tabBarController
+  }
+  
   static var homeViewController: UIViewController {
     var vc = Container.homeViewController()
     let viewModel = Container.home()
-    vc.tabBarItem.image = UIImage(systemName: "house")
-    vc.tabBarItem.title = "home"
-    let homeNav = UINavigationController(rootViewController: vc)
+    let homeNav = NavigationController(rootViewController: vc)
     vc.bindViewModel(to: viewModel)
     return homeNav
   }
@@ -23,9 +28,7 @@ class Assembly {
   static var profileViewController: UIViewController {
     var vc = Container.profileViewController()
     let viewModel = Container.profile()
-    vc.tabBarItem.image = UIImage(systemName: "person.crop.circle")
-    vc.tabBarItem.title = "profile"
-    let profileNav = UINavigationController(rootViewController: vc)
+    let profileNav = NavigationController(rootViewController: vc)
     vc.bindViewModel(to: viewModel)
     return profileNav
   }

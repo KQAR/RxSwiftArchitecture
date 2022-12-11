@@ -17,6 +17,9 @@ public typealias ViewModelParameterFactory<P> = ParameterFactory<P, ViewModel>
 
 public extension Container {
   
+  static let tabItems = Factory { TabBarItems() }
+  static let tabBar = Factory { TabBarController() }
+  
   // MARK: - Injection View Model
   
   static let home = ViewModelFactory { HomeViewModel() }
