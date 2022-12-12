@@ -14,11 +14,11 @@ extension UIViewController {
   ///       - isFilterModalView 是否过滤掉 模态vc
   /// - returns: 最上层viewController
   public class func topMoastViewController(
-    controller: UIViewController? = nil,
-    isFilterModalView: Bool = true
+    controller: UIViewController? = UIWindow.keyWindow?.rootViewController,
+    filterModalView: Bool = true
   ) -> UIViewController? {
     if let navigationController = controller as? UINavigationController {
-      if isFilterModalView {
+      if filterModalView {
         if let topVC = navigationController.topViewController {
           return topMoastViewController(controller: topVC)
         }
@@ -35,7 +35,7 @@ extension UIViewController {
         return topMoastViewController(controller: selectedVC)
       }
     }
-    if isFilterModalView == false, let presented = controller?.presentedViewController {
+    if filterModalView == false, let presented = controller?.presentedViewController {
       return topMoastViewController(controller: presented)
     }
     return controller

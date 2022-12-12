@@ -19,7 +19,6 @@
 		6335F769293F63AC00F24707 /* ViewControllerManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6335F762293F63AC00F24707 /* ViewControllerManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6335F76E293F63C200F24707 /* ViewControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6335F76D293F63C200F24707 /* ViewControllerManager.swift */; };
 		6335F770293F641D00F24707 /* UIViewController+Current.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6335F76F293F641D00F24707 /* UIViewController+Current.swift */; };
-		6335F772293F644D00F24707 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6335F771293F644D00F24707 /* Utils.swift */; };
 		63A0EE13293F8543002FB1B5 /* Authentication.h in Headers */ = {isa = PBXBuildFile; fileRef = 63A0EE12293F8543002FB1B5 /* Authentication.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		63A0EE16293F8543002FB1B5 /* Authentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A0EE10293F8543002FB1B5 /* Authentication.framework */; };
 		63A0EE17293F8543002FB1B5 /* Authentication.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63A0EE10293F8543002FB1B5 /* Authentication.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -101,6 +100,13 @@
 		D5CA38A229458A9D00AF4175 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CA38A129458A9D00AF4175 /* UIColor.swift */; };
 		D5CA38A529458CF900AF4175 /* TabBarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CA38A429458CF900AF4175 /* TabBarItems.swift */; };
 		D5CA38A92945978B00AF4175 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CA38A82945978B00AF4175 /* NavigationController.swift */; };
+		D5CA38B22947688F00AF4175 /* Popups.h in Headers */ = {isa = PBXBuildFile; fileRef = D5CA38B12947688F00AF4175 /* Popups.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D5CA38B52947688F00AF4175 /* Popups.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5CA38AF2947688F00AF4175 /* Popups.framework */; };
+		D5CA38B62947688F00AF4175 /* Popups.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D5CA38AF2947688F00AF4175 /* Popups.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D5CA38BB294768B300AF4175 /* CustomPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CA38BA294768B300AF4175 /* CustomPresentationController.swift */; };
+		D5CA38BE294769B300AF4175 /* AdDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CA38BD294769B300AF4175 /* AdDialog.swift */; };
+		D5CA38C029476C7700AF4175 /* ViewControllerPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CA38BF29476C7700AF4175 /* ViewControllerPresentable.swift */; };
+		D5CA38C32947750E00AF4175 /* UIWindow+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CA38C22947750E00AF4175 /* UIWindow+Extensions.swift */; };
 		F2AC1DEDBCF88B579B068FC3 /* Pods_Authentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF806A0B582FA08CFDEF4158 /* Pods_Authentication.framework */; };
 /* End PBXBuildFile section */
 
@@ -189,6 +195,13 @@
 			remoteGlobalIDString = D5CA389329458A5B00AF4175;
 			remoteInfo = Extension;
 		};
+		D5CA38B32947688F00AF4175 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63D163E6293CF06600326181 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D5CA38AE2947688F00AF4175;
+			remoteInfo = Popups;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -207,6 +220,7 @@
 				D5CA389B29458A5B00AF4175 /* Extension.framework in Embed Frameworks */,
 				63A0EE57293F9EC4002FB1B5 /* Bindable.framework in Embed Frameworks */,
 				63A0EE80293FA36B002FB1B5 /* NetworkManager.framework in Embed Frameworks */,
+				D5CA38B62947688F00AF4175 /* Popups.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -238,7 +252,6 @@
 		6335F764293F63AC00F24707 /* ViewControllerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewControllerManager.h; sourceTree = "<group>"; };
 		6335F76D293F63C200F24707 /* ViewControllerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerManager.swift; sourceTree = "<group>"; };
 		6335F76F293F641D00F24707 /* UIViewController+Current.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Current.swift"; sourceTree = "<group>"; };
-		6335F771293F644D00F24707 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		6343B8156D982F35188F901E /* Pods-Payment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Payment.debug.xcconfig"; path = "Target Support Files/Pods-Payment/Pods-Payment.debug.xcconfig"; sourceTree = "<group>"; };
 		63A0EE10293F8543002FB1B5 /* Authentication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Authentication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		63A0EE12293F8543002FB1B5 /* Authentication.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Authentication.h; sourceTree = "<group>"; };
@@ -320,6 +333,12 @@
 		D5CA38A129458A9D00AF4175 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		D5CA38A429458CF900AF4175 /* TabBarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItems.swift; sourceTree = "<group>"; };
 		D5CA38A82945978B00AF4175 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		D5CA38AF2947688F00AF4175 /* Popups.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Popups.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5CA38B12947688F00AF4175 /* Popups.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Popups.h; sourceTree = "<group>"; };
+		D5CA38BA294768B300AF4175 /* CustomPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPresentationController.swift; sourceTree = "<group>"; };
+		D5CA38BD294769B300AF4175 /* AdDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdDialog.swift; sourceTree = "<group>"; };
+		D5CA38BF29476C7700AF4175 /* ViewControllerPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerPresentable.swift; sourceTree = "<group>"; };
+		D5CA38C22947750E00AF4175 /* UIWindow+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Extensions.swift"; sourceTree = "<group>"; };
 		E81E02DF8E8DD8E5D163F3CB /* Pods-Mediator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mediator.release.xcconfig"; path = "Target Support Files/Pods-Mediator/Pods-Mediator.release.xcconfig"; sourceTree = "<group>"; };
 		EA8CE53F180EF7E94106A403 /* Pods-Authentication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Authentication.release.xcconfig"; path = "Target Support Files/Pods-Authentication/Pods-Authentication.release.xcconfig"; sourceTree = "<group>"; };
 		FB152E30468D4472A8B35E54 /* Pods_RxExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -396,6 +415,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6335F768293F63AC00F24707 /* ViewControllerManager.framework in Frameworks */,
+				D5CA38B52947688F00AF4175 /* Popups.framework in Frameworks */,
 				63A0EE6A293FA0D5002FB1B5 /* RxExtension.framework in Frameworks */,
 				63A0EE7F293FA36B002FB1B5 /* NetworkManager.framework in Frameworks */,
 				63A0EE16293F8543002FB1B5 /* Authentication.framework in Frameworks */,
@@ -409,6 +429,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D5CA389129458A5B00AF4175 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D5CA38AC2947688F00AF4175 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -433,7 +460,7 @@
 				6335F764293F63AC00F24707 /* ViewControllerManager.h */,
 				6335F76D293F63C200F24707 /* ViewControllerManager.swift */,
 				6335F76F293F641D00F24707 /* UIViewController+Current.swift */,
-				6335F771293F644D00F24707 /* Utils.swift */,
+				D5CA38C22947750E00AF4175 /* UIWindow+Extensions.swift */,
 			);
 			path = ViewControllerManager;
 			sourceTree = "<group>";
@@ -608,6 +635,7 @@
 				63A0EE7A293FA36B002FB1B5 /* NetworkManager */,
 				63A0EEA029402139002FB1B5 /* Log */,
 				D5CA389529458A5B00AF4175 /* Extension */,
+				D5CA38B02947688F00AF4175 /* Popups */,
 				63D163EF293CF06600326181 /* Products */,
 				6335F775293F69B100F24707 /* Frameworks */,
 				6A2ED29B465CBD160E6E642D /* Pods */,
@@ -627,6 +655,7 @@
 				63A0EE79293FA36B002FB1B5 /* NetworkManager.framework */,
 				63A0EE9F29402139002FB1B5 /* Log.framework */,
 				D5CA389429458A5B00AF4175 /* Extension.framework */,
+				D5CA38AF2947688F00AF4175 /* Popups.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -634,6 +663,7 @@
 		63D163F0293CF06600326181 /* VIPER */ = {
 			isa = PBXGroup;
 			children = (
+				D5CA38BC2947698A00AF4175 /* Dialog */,
 				63D163F1293CF06600326181 /* AppDelegate.swift */,
 				63D163F3293CF06600326181 /* SceneDelegate.swift */,
 				D5CA38A329458CE400AF4175 /* TabBar */,
@@ -725,6 +755,24 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
+		D5CA38B02947688F00AF4175 /* Popups */ = {
+			isa = PBXGroup;
+			children = (
+				D5CA38B12947688F00AF4175 /* Popups.h */,
+				D5CA38BA294768B300AF4175 /* CustomPresentationController.swift */,
+				D5CA38BF29476C7700AF4175 /* ViewControllerPresentable.swift */,
+			);
+			path = Popups;
+			sourceTree = "<group>";
+		};
+		D5CA38BC2947698A00AF4175 /* Dialog */ = {
+			isa = PBXGroup;
+			children = (
+				D5CA38BD294769B300AF4175 /* AdDialog.swift */,
+			);
+			path = Dialog;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -797,6 +845,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5CA389729458A5B00AF4175 /* Extension.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D5CA38AA2947688F00AF4175 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5CA38B22947688F00AF4175 /* Popups.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -980,6 +1036,7 @@
 				63A0EE7E293FA36B002FB1B5 /* PBXTargetDependency */,
 				63A0EEA429402139002FB1B5 /* PBXTargetDependency */,
 				D5CA389929458A5B00AF4175 /* PBXTargetDependency */,
+				D5CA38B42947688F00AF4175 /* PBXTargetDependency */,
 			);
 			name = VIPER;
 			productName = VIPER;
@@ -1002,6 +1059,24 @@
 			name = Extension;
 			productName = Extension;
 			productReference = D5CA389429458A5B00AF4175 /* Extension.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D5CA38AE2947688F00AF4175 /* Popups */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D5CA38B92947688F00AF4175 /* Build configuration list for PBXNativeTarget "Popups" */;
+			buildPhases = (
+				D5CA38AA2947688F00AF4175 /* Headers */,
+				D5CA38AB2947688F00AF4175 /* Sources */,
+				D5CA38AC2947688F00AF4175 /* Frameworks */,
+				D5CA38AD2947688F00AF4175 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Popups;
+			productName = Popups;
+			productReference = D5CA38AF2947688F00AF4175 /* Popups.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -1053,6 +1128,10 @@
 						CreatedOnToolsVersion = 14.1;
 						LastSwiftMigration = 1410;
 					};
+					D5CA38AE2947688F00AF4175 = {
+						CreatedOnToolsVersion = 14.1;
+						LastSwiftMigration = 1410;
+					};
 				};
 			};
 			buildConfigurationList = 63D163E9293CF06600326181 /* Build configuration list for PBXProject "VIPER" */;
@@ -1078,6 +1157,7 @@
 				63A0EE78293FA36B002FB1B5 /* NetworkManager */,
 				63A0EE9E29402139002FB1B5 /* Log */,
 				D5CA389329458A5B00AF4175 /* Extension */,
+				D5CA38AE2947688F00AF4175 /* Popups */,
 			);
 		};
 /* End PBXProject section */
@@ -1150,6 +1230,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D5CA389229458A5B00AF4175 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D5CA38AD2947688F00AF4175 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1366,8 +1453,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6335F770293F641D00F24707 /* UIViewController+Current.swift in Sources */,
+				D5CA38C32947750E00AF4175 /* UIWindow+Extensions.swift in Sources */,
 				6335F76E293F63C200F24707 /* ViewControllerManager.swift in Sources */,
-				6335F772293F644D00F24707 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1449,6 +1536,7 @@
 				63A0EECF29403D09002FB1B5 /* HomeViewModel.swift in Sources */,
 				63A0EEBB29403529002FB1B5 /* PaymentViewModel.swift in Sources */,
 				63D163F4293CF06600326181 /* SceneDelegate.swift in Sources */,
+				D5CA38BE294769B300AF4175 /* AdDialog.swift in Sources */,
 				63A0EECD29403D02002FB1B5 /* HomeViewController.swift in Sources */,
 				63A0EEED294062C7002FB1B5 /* HomeCollectionCellViewModel.swift in Sources */,
 				63A0EEC929403CD3002FB1B5 /* ProfileViewController.swift in Sources */,
@@ -1475,6 +1563,15 @@
 			files = (
 				D5CA38A029458A6900AF4175 /* UIImage.swift in Sources */,
 				D5CA38A229458A9D00AF4175 /* UIColor.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D5CA38AB2947688F00AF4175 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5CA38C029476C7700AF4175 /* ViewControllerPresentable.swift in Sources */,
+				D5CA38BB294768B300AF4175 /* CustomPresentationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1540,6 +1637,11 @@
 			isa = PBXTargetDependency;
 			target = D5CA389329458A5B00AF4175 /* Extension */;
 			targetProxy = D5CA389829458A5B00AF4175 /* PBXContainerItemProxy */;
+		};
+		D5CA38B42947688F00AF4175 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D5CA38AE2947688F00AF4175 /* Popups */;
+			targetProxy = D5CA38B32947688F00AF4175 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2416,6 +2518,77 @@
 			};
 			name = Release;
 		};
+		D5CA38B72947688F00AF4175 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 78X6FL4YJY;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jinrui.demo.Popups;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D5CA38B82947688F00AF4175 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 78X6FL4YJY;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jinrui.demo.Popups;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -2514,6 +2687,15 @@
 			buildConfigurations = (
 				D5CA389D29458A5C00AF4175 /* Debug */,
 				D5CA389E29458A5C00AF4175 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D5CA38B92947688F00AF4175 /* Build configuration list for PBXNativeTarget "Popups" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D5CA38B72947688F00AF4175 /* Debug */,
+				D5CA38B82947688F00AF4175 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
