@@ -10,6 +10,8 @@
 		017993957756E3823F3AEB93 /* Pods_BaseView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F6F83325528E1DF4F8AF726 /* Pods_BaseView.framework */; };
 		0BBD43064F15E2AD6F4F955E /* Pods_Bindable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 916EA59316C989C6DD42A585 /* Pods_Bindable.framework */; };
 		32E9AF1BD622270ABBA78B97 /* Pods_VIPER.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9FC1A430E17F5F983139FD7 /* Pods_VIPER.framework */; };
+		633503DC2948486F006CE685 /* PopupsGen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633503DB2948486F006CE685 /* PopupsGen.swift */; };
+		633503DF29486A0A006CE685 /* PopupsAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633503DE29486A0A006CE685 /* PopupsAnimator.swift */; };
 		6335F74E293F60F800F24707 /* Mediator.h in Headers */ = {isa = PBXBuildFile; fileRef = 6335F74D293F60F800F24707 /* Mediator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6335F751293F60F800F24707 /* Mediator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6335F74B293F60F800F24707 /* Mediator.framework */; };
 		6335F752293F60F800F24707 /* Mediator.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6335F74B293F60F800F24707 /* Mediator.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -245,6 +247,8 @@
 		41ACA61756398CB6A009065F /* Pods-NetworkManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetworkManager.release.xcconfig"; path = "Target Support Files/Pods-NetworkManager/Pods-NetworkManager.release.xcconfig"; sourceTree = "<group>"; };
 		4F6F83325528E1DF4F8AF726 /* Pods_BaseView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BaseView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		583D6727A680BFCF462A981D /* Pods-RxExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxExtension.release.xcconfig"; path = "Target Support Files/Pods-RxExtension/Pods-RxExtension.release.xcconfig"; sourceTree = "<group>"; };
+		633503DB2948486F006CE685 /* PopupsGen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupsGen.swift; sourceTree = "<group>"; };
+		633503DE29486A0A006CE685 /* PopupsAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupsAnimator.swift; sourceTree = "<group>"; };
 		6335F74B293F60F800F24707 /* Mediator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mediator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6335F74D293F60F800F24707 /* Mediator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mediator.h; sourceTree = "<group>"; };
 		6335F756293F613800F24707 /* MediatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediatorProtocol.swift; sourceTree = "<group>"; };
@@ -761,6 +765,8 @@
 				D5CA38B12947688F00AF4175 /* Popups.h */,
 				D5CA38BA294768B300AF4175 /* CustomPresentationController.swift */,
 				D5CA38BF29476C7700AF4175 /* ViewControllerPresentable.swift */,
+				633503DB2948486F006CE685 /* PopupsGen.swift */,
+				633503DE29486A0A006CE685 /* PopupsAnimator.swift */,
 			);
 			path = Popups;
 			sourceTree = "<group>";
@@ -1571,7 +1577,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5CA38C029476C7700AF4175 /* ViewControllerPresentable.swift in Sources */,
+				633503DF29486A0A006CE685 /* PopupsAnimator.swift in Sources */,
 				D5CA38BB294768B300AF4175 /* CustomPresentationController.swift in Sources */,
+				633503DC2948486F006CE685 /* PopupsGen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

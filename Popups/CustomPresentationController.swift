@@ -9,10 +9,7 @@ import UIKit
 
 class CustomPresentationController: UIPresentationController {
   
-  enum Metrics {
-    static let CORNER_RADIUS: CGFloat = 5
-  }
-  
+  private let configuration: PopupsGen.Config
   private var dimmingView: UIView?
   private var presentationWrappingView: UIView!
   
@@ -20,10 +17,12 @@ class CustomPresentationController: UIPresentationController {
     return presentationWrappingView
   }
   
-  override init(
+  init(
+    configuration: PopupsGen.Config,
     presentedViewController: UIViewController,
     presenting presentingViewController: UIViewController? = nil
   ) {
+    self.configuration = configuration
     super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
     presentedViewController.modalPresentationStyle = .custom
   }
@@ -53,16 +52,16 @@ class CustomPresentationController: UIPresentationController {
     // effect calls for only the top two corners to be rounded we size
     // the view such that the bottom CORNER_RADIUS points lie below
     // the bottom edge of the screen.
-    let presentationRoundedCornerView = UIView(frame: presentationWrapperView.bounds.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: -Metrics.CORNER_RADIUS, right: 0)))
+    let presentationRoundedCornerView = UIView(frame: presentationWrapperView.bounds)
     presentationRoundedCornerView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-    presentationRoundedCornerView.layer.cornerRadius = Metrics.CORNER_RADIUS
+    presentationRoundedCornerView.layer.cornerRadius = configuration.cornerRadius
     presentationRoundedCornerView.layer.masksToBounds = true
     
     // To undo the extra height added to presentationRoundedCornerView,
     // presentedViewControllerWrapperView is inset by CORNER_RADIUS points.
     // This also matches the size of presentedViewControllerWrapperView's
     // bounds to the size of -frameOfPresentedViewInContainerView.
-    let presentedViewControllerWrapperView = UIView(frame: presentationRoundedCornerView.bounds.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: Metrics.CORNER_RADIUS, right: 0)))
+    let presentedViewControllerWrapperView = UIView(frame: presentationRoundedCornerView.bounds)
     presentedViewControllerWrapperView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     
     // Add presentedViewControllerView -> presentedViewControllerWrapperView.
@@ -75,7 +74,6 @@ class CustomPresentationController: UIPresentationController {
     
     // Add presentationRoundedCornerView -> presentationWrapperView.
     presentationWrapperView.addSubview(presentationRoundedCornerView)
-    
     
     // Add a dimming view behind presentationWrapperView.  self.presentedView
     // is added later (by the animator) so any views added here will be
@@ -142,15 +140,22 @@ class CustomPresentationController: UIPresentationController {
     // The presented view extends presentedViewContentSize.height points from
     // the bottom edge of the screen.
     
-    var presentedViewControllerFrame = containerViewBounds
-    presentedViewControllerFrame.size.height = presentedViewContentSize.height
-    presentedViewControllerFrame.origin.y = containerViewBounds.maxY - presentedViewContentSize.height
+//    var presentedViewControllerFrame = containerViewBounds
+//    presentedViewControllerFrame.size.height = presentedViewContentSize.height
+//    presentedViewControllerFrame.origin.y = containerViewBounds.maxY - presentedViewContentSize.height
     
-//    let x = (containerViewBounds.maxX - presentedViewContentSize.width) / 2
-//    let y = (containerViewBounds.maxY - presentedViewContentSize.height) / 2
-//    var presentedViewControllerFrame = CGRect(
-//      origin: CGPoint(x: x, y: y),
-//      size: presentedViewContentSize)
+    var presentedViewControllerFrame = CGRect(origin: .zero, size: presentedViewContentSize)
+    let x = (containerViewBounds.maxX - presentedViewContentSize.width) / 2
+    var y: CGFloat = 0
+    switch configuration.layout {
+    case .top(let inset):
+      y = inset
+    case .bottom(let inset):
+      y = containerViewBounds.maxY - presentedViewContentSize.height - inset
+    case .center(let offset):
+      y = (containerViewBounds.maxY - presentedViewContentSize.height) / 2 + offset
+    }
+    presentedViewControllerFrame.origin = CGPoint(x: x, y: y)
     return presentedViewControllerFrame
   }
   
@@ -175,7 +180,7 @@ extension CustomPresentationController: UIViewControllerAnimatedTransitioning {
   
   func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
     guard let isAnimated = transitionContext?.isAnimated else { return 0 }
-    return isAnimated ? 0.6 : 0
+    return isAnimated ? configuration.duration : 0
   }
   
   func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -229,7 +234,28 @@ extension CustomPresentationController: UIViewControllerAnimatedTransitioning {
     }
     
     if isPresenting {
-      toViewInitialFrame.origin = CGPoint(x: containerView.bounds.minX, y: containerView.bounds.maxY)
+      // animation start position
+//      toViewInitialFrame.origin = CGPoint(x: containerView.bounds.minX, y: containerView.bounds.maxY)
+      
+      var toViewInitialOrigin = CGPoint.zero
+      let originX = toViewFinalFrame.origin.x
+      switch configuration.popupStyle {
+      case .top(let extent):
+        var y = -toViewFinalFrame.size.height
+        if let extent {
+          y = toViewFinalFrame.origin.y - extent
+        }
+        toViewInitialOrigin = CGPoint(x: originX, y: y)
+      case .bottom(let extent):
+        var y = containerView.bounds.maxY
+        if let extent {
+          y = toViewFinalFrame.origin.y + extent
+        }
+        toViewInitialOrigin = CGPoint(x: originX, y: y)
+      case .center:
+        toViewInitialOrigin = CGPoint(x: originX, y: toViewFinalFrame.origin.y)
+      }
+      toViewInitialFrame.origin = toViewInitialOrigin
       toViewInitialFrame.size = toViewFinalFrame.size
       toView?.frame = toViewInitialFrame
     } else {
@@ -237,11 +263,21 @@ extension CustomPresentationController: UIViewControllerAnimatedTransitioning {
       // in an intermediate view hierarchy, it is more accurate to rely
       // on the current frame of fromView than fromViewInitialFrame as the
       // initial frame (though in this example they will be the same).
-      fromViewFinalFrame = (fromView?.frame ?? .zero).offsetBy(dx: 0, dy: (fromView?.frame ?? .zero).height)
+      var offsetY: CGFloat = 0
+      switch configuration.popupStyle {
+      case .top(let extent):
+        offsetY = (extent != nil) ? -extent! : -(fromViewInitialFrame.origin.y + fromViewInitialFrame.size.height)
+      case .bottom(let extent):
+        offsetY = (extent != nil) ? extent! : (containerView.bounds.maxY - fromViewInitialFrame.origin.y)
+      case .center:
+        offsetY = 0
+      }
+      fromViewFinalFrame = (fromView?.frame ?? .zero).offsetBy(dx: 0, dy: offsetY)
     }
     
     let transitionDuration = transitionDuration(using: transitionContext)
     
+    toView?.alpha = 0.0
     UIView.animate(
       withDuration: transitionDuration,
       delay: 0,
@@ -250,8 +286,10 @@ extension CustomPresentationController: UIViewControllerAnimatedTransitioning {
       options: .curveEaseOut
     ) {
       if isPresenting {
+        toView?.alpha = 1.0
         toView?.frame = toViewFinalFrame
       } else {
+        fromView?.alpha = 0.0
         fromView?.frame = fromViewFinalFrame
       }
     } completion: { finished in

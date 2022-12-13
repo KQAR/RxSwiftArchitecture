@@ -14,7 +14,7 @@ public protocol ViewControllerPresentable {
 
 public extension ViewControllerPresentable where Self: UIViewController {
   func popup(in vc: UIViewController, animated: Bool) {
-    let presented = CustomPresentationController(presentedViewController: self)
+    let presented = CustomPresentationController(configuration: PopupsGen.instance.defaultConfiguration, presentedViewController: self)
     transitioningDelegate = presented
     preferredContentSize = makeContentSize
     vc.present(self, animated: animated)
