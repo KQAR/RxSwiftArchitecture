@@ -32,7 +32,7 @@ end
 ## ==> Target <==
 
 # 主工程
-target 'SwiftArchitecture' do
+target 'VoltaEel' do
   injectionPods
   viewPods
   rxPods
