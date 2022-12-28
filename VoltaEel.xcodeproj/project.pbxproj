@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		017993957756E3823F3AEB93 /* Pods_BaseView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F6F83325528E1DF4F8AF726 /* Pods_BaseView.framework */; };
 		0BBD43064F15E2AD6F4F955E /* Pods_Bindable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 916EA59316C989C6DD42A585 /* Pods_Bindable.framework */; };
-		32E9AF1BD622270ABBA78B97 /* Pods_VIPER.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9FC1A430E17F5F983139FD7 /* Pods_VIPER.framework */; };
 		633503DC2948486F006CE685 /* PopupsGen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633503DB2948486F006CE685 /* PopupsGen.swift */; };
 		633503DF29486A0A006CE685 /* PopupsAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633503DE29486A0A006CE685 /* PopupsAnimator.swift */; };
 		6335F74E293F60F800F24707 /* Mediator.h in Headers */ = {isa = PBXBuildFile; fileRef = 6335F74D293F60F800F24707 /* Mediator.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -68,7 +67,7 @@
 		63A0EED329403D58002FB1B5 /* MediatorTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A0EED229403D58002FB1B5 /* MediatorTarget.swift */; };
 		63A0EED729403E02002FB1B5 /* MediatorAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A0EED629403E02002FB1B5 /* MediatorAction.swift */; };
 		63A0EEDB29403F12002FB1B5 /* MediatorActionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A0EEDA29403F12002FB1B5 /* MediatorActionProtocol.swift */; };
-		63A0EEE5294041FF002FB1B5 /* VIPER+Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A0EEE4294041FF002FB1B5 /* VIPER+Injection.swift */; };
+		63A0EEE5294041FF002FB1B5 /* VoltaEel+Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A0EEE4294041FF002FB1B5 /* VoltaEel+Injection.swift */; };
 		63A0EEE729405348002FB1B5 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A0EEE629405348002FB1B5 /* ProfileTableViewCell.swift */; };
 		63A0EEE929406159002FB1B5 /* ProfileTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A0EEE829406159002FB1B5 /* ProfileTableViewCellViewModel.swift */; };
 		63A0EEEB294062BA002FB1B5 /* HomeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A0EEEA294062BA002FB1B5 /* HomeCollectionCell.swift */; };
@@ -80,6 +79,7 @@
 		63D163FB293CF06600326181 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63D163FA293CF06600326181 /* Assets.xcassets */; };
 		63D163FE293CF06600326181 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63D163FC293CF06600326181 /* LaunchScreen.storyboard */; };
 		69DC11F5EBB8C6641F1AE383 /* Pods_RxExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB152E30468D4472A8B35E54 /* Pods_RxExtension.framework */; };
+		819F391AB6005443E651DF97 /* Pods_SwiftArchitecture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D874EB696AC87B1E8F4A89A /* Pods_SwiftArchitecture.framework */; };
 		C12D887278EC91B1248D942B /* Pods_Mediator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10C013602A2396E27E5C2CB6 /* Pods_Mediator.framework */; };
 		C78DCB594B1C7D347D941CCD /* Pods_NetworkManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0DE56922215D1E6A610D936 /* Pods_NetworkManager.framework */; };
 		D5CA38622944854800AF4175 /* Rx+MJRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CA38612944854800AF4175 /* Rx+MJRefresh.swift */; };
@@ -237,12 +237,14 @@
 		10C013602A2396E27E5C2CB6 /* Pods_Mediator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mediator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		14248E508278F367D2CD7845 /* Pods-BaseView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseView.debug.xcconfig"; path = "Target Support Files/Pods-BaseView/Pods-BaseView.debug.xcconfig"; sourceTree = "<group>"; };
 		177D920C5858387723387BB9 /* Pods-Profile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Profile.debug.xcconfig"; path = "Target Support Files/Pods-Profile/Pods-Profile.debug.xcconfig"; sourceTree = "<group>"; };
+		1D874EB696AC87B1E8F4A89A /* Pods_SwiftArchitecture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftArchitecture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DBC46847AD92DDB876F17E0 /* Pods-Mediator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mediator.debug.xcconfig"; path = "Target Support Files/Pods-Mediator/Pods-Mediator.debug.xcconfig"; sourceTree = "<group>"; };
 		23053A08900B6FAED416766E /* Pods-VIPER.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VIPER.release.xcconfig"; path = "Target Support Files/Pods-VIPER/Pods-VIPER.release.xcconfig"; sourceTree = "<group>"; };
 		234AB9C6F76D978B17BFFDDD /* Pods-BaseView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseView.release.xcconfig"; path = "Target Support Files/Pods-BaseView/Pods-BaseView.release.xcconfig"; sourceTree = "<group>"; };
 		24BFCCA96737F23F0AE3A40C /* Pods-RxExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxExtension.debug.xcconfig"; path = "Target Support Files/Pods-RxExtension/Pods-RxExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		2786D18903885896FDEAC11F /* Pods_Home.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Home.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		303AF039951BE535BC75F8C8 /* Pods-Profile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Profile.release.xcconfig"; path = "Target Support Files/Pods-Profile/Pods-Profile.release.xcconfig"; sourceTree = "<group>"; };
+		32BE9C2EDC3443246D0821C9 /* Pods-SwiftArchitecture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftArchitecture.debug.xcconfig"; path = "Target Support Files/Pods-SwiftArchitecture/Pods-SwiftArchitecture.debug.xcconfig"; sourceTree = "<group>"; };
 		34D994450D0AE01788760048 /* Pods-NetworkManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetworkManager.debug.xcconfig"; path = "Target Support Files/Pods-NetworkManager/Pods-NetworkManager.debug.xcconfig"; sourceTree = "<group>"; };
 		3B0B0A752F7FC48FBFD9F861 /* Pods-Home.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Home.release.xcconfig"; path = "Target Support Files/Pods-Home/Pods-Home.release.xcconfig"; sourceTree = "<group>"; };
 		3C3FD01769D95A359F6099E3 /* Pods-Home.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Home.debug.xcconfig"; path = "Target Support Files/Pods-Home/Pods-Home.debug.xcconfig"; sourceTree = "<group>"; };
@@ -297,14 +299,14 @@
 		63A0EED229403D58002FB1B5 /* MediatorTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediatorTarget.swift; sourceTree = "<group>"; };
 		63A0EED629403E02002FB1B5 /* MediatorAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediatorAction.swift; sourceTree = "<group>"; };
 		63A0EEDA29403F12002FB1B5 /* MediatorActionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediatorActionProtocol.swift; sourceTree = "<group>"; };
-		63A0EEE4294041FF002FB1B5 /* VIPER+Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VIPER+Injection.swift"; sourceTree = "<group>"; };
+		63A0EEE4294041FF002FB1B5 /* VoltaEel+Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VoltaEel+Injection.swift"; sourceTree = "<group>"; };
 		63A0EEE629405348002FB1B5 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		63A0EEE829406159002FB1B5 /* ProfileTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		63A0EEEA294062BA002FB1B5 /* HomeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionCell.swift; sourceTree = "<group>"; };
 		63A0EEEC294062C7002FB1B5 /* HomeCollectionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionCellViewModel.swift; sourceTree = "<group>"; };
 		63A0EEEE29406921002FB1B5 /* IdentifiableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiableViewModel.swift; sourceTree = "<group>"; };
 		63A0EEF129406D5E002FB1B5 /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
-		63D163EE293CF06600326181 /* VIPER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VIPER.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		63D163EE293CF06600326181 /* VoltaEel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VoltaEel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63D163F1293CF06600326181 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63D163F3293CF06600326181 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		63D163FA293CF06600326181 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -312,11 +314,11 @@
 		63D163FF293CF06600326181 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6DDF15E579AAA118BD92B2EA /* Pods-Payment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Payment.release.xcconfig"; path = "Target Support Files/Pods-Payment/Pods-Payment.release.xcconfig"; sourceTree = "<group>"; };
 		7F1E5B33BDD19E80C1B8FBAD /* Pods_Payment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Payment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		85369D3EB04FC74B210A70E1 /* Pods-SwiftArchitecture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftArchitecture.release.xcconfig"; path = "Target Support Files/Pods-SwiftArchitecture/Pods-SwiftArchitecture.release.xcconfig"; sourceTree = "<group>"; };
 		8566559EAB82299FA92691C1 /* Pods_Profile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Profile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		916EA59316C989C6DD42A585 /* Pods_Bindable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bindable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		92DD5A25CE50FF60C66C3FDD /* Pods-VIPER.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VIPER.debug.xcconfig"; path = "Target Support Files/Pods-VIPER/Pods-VIPER.debug.xcconfig"; sourceTree = "<group>"; };
 		B9069D1BFC2B3AA747E062C3 /* Pods-Bindable.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bindable.release.xcconfig"; path = "Target Support Files/Pods-Bindable/Pods-Bindable.release.xcconfig"; sourceTree = "<group>"; };
-		B9FC1A430E17F5F983139FD7 /* Pods_VIPER.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VIPER.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF806A0B582FA08CFDEF4158 /* Pods_Authentication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Authentication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0DE56922215D1E6A610D936 /* Pods_NetworkManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NetworkManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5CA38612944854800AF4175 /* Rx+MJRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+MJRefresh.swift"; sourceTree = "<group>"; };
@@ -332,7 +334,7 @@
 		D5CA38812944C1E100AF4175 /* Network+Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network+Injection.swift"; sourceTree = "<group>"; };
 		D5CA38832944C65A00AF4175 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		D5CA38852944CA5900AF4175 /* homeMock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = homeMock.json; sourceTree = "<group>"; };
-		D5CA38882944CCBF00AF4175 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		D5CA38882944CCBF00AF4175 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = R.generated.swift; path = Main/R.generated.swift; sourceTree = SOURCE_ROOT; };
 		D5CA388B2945867900AF4175 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		D5CA388D2945885200AF4175 /* TabBarItemsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemsAssembly.swift; sourceTree = "<group>"; };
 		D5CA389429458A5B00AF4175 /* Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -430,9 +432,9 @@
 				63A0EE3E293F9A0E002FB1B5 /* BaseView.framework in Frameworks */,
 				63A0EE56293F9EC4002FB1B5 /* Bindable.framework in Frameworks */,
 				6335F751293F60F800F24707 /* Mediator.framework in Frameworks */,
-				32E9AF1BD622270ABBA78B97 /* Pods_VIPER.framework in Frameworks */,
 				D5CA389A29458A5B00AF4175 /* Extension.framework in Frameworks */,
 				63A0EEA529402139002FB1B5 /* Log.framework in Frameworks */,
+				819F391AB6005443E651DF97 /* Pods_SwiftArchitecture.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,7 +479,6 @@
 			isa = PBXGroup;
 			children = (
 				D5CA386B2944958C00AF4175 /* Moya.framework */,
-				B9FC1A430E17F5F983139FD7 /* Pods_VIPER.framework */,
 				8566559EAB82299FA92691C1 /* Pods_Profile.framework */,
 				BF806A0B582FA08CFDEF4158 /* Pods_Authentication.framework */,
 				2786D18903885896FDEAC11F /* Pods_Home.framework */,
@@ -487,6 +488,7 @@
 				916EA59316C989C6DD42A585 /* Pods_Bindable.framework */,
 				FB152E30468D4472A8B35E54 /* Pods_RxExtension.framework */,
 				D0DE56922215D1E6A610D936 /* Pods_NetworkManager.framework */,
+				1D874EB696AC87B1E8F4A89A /* Pods_SwiftArchitecture.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -617,7 +619,7 @@
 		63A0EEDD294041B3002FB1B5 /* Injection */ = {
 			isa = PBXGroup;
 			children = (
-				63A0EEE4294041FF002FB1B5 /* VIPER+Injection.swift */,
+				63A0EEE4294041FF002FB1B5 /* VoltaEel+Injection.swift */,
 			);
 			path = Injection;
 			sourceTree = "<group>";
@@ -633,7 +635,7 @@
 		63D163E5293CF06600326181 = {
 			isa = PBXGroup;
 			children = (
-				63D163F0293CF06600326181 /* VIPER */,
+				63D163F0293CF06600326181 /* Main */,
 				63A0EE11293F8543002FB1B5 /* Authentication */,
 				6335F74C293F60F800F24707 /* Mediator */,
 				6335F763293F63AC00F24707 /* ViewControllerManager */,
@@ -653,7 +655,7 @@
 		63D163EF293CF06600326181 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				63D163EE293CF06600326181 /* VIPER.app */,
+				63D163EE293CF06600326181 /* VoltaEel.app */,
 				6335F74B293F60F800F24707 /* Mediator.framework */,
 				6335F762293F63AC00F24707 /* ViewControllerManager.framework */,
 				63A0EE10293F8543002FB1B5 /* Authentication.framework */,
@@ -668,7 +670,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		63D163F0293CF06600326181 /* VIPER */ = {
+		63D163F0293CF06600326181 /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				D5CA38BC2947698A00AF4175 /* Dialog */,
@@ -684,11 +686,11 @@
 				63A0EEDD294041B3002FB1B5 /* Injection */,
 				D5CA387B2944C0B400AF4175 /* Service */,
 				63D163FA293CF06600326181 /* Assets.xcassets */,
-				D5CA38882944CCBF00AF4175 /* R.generated.swift */,
 				63D163FC293CF06600326181 /* LaunchScreen.storyboard */,
 				63D163FF293CF06600326181 /* Info.plist */,
+				D5CA38882944CCBF00AF4175 /* R.generated.swift */,
 			);
-			path = VIPER;
+			path = Main;
 			sourceTree = "<group>";
 		};
 		6A2ED29B465CBD160E6E642D /* Pods */ = {
@@ -714,6 +716,8 @@
 				583D6727A680BFCF462A981D /* Pods-RxExtension.release.xcconfig */,
 				34D994450D0AE01788760048 /* Pods-NetworkManager.debug.xcconfig */,
 				41ACA61756398CB6A009065F /* Pods-NetworkManager.release.xcconfig */,
+				32BE9C2EDC3443246D0821C9 /* Pods-SwiftArchitecture.debug.xcconfig */,
+				85369D3EB04FC74B210A70E1 /* Pods-SwiftArchitecture.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1024,9 +1028,9 @@
 			productReference = 63A0EE9F29402139002FB1B5 /* Log.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		63D163ED293CF06600326181 /* VIPER */ = {
+		63D163ED293CF06600326181 /* VoltaEel */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 63D16402293CF06600326181 /* Build configuration list for PBXNativeTarget "VIPER" */;
+			buildConfigurationList = 63D16402293CF06600326181 /* Build configuration list for PBXNativeTarget "VoltaEel" */;
 			buildPhases = (
 				47B2027604F19D1ADBD90892 /* [CP] Check Pods Manifest.lock */,
 				D5CA38872944CBF800AF4175 /* R.Swift */,
@@ -1050,9 +1054,9 @@
 				D5CA389929458A5B00AF4175 /* PBXTargetDependency */,
 				D5CA38B42947688F00AF4175 /* PBXTargetDependency */,
 			);
-			name = VIPER;
+			name = VoltaEel;
 			productName = VIPER;
-			productReference = 63D163EE293CF06600326181 /* VIPER.app */;
+			productReference = 63D163EE293CF06600326181 /* VoltaEel.app */;
 			productType = "com.apple.product-type.application";
 		};
 		D5CA389329458A5B00AF4175 /* Extension */ = {
@@ -1146,7 +1150,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 63D163E9293CF06600326181 /* Build configuration list for PBXProject "VIPER" */;
+			buildConfigurationList = 63D163E9293CF06600326181 /* Build configuration list for PBXProject "VoltaEel" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -1159,7 +1163,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				63D163ED293CF06600326181 /* VIPER */,
+				63D163ED293CF06600326181 /* VoltaEel */,
 				6335F74A293F60F800F24707 /* Mediator */,
 				6335F761293F63AC00F24707 /* ViewControllerManager */,
 				63A0EE0F293F8543002FB1B5 /* Authentication */,
@@ -1374,15 +1378,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VIPER/Pods-VIPER-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-SwiftArchitecture/Pods-SwiftArchitecture-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VIPER/Pods-VIPER-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-SwiftArchitecture/Pods-SwiftArchitecture-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VIPER/Pods-VIPER-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SwiftArchitecture/Pods-SwiftArchitecture-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		47B2027604F19D1ADBD90892 /* [CP] Check Pods Manifest.lock */ = {
@@ -1400,7 +1404,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-VIPER-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-SwiftArchitecture-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1544,7 +1548,7 @@
 			files = (
 				63A0EEC729403CC7002FB1B5 /* ProfileViewModel.swift in Sources */,
 				63D163F2293CF06600326181 /* AppDelegate.swift in Sources */,
-				63A0EEE5294041FF002FB1B5 /* VIPER+Injection.swift in Sources */,
+				63A0EEE5294041FF002FB1B5 /* VoltaEel+Injection.swift in Sources */,
 				63A0EECF29403D09002FB1B5 /* HomeViewModel.swift in Sources */,
 				63A0EEBB29403529002FB1B5 /* PaymentViewModel.swift in Sources */,
 				63D163F4293CF06600326181 /* SceneDelegate.swift in Sources */,
@@ -2399,7 +2403,7 @@
 		};
 		63D16403293CF06600326181 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 92DD5A25CE50FF60C66C3FDD /* Pods-VIPER.debug.xcconfig */;
+			baseConfigurationReference = 32BE9C2EDC3443246D0821C9 /* Pods-SwiftArchitecture.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2408,7 +2412,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 78X6FL4YJY;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = VIPER/Info.plist;
+				INFOPLIST_FILE = Main/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -2432,7 +2436,7 @@
 		};
 		63D16404293CF06600326181 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 23053A08900B6FAED416766E /* Pods-VIPER.release.xcconfig */;
+			baseConfigurationReference = 85369D3EB04FC74B210A70E1 /* Pods-SwiftArchitecture.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2441,7 +2445,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 78X6FL4YJY;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = VIPER/Info.plist;
+				INFOPLIST_FILE = Main/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -2680,7 +2684,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		63D163E9293CF06600326181 /* Build configuration list for PBXProject "VIPER" */ = {
+		63D163E9293CF06600326181 /* Build configuration list for PBXProject "VoltaEel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				63D16400293CF06600326181 /* Debug */,
@@ -2689,7 +2693,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		63D16402293CF06600326181 /* Build configuration list for PBXNativeTarget "VIPER" */ = {
+		63D16402293CF06600326181 /* Build configuration list for PBXNativeTarget "VoltaEel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				63D16403293CF06600326181 /* Debug */,

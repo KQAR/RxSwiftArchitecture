@@ -12,7 +12,7 @@ import Factory
 
 public class MediatorTarget: MediatorProtocol {
   public func goPayment(id: String, name: String) {
-    let action = VIPER.MediatorAction()
+    let action = VoltaEel.MediatorAction()
     action.goPayment(id: id, name: name)
   }
 }

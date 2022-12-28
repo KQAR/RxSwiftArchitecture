@@ -32,7 +32,7 @@ end
 ## ==> Target <==
 
 # 主工程
-target 'VIPER' do
+target 'SwiftArchitecture' do
   injectionPods
   viewPods
   rxPods
