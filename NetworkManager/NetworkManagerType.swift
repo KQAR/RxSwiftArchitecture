@@ -36,7 +36,7 @@ extension NetworkManagerType {
           printLog("[===> Task: \(target.task)", type: .network)
         }
       case .ended:
-        printLog("[===> NETWORKING END", type: .network)
+        printLog("[===> NETWORKING ENDED", type: .network)
       }
     }
     plugins.append(LoadingPlugin)

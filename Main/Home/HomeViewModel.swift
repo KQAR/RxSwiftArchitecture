@@ -48,6 +48,7 @@ class HomeViewModel: ViewModel, ViewModelType {
       .withUnretained(self)
       .flatMap { owner, _ -> Observable<[HomeSectionModel]> in
         return owner.request()
+          .delay(.milliseconds(3000), scheduler: MainScheduler.instance)
           .trackActivity(owner.headerLoading)
       }.subscribe(onNext: { sections in
         sectionsRelay.accept(sections)

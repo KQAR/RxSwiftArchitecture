@@ -17,7 +17,7 @@ public struct NetworkManager<T: TargetType>: NetworkManagerType {
     return NetworkManager(provider: newProvider(plugins))
   }
   
-  /// 本地数据测试
+  /// 本地Mock
   public static func stubbingNetworking() -> Self {
     return NetworkManager(
       provider: OnlineProvider(

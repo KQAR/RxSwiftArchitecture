@@ -34,6 +34,11 @@ def imagePods
   pod 'Kingfisher', '~> 7.0'
 end
 
+# Animation
+def animationPods
+  pod 'lottie-ios'
+end
+
 ## ==> Target <==
 
 # 主工程
@@ -53,6 +58,7 @@ end
 # 基础视图库
 target 'BaseView' do
   injectionPods
+  animationPods
   viewPods
   rxPods
 end

@@ -30,6 +30,12 @@
 		633A01FD295D680C0031DA92 /* ProfileRequestApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633A01FB295D677A0031DA92 /* ProfileRequestApi.swift */; };
 		633A0200295D69710031DA92 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633A01FE295D696B0031DA92 /* ProfileModel.swift */; };
 		633A0207295D6E3A0031DA92 /* profileMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 633A0206295D6E3A0031DA92 /* profileMock.json */; };
+		633A020A295D82C70031DA92 /* cube-loader.lottie in Resources */ = {isa = PBXBuildFile; fileRef = 633A0209295D82C70031DA92 /* cube-loader.lottie */; };
+		633A020C295D9F7B0031DA92 /* loading-animation.lottie in Resources */ = {isa = PBXBuildFile; fileRef = 633A020B295D9F7B0031DA92 /* loading-animation.lottie */; };
+		633A020E295DA3880031DA92 /* loading-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 633A020D295DA3880031DA92 /* loading-animation.json */; };
+		633A0210295DA6070031DA92 /* red_down_arrows.json in Resources */ = {isa = PBXBuildFile; fileRef = 633A020F295DA6070031DA92 /* red_down_arrows.json */; };
+		633A0212295DA7080031DA92 /* down_arrows.json in Resources */ = {isa = PBXBuildFile; fileRef = 633A0211295DA7080031DA92 /* down_arrows.json */; };
+		633A0214295DB1430031DA92 /* dot_loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 633A0213295DB1430031DA92 /* dot_loading.json */; };
 		63A0EE16293F8543002FB1B5 /* Authentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A0EE10293F8543002FB1B5 /* Authentication.framework */; };
 		63A0EE17293F8543002FB1B5 /* Authentication.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63A0EE10293F8543002FB1B5 /* Authentication.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		63A0EE1C293F856A002FB1B5 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A0EE1B293F856A002FB1B5 /* AuthenticationViewController.swift */; };
@@ -276,6 +282,12 @@
 		633A01FB295D677A0031DA92 /* ProfileRequestApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRequestApi.swift; sourceTree = "<group>"; };
 		633A01FE295D696B0031DA92 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		633A0206295D6E3A0031DA92 /* profileMock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = profileMock.json; sourceTree = "<group>"; };
+		633A0209295D82C70031DA92 /* cube-loader.lottie */ = {isa = PBXFileReference; lastKnownFileType = file; path = "cube-loader.lottie"; sourceTree = "<group>"; };
+		633A020B295D9F7B0031DA92 /* loading-animation.lottie */ = {isa = PBXFileReference; lastKnownFileType = file; path = "loading-animation.lottie"; sourceTree = "<group>"; };
+		633A020D295DA3880031DA92 /* loading-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "loading-animation.json"; sourceTree = "<group>"; };
+		633A020F295DA6070031DA92 /* red_down_arrows.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = red_down_arrows.json; sourceTree = "<group>"; };
+		633A0211295DA7080031DA92 /* down_arrows.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = down_arrows.json; sourceTree = "<group>"; };
+		633A0213295DB1430031DA92 /* dot_loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dot_loading.json; sourceTree = "<group>"; };
 		6343B8156D982F35188F901E /* Pods-Payment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Payment.debug.xcconfig"; path = "Target Support Files/Pods-Payment/Pods-Payment.debug.xcconfig"; sourceTree = "<group>"; };
 		63A0EE10293F8543002FB1B5 /* Authentication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Authentication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		63A0EE1B293F856A002FB1B5 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
@@ -523,6 +535,19 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
+		633A0208295D82A50031DA92 /* LottieFiles */ = {
+			isa = PBXGroup;
+			children = (
+				633A0211295DA7080031DA92 /* down_arrows.json */,
+				633A020F295DA6070031DA92 /* red_down_arrows.json */,
+				633A020D295DA3880031DA92 /* loading-animation.json */,
+				633A0213295DB1430031DA92 /* dot_loading.json */,
+				633A020B295D9F7B0031DA92 /* loading-animation.lottie */,
+				633A0209295D82C70031DA92 /* cube-loader.lottie */,
+			);
+			path = LottieFiles;
+			sourceTree = "<group>";
+		};
 		63A0EE11293F8543002FB1B5 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
@@ -535,6 +560,7 @@
 		63A0EE39293F9A0E002FB1B5 /* BaseView */ = {
 			isa = PBXGroup;
 			children = (
+				633A0208295D82A50031DA92 /* LottieFiles */,
 				63A0EE49293F9CFF002FB1B5 /* ViewController.swift */,
 				63A0EE43293F9A19002FB1B5 /* TableView.swift */,
 				63A0EE45293F9A80002FB1B5 /* TableViewCell.swift */,
@@ -1263,6 +1289,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				633A0214295DB1430031DA92 /* dot_loading.json in Resources */,
+				633A020C295D9F7B0031DA92 /* loading-animation.lottie in Resources */,
+				633A020A295D82C70031DA92 /* cube-loader.lottie in Resources */,
+				633A020E295DA3880031DA92 /* loading-animation.json in Resources */,
+				633A0210295DA6070031DA92 /* red_down_arrows.json in Resources */,
+				633A0212295DA7080031DA92 /* down_arrows.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

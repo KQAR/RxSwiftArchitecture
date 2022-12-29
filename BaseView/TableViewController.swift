@@ -29,7 +29,11 @@ open class TableViewController: ViewController {
   
   open override func configureUI() {
     super.configureUI()
-    
+    setupRefreshControl()
+  }
+  
+  /// 如果要使用其他自定义刷新控件，请在子类重写改方法
+  open func setupRefreshControl() {
     // MJRefresh
     tableView.mj_header = RefreshHeaderControl(refreshingBlock: { [weak self] in
       self?.headerRefreshTrigger.onNext(())

@@ -44,6 +44,15 @@ public final class HomeViewController: CollectionViewController {
     }
   }
   
+  public override func setupRefreshControl() {
+    collectionView.mj_header = LottieRefreshHeaderControl(refreshingBlock: { [weak self] in
+      self?.headerRefreshTrigger.onNext(())
+    })
+    collectionView.mj_footer = LottieRefreshFooterControl(refreshingBlock: { [weak self] in
+      self?.footerRefreshTrigger.onNext(())
+    })
+  }
+  
   public override func bindViewModel() {
     super.bindViewModel()
     guard let viewModel = viewModel as? HomeViewModel else { return }

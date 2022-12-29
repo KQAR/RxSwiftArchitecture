@@ -13,9 +13,8 @@ extension MJRefreshComponent {
   var isAnimating: Bool {
     get { return isRefreshing }
     set {
-      if newValue == true && !isRefreshing {
-        beginRefreshing()
-      } else {
+      // 开始刷新会由下拉动作自动触发，这里只需要在网络请求结束后结束刷新即可
+      if newValue == false && isRefreshing {
         endRefreshing()
       }
     }
