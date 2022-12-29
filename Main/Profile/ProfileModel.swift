@@ -6,9 +6,18 @@
 //
 
 import Foundation
+import RxExtension
 
-struct ProfileModel: Codable {
+struct ProfileModel: Codable, Paginable {
   let userInfos: [UserInfo]
+  let current: Int
+  let pages: Int
+}
+
+extension ProfileModel: DataStatusPresentable {
+  var dataStatus: DataStatus {
+    return userInfos.isEmpty ? .empty : .normal
+  }
 }
 
 struct UserInfo: Codable {

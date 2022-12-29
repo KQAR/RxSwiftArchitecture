@@ -6,9 +6,18 @@
 //
 
 import Foundation
+import RxExtension
 
-struct HomeModel: Codable {
+struct HomeModel: Codable, Paginable {
   let items: [HomeItem]
+  let current: Int
+  let pages: Int
+}
+
+extension HomeModel: DataStatusPresentable {
+  var dataStatus: DataStatus {
+    return items.isEmpty ? .empty : .normal
+  }
 }
 
 struct HomeItem: Codable {

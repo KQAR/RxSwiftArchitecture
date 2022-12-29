@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-protocol Paginable {
+public protocol Paginable {
   var current: Int { get }
   var pages: Int { get }
 }
@@ -26,7 +26,7 @@ public final class PagingIndicator: SharedSequenceConvertibleType {
   
   public init() {}
   
-  func trackPage<O: ObservableConvertibleType>(from source: O) -> Observable<O.Element> {
+  func track<O: ObservableConvertibleType>(from source: O) -> Observable<O.Element> {
     return source.asObservable()
       .do(onNext: { model in
         guard let model = model as? Paginable else { return }
@@ -35,7 +35,7 @@ public final class PagingIndicator: SharedSequenceConvertibleType {
       }, onError: { _ in
         self.onEnding(true)
       })
-        }
+  }
   
   public func asSharedSequence() -> SharedSequence<SharingStrategy, Bool> {
     return _nomore.asObservable().asDriverOnErrorJustComplete()
@@ -55,7 +55,7 @@ public final class PagingIndicator: SharedSequenceConvertibleType {
 }
 
 extension ObservableConvertibleType {
-  public func trackPage(_ pageIndicator: PagingIndicator) -> Observable<Element> {
-    return pageIndicator.trackPage(from: self)
+  public func track(_ pageIndicator: PagingIndicator) -> Observable<Element> {
+    return pageIndicator.track(from: self)
   }
 }

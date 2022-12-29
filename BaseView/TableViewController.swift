@@ -50,11 +50,9 @@ open class TableViewController: ViewController {
     viewModel.footerLoading.asObservable().bind(to: tableView.mj_footer!.rx.isAnimating).disposed(by: disposeBag)
     viewModel.pagingIndicator.asObservable().bind(to: tableView.mj_footer!.rx.noMoreData).disposed(by: disposeBag)
     
-    let updateEmptyDataSet = Observable.of(
-      isLoading.filter({ $0 == false }).map { _ in }.asObservable(),
-      emptyDataSetImageTintColor.map { _ in }
-    ).merge()
-    updateEmptyDataSet
+    viewModel.headerLoading.asObservable()
+      .skip(1)
+      .filter { !$0 }
       .withUnretained(self)
       .subscribe(onNext: { owner, _ in
         owner.tableView.reloadEmptyDataSet()

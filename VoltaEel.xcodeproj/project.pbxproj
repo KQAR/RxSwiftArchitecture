@@ -89,6 +89,7 @@
 		69DC11F5EBB8C6641F1AE383 /* Pods_RxExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB152E30468D4472A8B35E54 /* Pods_RxExtension.framework */; };
 		C12D887278EC91B1248D942B /* Pods_Mediator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10C013602A2396E27E5C2CB6 /* Pods_Mediator.framework */; };
 		C78DCB594B1C7D347D941CCD /* Pods_NetworkManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0DE56922215D1E6A610D936 /* Pods_NetworkManager.framework */; };
+		D538B5F7295DE288006E6604 /* DataStatusTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D538B5F6295DE288006E6604 /* DataStatusTracker.swift */; };
 		D5CA38622944854800AF4175 /* Rx+MJRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CA38612944854800AF4175 /* Rx+MJRefresh.swift */; };
 		D5CA3864294486F300AF4175 /* RefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CA3863294486F300AF4175 /* RefreshControl.swift */; };
 		D5CA38702944BC6F00AF4175 /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CA386F2944BC6F00AF4175 /* ReachabilityManager.swift */; };
@@ -342,6 +343,7 @@
 		B9069D1BFC2B3AA747E062C3 /* Pods-Bindable.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bindable.release.xcconfig"; path = "Target Support Files/Pods-Bindable/Pods-Bindable.release.xcconfig"; sourceTree = "<group>"; };
 		BF806A0B582FA08CFDEF4158 /* Pods_Authentication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Authentication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0DE56922215D1E6A610D936 /* Pods_NetworkManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NetworkManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D538B5F6295DE288006E6604 /* DataStatusTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStatusTracker.swift; sourceTree = "<group>"; };
 		D5CA38612944854800AF4175 /* Rx+MJRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+MJRefresh.swift"; sourceTree = "<group>"; };
 		D5CA3863294486F300AF4175 /* RefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshControl.swift; sourceTree = "<group>"; };
 		D5CA386B2944958C00AF4175 /* Moya.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Moya.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -592,6 +594,7 @@
 				633A01E1295D41B90031DA92 /* RxKingfisher */,
 				63A0EE8B293FA416002FB1B5 /* ActivityIndicator.swift */,
 				63A0EE8D293FA479002FB1B5 /* PagingIndicator.swift */,
+				D538B5F6295DE288006E6604 /* DataStatusTracker.swift */,
 				63A0EE8F293FA4AE002FB1B5 /* ErrorTracker.swift */,
 			);
 			path = RxExtension;
@@ -1615,6 +1618,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D538B5F7295DE288006E6604 /* DataStatusTracker.swift in Sources */,
 				63A0EE8C293FA416002FB1B5 /* ActivityIndicator.swift in Sources */,
 				633A01E5295D41B90031DA92 /* KingfisherManager+Rx.swift in Sources */,
 				633A01E4295D41B90031DA92 /* Kingfisher+Rx.swift in Sources */,

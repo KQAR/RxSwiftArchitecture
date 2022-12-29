@@ -81,7 +81,21 @@ public class LottieRefreshHeaderControl: MJRefreshHeader {
 /// 上拉自动加载控件
 /// 隐藏了菊花和文字，上拉到控件全部显示时自动加载更多
 public class RefreshFooterControl: MJRefreshAutoNormalFooter {
-
+  public override var state: MJRefreshState {
+    didSet {
+      switch state {
+      case .idle:
+        stateLabel?.isHidden = true
+      case .refreshing:
+        isHidden = false
+        stateLabel?.isHidden = false
+      case .noMoreData:
+        isHidden = true
+      default:
+        break
+      }
+    }
+  }
 }
 
 /// 上拉加载 Lottie 动画样式
@@ -110,6 +124,7 @@ public class LottieRefreshFooterControl: MJRefreshAutoFooter {
   
   public override func prepare() {
     super.prepare()
+    
     addSubview(lottieAnim)
     lottieAnim.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
@@ -124,11 +139,16 @@ public class LottieRefreshFooterControl: MJRefreshAutoFooter {
     didSet {
       switch state {
       case .idle:
+        lottieAnim.isHidden = true
         guard lottieAnim.isAnimationPlaying else { return }
         lottieAnim.stop()
       case .refreshing:
+        isHidden = false
         guard lottieAnim.animation != nil && !lottieAnim.isAnimationPlaying else { return }
+        lottieAnim.isHidden = false
         lottieAnim.play()
+      case .noMoreData:
+        isHidden = true
       default:
         break
       }

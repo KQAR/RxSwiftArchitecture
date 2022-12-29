@@ -14,6 +14,58 @@ import Bindable
 import NetworkManager
 import Log
 
+enum EmptyDataState {
+  case normal
+  case empty
+  case error
+  
+  var title: String {
+    switch self {
+    case .normal:
+      return ""
+    case .empty:
+      return "还没有数据哦~"
+    case .error:
+      return "请求出错了..."
+    }
+  }
+  
+  var description: String {
+    return ""
+  }
+  
+  var image: UIImage? {
+    switch self {
+    case .normal:
+      return nil
+    case .empty:
+      return UIImage(named: "empty_state_witdraw")
+    case .error:
+      return UIImage(named: "network_error")
+    }
+  }
+  
+  var imageTintColor: UIColor? {
+    return nil
+  }
+  
+  var buttonTitle: String? {
+    return nil
+  }
+  
+  var backgroundColor: UIColor? {
+    return .clear
+  }
+  
+  var emptyViewShouldDisplay: Bool {
+    return self != .normal
+  }
+  
+  var emptyViewShouldAllowScroll: Bool {
+    return true
+  }
+}
+
 open class ViewController: UIViewController, BindableType {
   
   open var viewModel: ViewModel!
@@ -32,10 +84,7 @@ open class ViewController: UIViewController, BindableType {
   }
   
   let emptyDataSetButtonTap = PublishSubject<Void>()
-  var emptyDataSetTitle = "还没有数据哦~"
-  var emptyDataSetDescription = ""
-  var emptyDataSetImage = UIImage(named: "empty_state_witdraw")
-  var emptyDataSetImageTintColor = BehaviorRelay<UIColor?>(value: nil)
+  let emptyDataSetStatus = BehaviorRelay<EmptyDataState>(value: .normal)
   
   open override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
@@ -69,8 +118,22 @@ open class ViewController: UIViewController, BindableType {
   }
   
   open func bindViewModel() {
-    viewModel?.loading.asObservable().bind(to: isLoading).disposed(by: disposeBag)
-    viewModel?.parsedError.asObservable().bind(to: error).disposed(by: disposeBag)
+    viewModel.loading.asObservable().bind(to: isLoading).disposed(by: disposeBag)
+    viewModel.parsedError.asObservable().bind(to: error).disposed(by: disposeBag)
+    
+    // Empty Data Status
+    viewModel.dataStaus.asObservable()
+      .withUnretained(self)
+      .subscribe(onNext: { owner, dataStatus in
+        switch dataStatus {
+        case .normal:
+          owner.emptyDataSetStatus.accept(.normal)
+        case .empty:
+          owner.emptyDataSetStatus.accept(.empty)
+        case .error(_):
+          owner.emptyDataSetStatus.accept(.error)
+        }
+      }).disposed(by: disposeBag)
     
     // Network Activity
     isLoading
@@ -83,6 +146,7 @@ open class ViewController: UIViewController, BindableType {
       .withUnretained(self)
       .subscribe(onNext: { owner, error in
         // do something show error
+        owner.emptyDataSetStatus.accept(.error)
       }).disposed(by: disposeBag)
   }
   
@@ -95,26 +159,26 @@ open class ViewController: UIViewController, BindableType {
 
 extension ViewController: EmptyDataSetSource {
   public func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
-    return NSAttributedString(string: emptyDataSetTitle, attributes: [
+    return NSAttributedString(string: emptyDataSetStatus.value.title, attributes: [
       .font: UIFont.systemFont(ofSize: 14, weight: .semibold),
       .foregroundColor: UIColor.gray
     ])
   }
   
   public func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
-    return NSAttributedString(string: emptyDataSetDescription)
+    return NSAttributedString(string: emptyDataSetStatus.value.description)
   }
   
   public func image(forEmptyDataSet scrollView: UIScrollView) -> UIImage? {
-    return emptyDataSetImage
+    return emptyDataSetStatus.value.image
   }
   
   public func imageTintColor(forEmptyDataSet scrollView: UIScrollView) -> UIColor? {
-    return emptyDataSetImageTintColor.value
+    return emptyDataSetStatus.value.imageTintColor
   }
   
   public func backgroundColor(forEmptyDataSet scrollView: UIScrollView) -> UIColor? {
-    return .clear
+    return emptyDataSetStatus.value.backgroundColor
   }
 }
 
@@ -122,11 +186,11 @@ extension ViewController: EmptyDataSetSource {
 
 extension ViewController: EmptyDataSetDelegate {
   public func emptyDataSetShouldDisplay(_ scrollView: UIScrollView) -> Bool {
-    return !isLoading.value
+    return emptyDataSetStatus.value.emptyViewShouldDisplay
   }
   
   public func emptyDataSetShouldAllowScroll(_ scrollView: UIScrollView) -> Bool {
-    return true
+    return emptyDataSetStatus.value.emptyViewShouldAllowScroll
   }
   
   public func emptyDataSet(_ scrollView: UIScrollView, didTapButton button: UIButton) {

@@ -33,7 +33,8 @@ class ProfileViewModel: ViewModel, ViewModelType {
       .withUnretained(self)
       .flatMap { owner, _ -> Observable<[ProfileTableViewCellViewModel]> in
         return owner.request()
-          .trackActivity(owner.headerLoading)
+          .track(owner.headerLoading)
+          .track(owner.dataStaus)
       }.subscribe(onNext: { items in
         itemsRelay.accept(items)
       }).disposed(by: disposeBag)
@@ -41,7 +42,7 @@ class ProfileViewModel: ViewModel, ViewModelType {
       .withUnretained(self)
       .flatMap { owner, _ -> Observable<[ProfileTableViewCellViewModel]> in
         return owner.request()
-          .trackActivity(owner.footerLoading)
+          .track(owner.footerLoading)
       }.subscribe(onNext: { items in
         var originItems = itemsRelay.value
         originItems.append(contentsOf: items)
@@ -53,13 +54,14 @@ class ProfileViewModel: ViewModel, ViewModelType {
   
   func request() -> Observable<[ProfileTableViewCellViewModel]> {
     return network.requestDeepModel(.userInfo, type: ProfileModel.self)
-      .trackPage(pagingIndicator)
-      .trackActivity(loading)
-      .trackError(error)
+      .track(pagingIndicator)
+      .track(loading)
+      .track(error)
       .map { profileModel in
         profileModel.userInfos.map { userInfo in
           ProfileTableViewCellViewModel(userInfo: userInfo)
         }
       }
+      .catchAndReturn([])
   }
 }

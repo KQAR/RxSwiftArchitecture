@@ -49,7 +49,8 @@ class HomeViewModel: ViewModel, ViewModelType {
       .flatMap { owner, _ -> Observable<[HomeSectionModel]> in
         return owner.request()
           .delay(.milliseconds(3000), scheduler: MainScheduler.instance)
-          .trackActivity(owner.headerLoading)
+          .track(owner.headerLoading)
+          .track(owner.dataStaus)
       }.subscribe(onNext: { sections in
         sectionsRelay.accept(sections)
       }).disposed(by: disposeBag)
@@ -57,7 +58,7 @@ class HomeViewModel: ViewModel, ViewModelType {
       .withUnretained(self)
       .flatMap { owner, _ -> Observable<[HomeSectionModel]> in
         return owner.request()
-          .trackActivity(owner.footerLoading)
+          .track(owner.footerLoading)
       }.subscribe(onNext: { sections in
         var originSections = sectionsRelay.value
         originSections.append(contentsOf: sections)
@@ -80,14 +81,15 @@ class HomeViewModel: ViewModel, ViewModelType {
   
   func request() -> Observable<[HomeSectionModel]> {
     network.requestDeepModel(.homeInfo, type: HomeModel.self)
-      .trackPage(pagingIndicator)
-      .trackActivity(loading)
-      .trackError(error)
+      .track(pagingIndicator)
+      .track(loading)
+      .track(error)
       .map { homeModel in
         let items = homeModel.items.map { item in
           HomeCollectionCellViewModel(homeItem: item)
         }
         return [HomeSectionModel(model: .banner, items: items)]
       }
+      .catchAndReturn([])
   }
 }

@@ -74,7 +74,7 @@ public class ActivityIndicator: SharedSequenceConvertibleType {
 }
 
 extension ObservableConvertibleType {
-  public func trackActivity(_ activityIndicator: ActivityIndicator) -> Observable<Element> {
+  public func track(_ activityIndicator: ActivityIndicator) -> Observable<Element> {
     return activityIndicator.trackActivityOfObservable(self)
   }
 }
