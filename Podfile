@@ -29,11 +29,17 @@ def networkPods
   pod 'Moya/RxSwift'
 end
 
+# 图片库
+def imagePods
+  pod 'Kingfisher', '~> 7.0'
+end
+
 ## ==> Target <==
 
 # 主工程
 target 'VoltaEel' do
   injectionPods
+  imagePods
   viewPods
   rxPods
   pod 'R.swift'
@@ -60,6 +66,7 @@ end
 # Rx扩展库
 target 'RxExtension' do
   rxPods
+  imagePods
 end
 
 # 模块中介者

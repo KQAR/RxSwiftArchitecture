@@ -21,6 +21,8 @@
 		6335F770293F641D00F24707 /* UIViewController+Current.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6335F76F293F641D00F24707 /* UIViewController+Current.swift */; };
 		6338E0012951699B0046A36D /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6338E0002951699B0046A36D /* Optional.swift */; };
 		6338E00329516BA90046A36D /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6338E00229516BA90046A36D /* Notification.swift */; };
+		633A01E4295D41B90031DA92 /* Kingfisher+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633A01E2295D41B90031DA92 /* Kingfisher+Rx.swift */; };
+		633A01E5295D41B90031DA92 /* KingfisherManager+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633A01E3295D41B90031DA92 /* KingfisherManager+Rx.swift */; };
 		63A0EE16293F8543002FB1B5 /* Authentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A0EE10293F8543002FB1B5 /* Authentication.framework */; };
 		63A0EE17293F8543002FB1B5 /* Authentication.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63A0EE10293F8543002FB1B5 /* Authentication.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		63A0EE1C293F856A002FB1B5 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A0EE1B293F856A002FB1B5 /* AuthenticationViewController.swift */; };
@@ -251,6 +253,8 @@
 		6335F76F293F641D00F24707 /* UIViewController+Current.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Current.swift"; sourceTree = "<group>"; };
 		6338E0002951699B0046A36D /* Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
 		6338E00229516BA90046A36D /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		633A01E2295D41B90031DA92 /* Kingfisher+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Kingfisher+Rx.swift"; sourceTree = "<group>"; };
+		633A01E3295D41B90031DA92 /* KingfisherManager+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KingfisherManager+Rx.swift"; sourceTree = "<group>"; };
 		6343B8156D982F35188F901E /* Pods-Payment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Payment.debug.xcconfig"; path = "Target Support Files/Pods-Payment/Pods-Payment.debug.xcconfig"; sourceTree = "<group>"; };
 		63A0EE10293F8543002FB1B5 /* Authentication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Authentication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		63A0EE1B293F856A002FB1B5 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
@@ -473,6 +477,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		633A01E1295D41B90031DA92 /* RxKingfisher */ = {
+			isa = PBXGroup;
+			children = (
+				633A01E2295D41B90031DA92 /* Kingfisher+Rx.swift */,
+				633A01E3295D41B90031DA92 /* KingfisherManager+Rx.swift */,
+			);
+			path = RxKingfisher;
+			sourceTree = "<group>";
+		};
 		63A0EE11293F8543002FB1B5 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
@@ -513,6 +526,7 @@
 		63A0EE65293FA0D5002FB1B5 /* RxExtension */ = {
 			isa = PBXGroup;
 			children = (
+				633A01E1295D41B90031DA92 /* RxKingfisher */,
 				63A0EE8B293FA416002FB1B5 /* ActivityIndicator.swift */,
 				63A0EE8D293FA479002FB1B5 /* PagingIndicator.swift */,
 				63A0EE8F293FA4AE002FB1B5 /* ErrorTracker.swift */,
@@ -1480,6 +1494,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				63A0EE8C293FA416002FB1B5 /* ActivityIndicator.swift in Sources */,
+				633A01E5295D41B90031DA92 /* KingfisherManager+Rx.swift in Sources */,
+				633A01E4295D41B90031DA92 /* Kingfisher+Rx.swift in Sources */,
 				63A0EE90293FA4AE002FB1B5 /* ErrorTracker.swift in Sources */,
 				63A0EE8E293FA479002FB1B5 /* PagingIndicator.swift in Sources */,
 			);
