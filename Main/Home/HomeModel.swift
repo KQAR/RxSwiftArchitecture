@@ -8,5 +8,11 @@
 import Foundation
 
 struct HomeModel: Codable {
-  
+  let items: [HomeItem]
+}
+
+struct HomeItem: Codable {
+  var cover: String?
+  var title: String?
+  var content: String?
 }

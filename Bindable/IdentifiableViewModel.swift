@@ -9,9 +9,11 @@ import Foundation
 import RxDataSources
 
 open class IdentifiableViewModel: Equatable, IdentifiableType {
-  public let identity = UUID()
+  public let identity: UUID
   
-  public init() {}
+  public init(identity: UUID = UUID()) {
+    self.identity = identity
+  }
   public static func == (lhs: IdentifiableViewModel, rhs: IdentifiableViewModel) -> Bool {
     return lhs.identity == rhs.identity
   }

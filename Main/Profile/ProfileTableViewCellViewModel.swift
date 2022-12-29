@@ -6,7 +6,10 @@
 //
 
 import Foundation
+import Bindable
 
-class ProfileTableViewCellViewModel {
-  
+class ProfileTableViewCellViewModel: IdentifiableViewModel {
+  init(identity: UUID = UUID(), userInfo: UserInfo) {
+    super.init(identity: identity)
+  }
 }

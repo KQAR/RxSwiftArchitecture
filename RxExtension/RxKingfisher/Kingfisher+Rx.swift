@@ -18,6 +18,15 @@ extension KingfisherWrapper {
             self.wrapper = base
         }
 
+        public func imageURL(placeholder: Placeholder? = nil,
+                             options: KingfisherOptionsInfo? = nil) -> Binder<URL?> {
+            return Binder(wrapper.base) { imageView, image in
+                imageView.kf.setImage(with: image,
+                                      placeholder: placeholder,
+                                      options: options)
+            }
+        }
+      
         public func image(placeholder: Placeholder? = nil,
                           options: KingfisherOptionsInfo? = nil) -> Binder<Resource?> {
             // `base.base` is the `Kingfisher` class' associated `ImageView`.

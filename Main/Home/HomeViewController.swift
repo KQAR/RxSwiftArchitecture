@@ -18,13 +18,13 @@ public final class HomeViewController: CollectionViewController {
   
   enum Metrics {
     static let minimumLineSpacing: CGFloat = 10
-    static let itemSize = CGSize(width: UIScreen.main.bounds.size.width - 30, height: 80)
+    static let itemSize = CGSize(width: UIScreen.main.bounds.size.width - 30, height: 120)
     static let sectionInset = UIEdgeInsets(top: 20, left: 15, bottom: 15, right: 15)
   }
   
   public override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .white
+    view.backgroundColor = UIColor.RGBA(r: 231, g: 231, b: 231, a: 1.0)
     navigationController?.delegate = self
   }
   
@@ -35,6 +35,7 @@ public final class HomeViewController: CollectionViewController {
     flowLayout.itemSize = Metrics.itemSize
     flowLayout.minimumLineSpacing = Metrics.minimumLineSpacing
     flowLayout.headerReferenceSize = CGSize(width: Metrics.itemSize.width, height: Metrics.minimumLineSpacing)
+    collectionView.backgroundColor = view.backgroundColor
     collectionView.setCollectionViewLayout(flowLayout, animated: false)
     collectionView.register(HomeCollectionCell.self, forCellWithReuseIdentifier: HomeCollectionCell.reuseIdentifier)
     view.addSubview(collectionView)

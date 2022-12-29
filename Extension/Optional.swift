@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Optional {
+public extension Optional {
   /// 可选值为空时返回true
   var isNone: Bool {
     switch self {

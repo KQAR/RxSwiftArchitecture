@@ -21,7 +21,7 @@ enum HomeModule: Int, IdentifiableType {
   case bottom
   
   var identity: Int {
-    return UUID().hashValue
+    return rawValue
   }
 }
 
@@ -60,13 +60,20 @@ class HomeViewModel: ViewModel, ViewModelType {
       }.subscribe(onNext: { sections in
         var originSections = sectionsRelay.value
         originSections.append(contentsOf: sections)
-        sectionsRelay.accept(originSections)
+        let reduceSections = originSections
+          .reduce(HomeSectionModel(model: .banner, items: [])) { partialResult, section in
+            var reduce = partialResult
+            reduce.items.append(contentsOf: section.items)
+            return reduce
+          }
+        sectionsRelay.accept([reduceSections])
       }).disposed(by: disposeBag)
     input.selection
       .withUnretained(self)
       .subscribe(onNext: { owner, _ in
         owner.mediator.goPayment(id: "", name: "")
       }).disposed(by: disposeBag)
+    
     return Output(sections: sectionsRelay.asObservable())
   }
   
@@ -75,6 +82,11 @@ class HomeViewModel: ViewModel, ViewModelType {
       .trackPage(pagingIndicator)
       .trackActivity(loading)
       .trackError(error)
-      .map { _ in [HomeSectionModel(model: .banner, items: [HomeCollectionCellViewModel()])] }
+      .map { homeModel in
+        let items = homeModel.items.map { item in
+          HomeCollectionCellViewModel(homeItem: item)
+        }
+        return [HomeSectionModel(model: .banner, items: items)]
+      }
   }
 }
