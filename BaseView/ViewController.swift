@@ -31,7 +31,7 @@ enum EmptyDataState {
   }
   
   var description: String {
-    return ""
+    return "当前没有数据展示"
   }
   
   var image: UIImage? {
@@ -146,7 +146,6 @@ open class ViewController: UIViewController, BindableType {
       .withUnretained(self)
       .subscribe(onNext: { owner, error in
         // do something show error
-        owner.emptyDataSetStatus.accept(.error)
       }).disposed(by: disposeBag)
   }
   

@@ -35,6 +35,7 @@ class ProfileViewModel: ViewModel, ViewModelType {
         return owner.request()
           .track(owner.headerLoading)
           .track(owner.dataStaus)
+          .catchAndReturn([])
       }.subscribe(onNext: { items in
         itemsRelay.accept(items)
       }).disposed(by: disposeBag)
@@ -43,6 +44,7 @@ class ProfileViewModel: ViewModel, ViewModelType {
       .flatMap { owner, _ -> Observable<[ProfileTableViewCellViewModel]> in
         return owner.request()
           .track(owner.footerLoading)
+          .catchAndReturn([])
       }.subscribe(onNext: { items in
         var originItems = itemsRelay.value
         originItems.append(contentsOf: items)
@@ -62,6 +64,5 @@ class ProfileViewModel: ViewModel, ViewModelType {
           ProfileTableViewCellViewModel(userInfo: userInfo)
         }
       }
-      .catchAndReturn([])
   }
 }

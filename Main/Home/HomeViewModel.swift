@@ -51,6 +51,7 @@ class HomeViewModel: ViewModel, ViewModelType {
           .delay(.milliseconds(3000), scheduler: MainScheduler.instance)
           .track(owner.headerLoading)
           .track(owner.dataStaus)
+          .catchAndReturn([])
       }.subscribe(onNext: { sections in
         sectionsRelay.accept(sections)
       }).disposed(by: disposeBag)
@@ -59,6 +60,7 @@ class HomeViewModel: ViewModel, ViewModelType {
       .flatMap { owner, _ -> Observable<[HomeSectionModel]> in
         return owner.request()
           .track(owner.footerLoading)
+          .catchAndReturn([])
       }.subscribe(onNext: { sections in
         var originSections = sectionsRelay.value
         originSections.append(contentsOf: sections)
@@ -90,6 +92,5 @@ class HomeViewModel: ViewModel, ViewModelType {
         }
         return [HomeSectionModel(model: .banner, items: items)]
       }
-      .catchAndReturn([])
   }
 }
