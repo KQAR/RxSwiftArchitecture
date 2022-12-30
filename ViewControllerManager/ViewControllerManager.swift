@@ -9,7 +9,7 @@ import UIKit
 
 public class ViewControllerManager {
   public class func pushToViewCotntroller(toVC: UIViewController, animation: CATransition? = nil) {
-    let topVC = UIViewController.topMoastViewController()
+    let topVC = UIViewController.topLevelViewController()
     if let transition = animation, animation != nil {
       topVC?.navigationController?.view.layer.add(transition, forKey: nil)
       topVC?.navigationController?.pushViewController(toVC, animated: false)

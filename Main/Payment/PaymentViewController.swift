@@ -33,7 +33,7 @@ public class PaymentViewController: ViewController {
   }
   
   public override func bindViewModel() {
-//    guard let viewModel = viewModel as? PaymentViewModel else { return }
+    
   }
 }
 

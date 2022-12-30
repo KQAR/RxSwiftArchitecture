@@ -27,7 +27,7 @@ enum HomeModule: Int, IdentifiableType {
 
 typealias HomeSectionModel = AnimatableSectionModel<HomeModule, HomeCollectionCellViewModel>
 
-class HomeViewModel: ViewModel, ViewModelType {
+final class HomeViewModel: ViewModel, ViewModelType {
   
   struct Input {
     let headerRefresh: Observable<Void>

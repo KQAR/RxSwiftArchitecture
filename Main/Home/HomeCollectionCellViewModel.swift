@@ -11,7 +11,7 @@ import Extension
 import RxSwift
 import RxCocoa
 
-class HomeCollectionCellViewModel: IdentifiableViewModel {
+final class HomeCollectionCellViewModel: IdentifiableViewModel {
   
   let homeItem: HomeItem
   

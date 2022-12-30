@@ -160,9 +160,9 @@ open class ViewController: UIViewController, BindableType {
       .distinctUntilChanged()
       .observe(on: MainScheduler.instance)
       .withUnretained(self)
-      .subscribe(onNext: { owner, isLoading in
+      .subscribe(onNext: { owner, shouldLoading in
         // Provide a custom network activity UI in your app if desired.
-        if isLoading {
+        if shouldLoading {
           owner.showLoadingToast()
         } else {
           owner.hideLoadingToast()

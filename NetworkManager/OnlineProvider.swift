@@ -45,19 +45,9 @@ public class OnlineProvider<Target> where Target: Moya.TargetType {
         return actualRequest
           .filterSuccessfulStatusCodes()
           .do(onSuccess: { (response) in
-            /// 打印接口JSON数据
-//            let json = try? JSON(data: response.data)
-//            printLog("[------------> Response: ===> \(json ?? "")")
+            /// can debug success response data in here.
           }, onError: { (error) in
-//            if let error = error as? MoyaError {
-//              switch error {
-//              case .statusCode(let response):
-//                let json = try? JSON(data: response.data)
-//                printLog("[------------> Response: ===> \(json ?? "")")
-//              default:
-//                printLog("[------------> Response: ===> \(error)")
-//              }
-//            }
+            /// can debug error in here.
           })
       }
   }

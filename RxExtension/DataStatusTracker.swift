@@ -13,17 +13,6 @@ public protocol DataStatusPresentable {
   var dataStatus: DataStatus { get }
 }
 
-//extension Array: DataStatusPresentable {
-//  public var dataStatus: DataStatus {
-//    return isEmpty ? .empty : .normal
-//  }
-//}
-//
-//extension Dictionary: DataStatusPresentable {
-//  public var dataStatus: DataStatus {
-//    return isEmpty ? .empty : .normal
-//  }
-//}
 extension Array: DataStatusPresentable {}
 extension Dictionary: DataStatusPresentable {}
 extension DataStatusPresentable where Self: Collection {

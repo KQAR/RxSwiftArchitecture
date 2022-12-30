@@ -8,37 +8,36 @@
 import UIKit
 
 extension UIViewController {
-  /// 当前window最上层viewController
+  /// 当前给定的 ViewController 最上层显示的 ViewController
   /// - parameters:
-  ///       - controller 可选
-  ///       - isFilterModalView 是否过滤掉 模态vc
-  /// - returns: 最上层viewController
-  public class func topMoastViewController(
-    controller: UIViewController? = UIWindow.keyWindow?.rootViewController,
-    filterModalView: Bool = true
+  ///   - viewController: 给定的控制器，默认是根控制器
+  ///   - ignoreModalViewController: 是否忽略 模态 ViewController
+  /// - returns: 最上层 ViewController
+  public class func topLevelViewController(
+    in viewController: UIViewController? = UIWindow.keyWindow?.rootViewController,
+    ignoreModalViewController: Bool = true
   ) -> UIViewController? {
-    if let navigationController = controller as? UINavigationController {
-      if filterModalView {
-        if let topVC = navigationController.topViewController {
-          return topMoastViewController(controller: topVC)
+    if let navigationController = viewController as? UINavigationController {
+      if ignoreModalViewController {
+        if let topViewController = navigationController.topViewController {
+          return topLevelViewController(in: topViewController)
         }
         return nil
       } else {
-        if let visibleVC = navigationController.visibleViewController {
-          return topMoastViewController(controller: visibleVC)
+        if let visibleViewController = navigationController.visibleViewController {
+          return topLevelViewController(in: visibleViewController)
         }
         return nil
       }
     }
-    if let tabController = controller as? UITabBarController {
-      if let selectedVC = tabController.selectedViewController {
-        return topMoastViewController(controller: selectedVC)
-      }
+    if let tabBarController = viewController as? UITabBarController,
+        let selectedViewController = tabBarController.selectedViewController {
+      return topLevelViewController(in: selectedViewController)
     }
-    if filterModalView == false, let presented = controller?.presentedViewController {
-      return topMoastViewController(controller: presented)
+    if ignoreModalViewController == false, let presentedViewController = viewController?.presentedViewController {
+      return topLevelViewController(in: presentedViewController)
     }
-    return controller
+    return viewController
   }
 }
 

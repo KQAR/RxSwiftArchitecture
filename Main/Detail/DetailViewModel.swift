@@ -13,7 +13,7 @@ import Mediator
 import NetworkManager
 import Bindable
 
-class DetailViewModel: ViewModel, ViewModelType {
+final class DetailViewModel: ViewModel, ViewModelType {
   
   public struct Input {
     let refresh: Observable<Void>

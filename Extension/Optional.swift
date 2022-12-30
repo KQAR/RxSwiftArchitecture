@@ -66,7 +66,7 @@ public extension Optional {
   }
 }
 
-extension Optional where Wrapped == Error {
+public extension Optional where Wrapped == Error {
   func or(_ else: (Error) -> Void) {
     guard let error = self else { return }
     `else`(error)

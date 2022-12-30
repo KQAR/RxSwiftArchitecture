@@ -8,7 +8,7 @@
 import UIKit
 import Foundation
 
-extension Notification {
+public extension Notification {
   
   func keyBoardHeight() -> CGFloat {
     if let userInfo = self.userInfo {
@@ -31,7 +31,7 @@ extension Notification {
   }
 }
 
-extension NotificationCenter {
+public extension NotificationCenter {
   
   /// 类型安全的 `userInfo` 的通知广播方法
   /// - Parameters:
@@ -48,13 +48,13 @@ extension NotificationCenter {
 }
 
 // 通知名定义
-extension Notification.Name {
+public extension Notification.Name {
   /// 消息角标（作为传值的示例）
   static let chatMessageBadgeNotification = Notification.Name(rawValue: "com.Jarvis.VIPER.chatMessageBadgeNotification")
 }
 
 // UserInfoKey 键与对应类型定义
-extension Notification.UserInfoKey {
+public extension Notification.UserInfoKey {
   static var chatMessageBadgeValueKey: Notification.UserInfoKey<Int> {
     return Notification.UserInfoKey(key: "com.Jarvis.VIPER.chatMessageBadgeValueKey.badgeNum")
   }

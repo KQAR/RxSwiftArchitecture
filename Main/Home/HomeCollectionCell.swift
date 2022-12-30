@@ -10,7 +10,7 @@ import RxSwift
 import BaseView
 import Utility
 
-class HomeCollectionCell: CollectionViewCell {
+final class HomeCollectionCell: CollectionViewCell {
   
   var imageView = Init(UIImageView()) { imageView in
     imageView.layer.cornerRadius = 8
