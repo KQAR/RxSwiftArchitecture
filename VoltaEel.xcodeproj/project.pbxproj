@@ -10,6 +10,9 @@
 		017993957756E3823F3AEB93 /* Pods_BaseView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F6F83325528E1DF4F8AF726 /* Pods_BaseView.framework */; };
 		0BBD43064F15E2AD6F4F955E /* Pods_Bindable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 916EA59316C989C6DD42A585 /* Pods_Bindable.framework */; };
 		44757B0FD061E8F0020D6443 /* Pods_VoltaEel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07F8861A53C32CC95F72DDAA /* Pods_VoltaEel.framework */; };
+		63264664295EA2B600A2FE06 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63264663295EA2B600A2FE06 /* DetailViewModel.swift */; };
+		63264666295EA2C500A2FE06 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63264665295EA2C500A2FE06 /* DetailViewController.swift */; };
+		63264668295EA47500A2FE06 /* seconds-loader-beeboard.json in Resources */ = {isa = PBXBuildFile; fileRef = 63264667295EA47500A2FE06 /* seconds-loader-beeboard.json */; };
 		633503DC2948486F006CE685 /* PopupsGen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633503DB2948486F006CE685 /* PopupsGen.swift */; };
 		633503DF29486A0A006CE685 /* PopupsAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633503DE29486A0A006CE685 /* PopupsAnimator.swift */; };
 		6335F751293F60F800F24707 /* Mediator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6335F74B293F60F800F24707 /* Mediator.framework */; };
@@ -266,6 +269,9 @@
 		41ACA61756398CB6A009065F /* Pods-NetworkManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetworkManager.release.xcconfig"; path = "Target Support Files/Pods-NetworkManager/Pods-NetworkManager.release.xcconfig"; sourceTree = "<group>"; };
 		4F6F83325528E1DF4F8AF726 /* Pods_BaseView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BaseView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		583D6727A680BFCF462A981D /* Pods-RxExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxExtension.release.xcconfig"; path = "Target Support Files/Pods-RxExtension/Pods-RxExtension.release.xcconfig"; sourceTree = "<group>"; };
+		63264663295EA2B600A2FE06 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		63264665295EA2C500A2FE06 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		63264667295EA47500A2FE06 /* seconds-loader-beeboard.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "seconds-loader-beeboard.json"; sourceTree = "<group>"; };
 		633503DB2948486F006CE685 /* PopupsGen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupsGen.swift; sourceTree = "<group>"; };
 		633503DE29486A0A006CE685 /* PopupsAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupsAnimator.swift; sourceTree = "<group>"; };
 		6335F74B293F60F800F24707 /* Mediator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mediator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -484,6 +490,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		63264662295EA29C00A2FE06 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				63264663295EA2B600A2FE06 /* DetailViewModel.swift */,
+				63264665295EA2C500A2FE06 /* DetailViewController.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 		6335F74C293F60F800F24707 /* Mediator */ = {
 			isa = PBXGroup;
 			children = (
@@ -540,10 +555,11 @@
 		633A0208295D82A50031DA92 /* LottieFiles */ = {
 			isa = PBXGroup;
 			children = (
+				633A0213295DB1430031DA92 /* dot_loading.json */,
 				633A0211295DA7080031DA92 /* down_arrows.json */,
 				633A020F295DA6070031DA92 /* red_down_arrows.json */,
 				633A020D295DA3880031DA92 /* loading-animation.json */,
-				633A0213295DB1430031DA92 /* dot_loading.json */,
+				63264667295EA47500A2FE06 /* seconds-loader-beeboard.json */,
 				633A020B295D9F7B0031DA92 /* loading-animation.lottie */,
 				633A0209295D82C70031DA92 /* cube-loader.lottie */,
 			);
@@ -730,18 +746,19 @@
 		63D163F0293CF06600326181 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				D5CA38BC2947698A00AF4175 /* Dialog */,
 				63D163F1293CF06600326181 /* AppDelegate.swift */,
 				63D163F3293CF06600326181 /* SceneDelegate.swift */,
 				D5CA38A329458CE400AF4175 /* TabBar */,
 				63A0EEB7294034F4002FB1B5 /* Home */,
 				63A0EEB8294034FC002FB1B5 /* Profile */,
+				63264662295EA29C00A2FE06 /* Detail */,
 				63A0EEB929403516002FB1B5 /* Payment */,
 				63A0EEF029406CE1002FB1B5 /* Assembly */,
 				63A0EEDC294040BC002FB1B5 /* MediatorAction */,
 				63A0EEB6294034E3002FB1B5 /* MediatorTarget */,
 				63A0EEDD294041B3002FB1B5 /* Injection */,
 				D5CA387B2944C0B400AF4175 /* Service */,
+				D5CA38BC2947698A00AF4175 /* Dialog */,
 				63D163FA293CF06600326181 /* Assets.xcassets */,
 				63D163FC293CF06600326181 /* LaunchScreen.storyboard */,
 				63D163FF293CF06600326181 /* Info.plist */,
@@ -1293,6 +1310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				633A0214295DB1430031DA92 /* dot_loading.json in Resources */,
+				63264668295EA47500A2FE06 /* seconds-loader-beeboard.json in Resources */,
 				633A020C295D9F7B0031DA92 /* loading-animation.lottie in Resources */,
 				633A020A295D82C70031DA92 /* cube-loader.lottie in Resources */,
 				633A020E295DA3880031DA92 /* loading-animation.json in Resources */,
@@ -1656,6 +1674,7 @@
 				63D163F2293CF06600326181 /* AppDelegate.swift in Sources */,
 				D5CA38C9295C840C00AF4175 /* R.generated.swift in Sources */,
 				63A0EEE5294041FF002FB1B5 /* VoltaEel+Injection.swift in Sources */,
+				63264664295EA2B600A2FE06 /* DetailViewModel.swift in Sources */,
 				63A0EECF29403D09002FB1B5 /* HomeViewModel.swift in Sources */,
 				63A0EEBB29403529002FB1B5 /* PaymentViewModel.swift in Sources */,
 				63D163F4293CF06600326181 /* SceneDelegate.swift in Sources */,
@@ -1678,6 +1697,7 @@
 				D5CA387D2944C12600AF4175 /* Host.swift in Sources */,
 				63A0EEF229406D5E002FB1B5 /* Assembly.swift in Sources */,
 				63A0EED329403D58002FB1B5 /* MediatorTarget.swift in Sources */,
+				63264666295EA2C500A2FE06 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

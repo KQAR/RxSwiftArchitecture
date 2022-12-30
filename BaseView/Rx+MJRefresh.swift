@@ -33,15 +33,3 @@ extension MJRefreshFooter {
     }
   }
 }
-
-//extension Reactive where Base: MJRefreshFooter {
-//    public var isNomoreData: Binder<Bool> {
-//        return Binder(self.base) { refreshControl, nomoreData in
-//            if nomoreData {
-//                refreshControl.endRefreshingWithNoMoreData()
-//            } else {
-//                refreshControl.resetNoMoreData()
-//            }
-//        }
-//    }
-//}

@@ -102,13 +102,14 @@ public class RefreshFooterControl: MJRefreshAutoNormalFooter {
 public class LottieRefreshFooterControl: MJRefreshAutoFooter {
   
   enum Metrics {
-    static let animationName = "dot_loading"
+    static let animationName = "seconds-loader-beeboard"
   }
   
   private var lottieAnim: LottieAnimationView = {
     let animationView = LottieAnimationView()
     animationView.contentMode = .scaleAspectFit
     animationView.loopMode = .loop
+    animationView.animationSpeed = 2.0
     
     if let animation = LottieAnimation.named(Metrics.animationName, bundle: currentBundle!) {
       animationView.animation = animation
