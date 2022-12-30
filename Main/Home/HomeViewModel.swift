@@ -48,7 +48,6 @@ class HomeViewModel: ViewModel, ViewModelType {
       .withUnretained(self)
       .flatMap { owner, _ -> Observable<[HomeSectionModel]> in
         return owner.request()
-          .delay(.milliseconds(3000), scheduler: MainScheduler.instance)
           .track(owner.headerLoading)
           .track(owner.dataStaus)
           .catchAndReturn([])
@@ -84,6 +83,7 @@ class HomeViewModel: ViewModel, ViewModelType {
   
   private func request() -> Observable<[HomeSectionModel]> {
     network.requestDeepModel(.homeInfo, type: HomeModel.self)
+      .delay(.milliseconds(3000), scheduler: MainScheduler.instance)
       .track(pagingIndicator)
       .track(loading)
       .track(error)

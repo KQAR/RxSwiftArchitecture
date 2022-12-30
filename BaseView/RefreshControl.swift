@@ -9,7 +9,6 @@ import Foundation
 import MJRefresh
 import Lottie
 
-let currentBundle = Bundle(identifier: "com.person.BaseView")
 // MARK: - RefreshHeaderControl
 
 /// 下拉自动刷新控件
@@ -29,10 +28,10 @@ public class LottieRefreshHeaderControl: MJRefreshHeader {
     animationView.contentMode = .scaleAspectFill
     animationView.loopMode = .loop
     
-    if let animation = LottieAnimation.named(Metrics.animationName, bundle: currentBundle!) {
+    if let animation = LottieAnimation.named(Metrics.animationName, bundle: Bundle.current!) {
       animationView.animation = animation
     } else {
-      DotLottieFile.named(Metrics.animationName, bundle: currentBundle!) { result in
+      DotLottieFile.named(Metrics.animationName, bundle: Bundle.current!) { result in
         guard case Result.success(let lottie) = result else { return }
         animationView.loadAnimation(from: lottie)
       }
@@ -111,10 +110,10 @@ public class LottieRefreshFooterControl: MJRefreshAutoFooter {
     animationView.loopMode = .loop
     animationView.animationSpeed = 2.0
     
-    if let animation = LottieAnimation.named(Metrics.animationName, bundle: currentBundle!) {
+    if let animation = LottieAnimation.named(Metrics.animationName, bundle: Bundle.current!) {
       animationView.animation = animation
     } else {
-      DotLottieFile.named(Metrics.animationName, bundle: currentBundle!) { result in
+      DotLottieFile.named(Metrics.animationName, bundle: Bundle.current!) { result in
         guard case Result.success(let lottie) = result else { return }
         animationView.loadAnimation(from: lottie)
       }

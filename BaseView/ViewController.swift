@@ -8,6 +8,8 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Lottie
+import Toast_Swift
 import Factory
 import EmptyDataSet_Swift
 import Bindable
@@ -76,6 +78,7 @@ open class ViewController: UIViewController, BindableType {
   
   let error = PublishSubject<ApiError>()
   let isLoading = BehaviorRelay(value: false)
+  let isAppeared = BehaviorRelay(value: false)
   
   var navigationTitle = "" {
     didSet {
@@ -85,6 +88,21 @@ open class ViewController: UIViewController, BindableType {
   
   let emptyDataSetButtonTap = PublishSubject<Void>()
   let emptyDataSetStatus = BehaviorRelay<EmptyDataState>(value: .normal)
+  
+  private var lottieLoadingView: LottieAnimationView = {
+    let animationView = LottieAnimationView()
+    animationView.contentMode = .scaleAspectFit
+    animationView.loopMode = .loop
+    animationView.backgroundBehavior = .pauseAndRestore
+    animationView.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
+    animationView.layer.cornerRadius = 10
+    animationView.layer.masksToBounds = true
+    animationView.frame = CGRect(origin: .zero, size: CGSize(width: 160, height: 80))
+    if let animation = LottieAnimation.named("text_loading", bundle: Bundle.current!) {
+      animationView.animation = animation
+    }
+    return animationView
+  }()
   
   open override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
@@ -103,10 +121,12 @@ open class ViewController: UIViewController, BindableType {
   
   open override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
+    isAppeared.accept(true)
   }
   
   open override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
+    isAppeared.accept(false)
   }
   
   open func configureUI() {
@@ -136,9 +156,17 @@ open class ViewController: UIViewController, BindableType {
       }).disposed(by: disposeBag)
     
     // Network Activity
-    isLoading
-      .subscribe(onNext: { isLoading in
+    Observable.combineLatest(isLoading, isAppeared) { $0 && $1 }
+      .distinctUntilChanged()
+      .observe(on: MainScheduler.instance)
+      .withUnretained(self)
+      .subscribe(onNext: { owner, isLoading in
         // Provide a custom network activity UI in your app if desired.
+        if isLoading {
+          owner.showLoadingToast()
+        } else {
+          owner.hideLoadingToast()
+        }
       }).disposed(by: disposeBag)
     
     // error capture
@@ -147,6 +175,16 @@ open class ViewController: UIViewController, BindableType {
       .subscribe(onNext: { owner, error in
         // do something show error
       }).disposed(by: disposeBag)
+  }
+  
+  public func showLoadingToast() {
+    view.showToast(lottieLoadingView, duration: TimeInterval.infinity, position: .center)
+    lottieLoadingView.play()
+  }
+  
+  public func hideLoadingToast() {
+    lottieLoadingView.stop()
+    view.hideToast(lottieLoadingView)
   }
   
   deinit {

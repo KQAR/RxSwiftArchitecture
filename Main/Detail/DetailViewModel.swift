@@ -54,6 +54,7 @@ class DetailViewModel: ViewModel, ViewModelType {
   
   private func request(id: String) -> Observable<Detail> {
     network.requestDeepModel(.detail(id: id), type: Detail.self)
+      .delay(.milliseconds(2000), scheduler: MainScheduler.instance)
       .track(pagingIndicator)
       .track(loading)
       .track(error)
