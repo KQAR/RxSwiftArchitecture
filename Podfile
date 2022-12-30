@@ -14,7 +14,7 @@ end
 def viewPods
   pod 'SnapKit'
   pod 'MJRefresh'
-  pod 'EmptyDataSet-Swift'
+  pod 'EmptyDataSet-Swift', :git=> 'https://github.com/KQAR/EmptyDataSet-Swift.git'
   pod "ESTabBarController-swift"
 end
 
