@@ -11,6 +11,7 @@ enum HomeRequestApi {
   case homeInfo
   case bannerInfo
   case userTag
+  case detail(id: String)
 }
 
 extension HomeRequestApi: TargetType {
@@ -22,6 +23,8 @@ extension HomeRequestApi: TargetType {
       return "/api/bannerInfo"
     case .userTag:
       return "/api/userTag"
+    case .detail:
+      return "/api/detail"
     }
   }
   
@@ -42,7 +45,15 @@ extension HomeRequestApi: TargetType {
   }
   
   var sampleData: Data {
-    let mock = R.file.homeMockJson()
+    var mock: URL?
+    switch self {
+    case .homeInfo:
+      mock = R.file.homeMockJson()
+    case .detail:
+      mock = R.file.detailMockJson()
+    default:
+      mock = nil
+    }
     if let mock, let data = try? Data(contentsOf: mock) {
         return data
     }

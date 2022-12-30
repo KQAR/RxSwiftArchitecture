@@ -54,7 +54,7 @@ class ProfileViewModel: ViewModel, ViewModelType {
     return Output(items: itemsRelay.asObservable())
   }
   
-  func request() -> Observable<[ProfileTableViewCellViewModel]> {
+  private func request() -> Observable<[ProfileTableViewCellViewModel]> {
     return network.requestDeepModel(.userInfo, type: ProfileModel.self)
       .track(pagingIndicator)
       .track(loading)

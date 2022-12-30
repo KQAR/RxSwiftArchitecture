@@ -9,4 +9,5 @@ import Foundation
 
 protocol MediatorActionProtocol {
   func goPayment(id: String, name: String)
+  func goDetail(id: String)
 }

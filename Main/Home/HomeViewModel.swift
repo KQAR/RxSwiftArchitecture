@@ -74,14 +74,15 @@ class HomeViewModel: ViewModel, ViewModelType {
       }).disposed(by: disposeBag)
     input.selection
       .withUnretained(self)
-      .subscribe(onNext: { owner, _ in
-        owner.mediator.goPayment(id: "", name: "")
+      .subscribe(onNext: { owner, cellViewModel in
+        let id = cellViewModel.homeItem.id.or("")
+        owner.mediator.goDetail(id: id)
       }).disposed(by: disposeBag)
     
     return Output(sections: sectionsRelay.asObservable())
   }
   
-  func request() -> Observable<[HomeSectionModel]> {
+  private func request() -> Observable<[HomeSectionModel]> {
     network.requestDeepModel(.homeInfo, type: HomeModel.self)
       .track(pagingIndicator)
       .track(loading)

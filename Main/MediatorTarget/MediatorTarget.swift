@@ -15,4 +15,8 @@ public class MediatorTarget: MediatorProtocol {
     let action = VoltaEel.MediatorAction()
     action.goPayment(id: id, name: name)
   }
+  public func goDetail(id: String) {
+    let action = VoltaEel.MediatorAction()
+    action.goDetail(id: id)
+  }
 }

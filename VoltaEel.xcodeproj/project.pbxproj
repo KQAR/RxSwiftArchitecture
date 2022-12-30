@@ -39,6 +39,9 @@
 		633A0210295DA6070031DA92 /* red_down_arrows.json in Resources */ = {isa = PBXBuildFile; fileRef = 633A020F295DA6070031DA92 /* red_down_arrows.json */; };
 		633A0212295DA7080031DA92 /* down_arrows.json in Resources */ = {isa = PBXBuildFile; fileRef = 633A0211295DA7080031DA92 /* down_arrows.json */; };
 		633A0214295DB1430031DA92 /* dot_loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 633A0213295DB1430031DA92 /* dot_loading.json */; };
+		634946D3295EE8E10018F589 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634946D2295EE8E10018F589 /* Detail.swift */; };
+		634946D5295EEC980018F589 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634946D4295EEC980018F589 /* DetailView.swift */; };
+		634946D7295EF00F0018F589 /* detailMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 634946D6295EF00F0018F589 /* detailMock.json */; };
 		63A0EE16293F8543002FB1B5 /* Authentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A0EE10293F8543002FB1B5 /* Authentication.framework */; };
 		63A0EE17293F8543002FB1B5 /* Authentication.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63A0EE10293F8543002FB1B5 /* Authentication.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		63A0EE1C293F856A002FB1B5 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A0EE1B293F856A002FB1B5 /* AuthenticationViewController.swift */; };
@@ -296,6 +299,9 @@
 		633A0211295DA7080031DA92 /* down_arrows.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = down_arrows.json; sourceTree = "<group>"; };
 		633A0213295DB1430031DA92 /* dot_loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dot_loading.json; sourceTree = "<group>"; };
 		6343B8156D982F35188F901E /* Pods-Payment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Payment.debug.xcconfig"; path = "Target Support Files/Pods-Payment/Pods-Payment.debug.xcconfig"; sourceTree = "<group>"; };
+		634946D2295EE8E10018F589 /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
+		634946D4295EEC980018F589 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		634946D6295EF00F0018F589 /* detailMock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = detailMock.json; sourceTree = "<group>"; };
 		63A0EE10293F8543002FB1B5 /* Authentication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Authentication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		63A0EE1B293F856A002FB1B5 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		63A0EE1D293F85F1002FB1B5 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
@@ -493,7 +499,9 @@
 		63264662295EA29C00A2FE06 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				634946D2295EE8E10018F589 /* Detail.swift */,
 				63264663295EA2B600A2FE06 /* DetailViewModel.swift */,
+				634946D4295EEC980018F589 /* DetailView.swift */,
 				63264665295EA2C500A2FE06 /* DetailViewController.swift */,
 			);
 			path = Detail;
@@ -823,6 +831,7 @@
 			children = (
 				D5CA38852944CA5900AF4175 /* homeMock.json */,
 				633A0206295D6E3A0031DA92 /* profileMock.json */,
+				634946D6295EF00F0018F589 /* detailMock.json */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -1354,6 +1363,7 @@
 				63D163FE293CF06600326181 /* LaunchScreen.storyboard in Resources */,
 				63D163FB293CF06600326181 /* Assets.xcassets in Resources */,
 				D5CA38862944CA5900AF4175 /* homeMock.json in Resources */,
+				634946D7295EF00F0018F589 /* detailMock.json in Resources */,
 				633A0207295D6E3A0031DA92 /* profileMock.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1676,12 +1686,14 @@
 				63A0EEE5294041FF002FB1B5 /* VoltaEel+Injection.swift in Sources */,
 				63264664295EA2B600A2FE06 /* DetailViewModel.swift in Sources */,
 				63A0EECF29403D09002FB1B5 /* HomeViewModel.swift in Sources */,
+				634946D3295EE8E10018F589 /* Detail.swift in Sources */,
 				63A0EEBB29403529002FB1B5 /* PaymentViewModel.swift in Sources */,
 				63D163F4293CF06600326181 /* SceneDelegate.swift in Sources */,
 				D5CA38BE294769B300AF4175 /* AdDialog.swift in Sources */,
 				63A0EECD29403D02002FB1B5 /* HomeViewController.swift in Sources */,
 				63A0EEED294062C7002FB1B5 /* HomeCollectionCellViewModel.swift in Sources */,
 				633A01FD295D680C0031DA92 /* ProfileRequestApi.swift in Sources */,
+				634946D5295EEC980018F589 /* DetailView.swift in Sources */,
 				63A0EEC929403CD3002FB1B5 /* ProfileViewController.swift in Sources */,
 				63A0EEE929406159002FB1B5 /* ProfileTableViewCellViewModel.swift in Sources */,
 				633A0200295D69710031DA92 /* ProfileModel.swift in Sources */,

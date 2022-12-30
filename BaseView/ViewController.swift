@@ -72,7 +72,7 @@ open class ViewController: UIViewController, BindableType {
   
   public let disposeBag = DisposeBag()
   
-  let refreshTrigger = PublishSubject<Void>()
+  public let refreshTrigger = PublishSubject<Void>()
   
   let error = PublishSubject<ApiError>()
   let isLoading = BehaviorRelay(value: false)

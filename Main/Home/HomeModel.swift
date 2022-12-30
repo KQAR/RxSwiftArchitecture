@@ -21,6 +21,7 @@ extension HomeModel: DataStatusPresentable {
 }
 
 struct HomeItem: Codable {
+  var id: String?
   var cover: String?
   var title: String?
   var content: String?

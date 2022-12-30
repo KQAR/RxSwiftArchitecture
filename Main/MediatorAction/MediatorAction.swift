@@ -14,4 +14,8 @@ class MediatorAction: MediatorActionProtocol {
     let vc = Assembly.paymentViewController(id: id, name: name)
     ViewControllerManager.pushToViewCotntroller(toVC: vc)
   }
+  func goDetail(id: String) {
+    let vc = Assembly.detailViewController(id: id)
+    ViewControllerManager.pushToViewCotntroller(toVC: vc)
+  }
 }

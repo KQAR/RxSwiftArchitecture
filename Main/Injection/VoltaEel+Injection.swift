@@ -27,12 +27,16 @@ public extension Container {
   static let payment = ViewModelParameterFactory<(id: String, name: String)> { params in
     PaymentViewModel(params.id, name: params.name)
   }
+  static let detail = ViewModelParameterFactory<String> { params in
+    DetailViewModel(params)
+  }
   
   // MARK: - Injection View Controller
   
   static let homeViewController = ViewControllerFactory { HomeViewController() }
   static let profileViewController = ViewControllerFactory { ProfileViewController() }
   static let paymentViewController = ViewControllerFactory { PaymentViewController() }
+  static let detailViewController = ViewControllerFactory { DetailViewController() }
   
   // MARK: - Injection Mediator
   
