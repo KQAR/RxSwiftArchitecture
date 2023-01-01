@@ -88,3 +88,8 @@ target 'NetworkManager' do
   networkPods
   rxPods
 end
+
+# Popups
+target 'Popups' do
+  rxPods
+end

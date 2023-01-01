@@ -97,7 +97,7 @@ open class ViewController: UIViewController, BindableType {
     animationView.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
     animationView.layer.cornerRadius = 10
     animationView.layer.masksToBounds = true
-    animationView.frame = CGRect(origin: .zero, size: CGSize(width: 160, height: 80))
+    animationView.frame = CGRect(origin: .zero, size: CGSize(width: 150, height: 80))
     if let animation = LottieAnimation.named("text_loading", bundle: Bundle.current!) {
       animationView.animation = animation
     }

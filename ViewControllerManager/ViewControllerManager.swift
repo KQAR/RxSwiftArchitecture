@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Extension
 
 public class ViewControllerManager {
   public class func pushToViewCotntroller(toVC: UIViewController, animation: CATransition? = nil) {
