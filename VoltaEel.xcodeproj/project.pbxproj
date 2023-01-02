@@ -753,7 +753,7 @@
 		63D163E5293CF06600326181 = {
 			isa = PBXGroup;
 			children = (
-				63D163F0293CF06600326181 /* Main */,
+				63D163F0293CF06600326181 /* App */,
 				63A0EE11293F8543002FB1B5 /* Authentication */,
 				6335F74C293F60F800F24707 /* Mediator */,
 				6335F763293F63AC00F24707 /* ViewControllerManager */,
@@ -790,7 +790,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		63D163F0293CF06600326181 /* Main */ = {
+		63D163F0293CF06600326181 /* App */ = {
 			isa = PBXGroup;
 			children = (
 				63D163F1293CF06600326181 /* AppDelegate.swift */,
@@ -811,7 +811,7 @@
 				63D163FF293CF06600326181 /* Info.plist */,
 				D5CA38C8295C840C00AF4175 /* R.generated.swift */,
 			);
-			path = Main;
+			path = App;
 			sourceTree = "<group>";
 		};
 		6A2ED29B465CBD160E6E642D /* Pods */ = {
@@ -2708,7 +2708,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 78X6FL4YJY;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Main/Info.plist;
+				INFOPLIST_FILE = App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -2741,7 +2741,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 78X6FL4YJY;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Main/Info.plist;
+				INFOPLIST_FILE = App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
