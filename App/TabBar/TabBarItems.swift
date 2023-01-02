@@ -23,16 +23,22 @@ enum TabBarItem: Int, CaseIterable {
   }
   
   var image: UIImage? {
-    return selectedImage?.withTintColor(.lightGray)
+    if #available(iOS 13.0, *) {
+      return selectedImage?.withTintColor(.lightGray)
+    }
+    return nil
   }
   
   var selectedImage: UIImage? {
-    switch self {
-    case .home:
-      return UIImage(systemName: "house")
-    case .profile:
-      return UIImage(systemName: "person.crop.circle")
+    if #available(iOS 13.0, *) {
+      switch self {
+      case .home:
+        return UIImage(systemName: "house")
+      case .profile:
+        return UIImage(systemName: "person.crop.circle")
+      }
     }
+    return nil
   }
   
   var viewController: UIViewController {

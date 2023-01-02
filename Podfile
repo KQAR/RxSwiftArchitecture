@@ -14,8 +14,8 @@ end
 def viewPods
   pod 'SnapKit'
   pod 'MJRefresh'
-  pod 'Toast-Swift', :git=> 'https://github.com/KQAR/Toast-Swift.git'
-  pod 'EmptyDataSet-Swift', :git=> 'https://github.com/KQAR/EmptyDataSet-Swift.git'
+  pod 'Toast-Swift', :git => 'https://github.com/KQAR/Toast-Swift.git'
+  pod 'EmptyDataSet-Swift', :git => 'https://github.com/KQAR/EmptyDataSet-Swift.git'
   pod "ESTabBarController-swift"
 end
 
@@ -34,7 +34,7 @@ end
 
 # 图片库
 def imagePods
-  pod 'Kingfisher', '~> 7.0'
+  pod 'Kingfisher', :git => 'https://github.com/onevcat/Kingfisher.git', :branch => 'version6-xcode13'
 end
 
 # Animation
