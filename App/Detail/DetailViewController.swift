@@ -29,7 +29,7 @@ final class DetailViewController: ViewController {
     super.bindViewModel()
     guard let viewModel = viewModel as? DetailViewModel else { return }
     
-    let refresh = Observable.of(Observable.just(()), refreshTrigger).merge()
+    let refresh = Observable.of(Observable.just(()), refreshTrigger.asObservable()).merge()
     let input = DetailViewModel.Input(
       refresh: refresh,
       collect: detailView.collect,

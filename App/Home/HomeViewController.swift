@@ -46,10 +46,10 @@ public final class HomeViewController: CollectionViewController {
   
   public override func setupRefreshControl() {
     collectionView.mj_header = LottieRefreshHeaderControl(refreshingBlock: { [weak self] in
-      self?.headerRefreshTrigger.onNext(())
+      self?.headerRefreshTrigger.accept(())
     })
     collectionView.mj_footer = LottieRefreshFooterControl(refreshingBlock: { [weak self] in
-      self?.footerRefreshTrigger.onNext(())
+      self?.footerRefreshTrigger.accept(())
     })
   }
   
@@ -57,10 +57,10 @@ public final class HomeViewController: CollectionViewController {
     super.bindViewModel()
     guard let viewModel = viewModel as? HomeViewModel else { return }
     
-    let refresh = Observable.of(Observable.just(()), headerRefreshTrigger).merge()
+    let refresh = Observable.of(Observable.just(()), headerRefreshTrigger.asObservable()).merge()
     let input = HomeViewModel.Input(
       headerRefresh: refresh,
-      footerRefresh: footerRefreshTrigger,
+      footerRefresh: footerRefreshTrigger.asObservable(),
       selection: collectionView.rx.modelSelected(HomeCollectionCellViewModel.self).asObservable()
     )
     let output = viewModel.transform(input: input)

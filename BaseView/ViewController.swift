@@ -74,9 +74,9 @@ open class ViewController: UIViewController, BindableType {
   
   public let disposeBag = DisposeBag()
   
-  public let refreshTrigger = PublishSubject<Void>()
+  public let refreshTrigger = PublishRelay<Void>()
   
-  let error = PublishSubject<ApiError>()
+  let error = PublishRelay<ApiError>()
   let isLoading = BehaviorRelay(value: false)
   let isAppeared = BehaviorRelay(value: false)
   
@@ -86,7 +86,7 @@ open class ViewController: UIViewController, BindableType {
     }
   }
   
-  let emptyDataSetButtonTap = PublishSubject<Void>()
+  let emptyDataSetButtonTap = PublishRelay<Void>()
   let emptyDataSetStatus = BehaviorRelay<EmptyDataState>(value: .normal)
   
   private var lottieLoadingView: LottieAnimationView = {
@@ -231,7 +231,7 @@ extension ViewController: EmptyDataSetDelegate {
   }
   
   public func emptyDataSet(_ scrollView: UIScrollView, didTapButton button: UIButton) {
-    emptyDataSetButtonTap.onNext(())
+    emptyDataSetButtonTap.accept(())
   }
 }
 

@@ -12,8 +12,8 @@ import MJRefresh
 
 open class TableViewController: ViewController {
   
-  public let headerRefreshTrigger = PublishSubject<Void>()
-  public let footerRefreshTrigger = PublishSubject<Void>()
+  public let headerRefreshTrigger = PublishRelay<Void>()
+  public let footerRefreshTrigger = PublishRelay<Void>()
   
   public lazy var tableView: TableView = {
     let view = TableView(frame: .zero, style: .plain)
@@ -36,10 +36,10 @@ open class TableViewController: ViewController {
   open func setupRefreshControl() {
     // MJRefresh
     tableView.mj_header = RefreshHeaderControl(refreshingBlock: { [weak self] in
-      self?.headerRefreshTrigger.onNext(())
+      self?.headerRefreshTrigger.accept(())
     })
     tableView.mj_footer = RefreshFooterControl(refreshingBlock: { [weak self] in
-      self?.footerRefreshTrigger.onNext(())
+      self?.footerRefreshTrigger.accept(())
     })
   }
   

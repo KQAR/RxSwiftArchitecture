@@ -33,10 +33,10 @@ public final class ProfileViewController: TableViewController {
   public override func bindViewModel() {
     super.bindViewModel()
     guard let viewModel = viewModel as? ProfileViewModel else { return }
-    let refresh = Observable.of(Observable.just(()), headerRefreshTrigger).merge()
+    let refresh = Observable.of(Observable.just(()), headerRefreshTrigger.asObservable()).merge()
     let input = ProfileViewModel.Input(
       headerRefresh: refresh,
-      footerRefresh: footerRefreshTrigger
+      footerRefresh: footerRefreshTrigger.asObservable()
     )
     let output = viewModel.transform(input: input)
     

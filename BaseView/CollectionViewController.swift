@@ -13,8 +13,8 @@ import Log
 
 open class CollectionViewController: ViewController {
   
-  public let headerRefreshTrigger = PublishSubject<Void>()
-  public let footerRefreshTrigger = PublishSubject<Void>()
+  public let headerRefreshTrigger = PublishRelay<Void>()
+  public let footerRefreshTrigger = PublishRelay<Void>()
   
   public lazy var collectionView: UICollectionView = {
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
@@ -39,10 +39,10 @@ open class CollectionViewController: ViewController {
   /// 如果要使用其他自定义刷新控件，请在子类重写该方法
   open func setupRefreshControl() {
     collectionView.mj_header = RefreshHeaderControl(refreshingBlock: { [weak self] in
-      self?.headerRefreshTrigger.onNext(())
+      self?.headerRefreshTrigger.accept(())
     })
     collectionView.mj_footer = RefreshFooterControl(refreshingBlock: { [weak self] in
-      self?.footerRefreshTrigger.onNext(())
+      self?.footerRefreshTrigger.accept(())
     })
   }
   
