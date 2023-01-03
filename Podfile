@@ -1,3 +1,4 @@
+source 'https://cdn.cocoapods.org'
 inhibit_all_warnings!
 
 platform:ios, '13.0'
@@ -51,11 +52,6 @@ target 'VoltaEel' do
   viewPods
   rxPods
   pod 'R.swift'
-end
-
-# 认证模块
-target 'Authentication' do
-  injectionPods
 end
 
 # 基础视图库
