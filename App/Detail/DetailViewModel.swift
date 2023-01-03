@@ -38,6 +38,7 @@ final class DetailViewModel: ViewModel, ViewModelType {
   init(_ id: String) {
     self.id = id
     super.init()
+    network.mode = .debug
   }
   
   public func transform(input: Input) -> Output {

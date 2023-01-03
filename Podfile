@@ -83,6 +83,7 @@ end
 target 'NetworkManager' do
   networkPods
   rxPods
+  pod 'SwiftyJSON'
 end
 
 # Popups

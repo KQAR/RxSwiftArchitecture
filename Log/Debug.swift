@@ -7,13 +7,18 @@
 
 import Foundation
 
-public struct DebugType: RawRepresentable {
-  public static let network = DebugType(rawValue: "🕷️")
-  public static let debug = DebugType(rawValue: "🐞")
-  public static let boat = DebugType(rawValue: "🚢")
-  public static let page = DebugType(rawValue: "⛩️")
+public struct DebugTag: RawRepresentable {
+  public static let arrow = DebugTag(rawValue: "👉")
   
-  public static let none = DebugType(rawValue: "")
+  public static let network = DebugTag(rawValue: "<🌐>")
+  public static let debug = DebugTag(rawValue: "<🐞>")
+  public static let boat = DebugTag(rawValue: "<🚢>")
+  public static let page = DebugTag(rawValue: "<⛩️>")
+  
+  public static let success = DebugTag(rawValue: "<✅>")
+  public static let failure = DebugTag(rawValue: "<❌>")
+  
+  public static let none = DebugTag(rawValue: "")
   public var rawValue: String
   public init(rawValue: String) {
     self.rawValue = rawValue
@@ -21,11 +26,17 @@ public struct DebugType: RawRepresentable {
 }
 
 public func printLog<T>(_ message: T,
-                             type: DebugType = .none,
+                             file: String = #file,
+                           method: String = #function,
+                        line: Int = #line) {
+  printLog(message, tags: .arrow, file: file, method: method, line: line)
+}
+public func printLog<T>(_ message: T,
+                             tags: DebugTag...,
                              file: String = #file,
                            method: String = #function,
                              line: Int = #line) {
   #if DEBUG
-  print("\(type.rawValue)\((file as NSString).lastPathComponent)[\(line)], \(method): \(message)")
+  print("\(tags.map(\.rawValue).joined(separator: "&&"))\((file as NSString).lastPathComponent)[\(line)], \(method): \(message)\n")
   #endif
 }

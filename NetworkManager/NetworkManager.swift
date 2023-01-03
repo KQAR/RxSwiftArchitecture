@@ -12,6 +12,11 @@ public struct NetworkManager<T: TargetType>: NetworkManagerType {
   
   public let provider: OnlineProvider<T>
   
+  public var mode: OnlineProvider<T>.Mode {
+    get { return provider.mode }
+    set { provider.mode = newValue }
+  }
+  
   /// 默认网络
   public static func defaultNetworking() -> Self {
     return NetworkManager(provider: newProvider(plugins))

@@ -22,28 +22,28 @@ extension NetworkManagerType {
   static var plugins: [PluginType] {
     var plugins: [PluginType] = []
     
-#if DEBUG
+    #if DEBUG
     let LoadingPlugin = NetworkActivityPlugin { (type, target) in
       switch type {
       case .began:
-        printLog("[===> NETWORKING BEGIN", type: .network)
+        printLog("[===> NETWORKING BEGIN <===]", tags: .network)
         switch target.task {
         case .requestJSONEncodable(let model):
-          printLog("[===> Task: \(model)", type: .network)
+          printLog("|===> Task: \(model)", tags: .network)
         case .requestParameters(let parameters, let encoding):
-          printLog("[===> Task: \(encoding) parameters: ===> \(parameters)", type: .network)
+          printLog("|===> Task: \(encoding) parameters: ===> \(parameters)", tags: .network)
         default:
-          printLog("[===> Task: \(target.task)", type: .network)
+          printLog("|===> Task: \(target.task)", tags: .network)
         }
       case .ended:
-        printLog("[===> NETWORKING ENDED", type: .network)
+        printLog("[===> NETWORKING ENDED <===]", tags: .network)
       }
     }
     plugins.append(LoadingPlugin)
     
     let loggerPlugin = NetworkLoggerPlugin()
     plugins.append(loggerPlugin)
-#endif
+    #endif
     
     return plugins
   }

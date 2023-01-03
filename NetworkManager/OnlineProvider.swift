@@ -9,10 +9,21 @@ import Foundation
 import RxSwift
 import Moya
 import Log
+import SwiftyJSON
 
 public class OnlineProvider<Target> where Target: Moya.TargetType {
   fileprivate let online: Observable<Bool>
   fileprivate let provider: MoyaProvider<Target>
+  
+  public var mode: Mode = .normal
+  
+  private var isDebugging: Bool {
+    #if DEBUG
+    return mode == .debug
+    #else
+    return false
+    #endif
+  }
   
   init(
     endpointClosure: @escaping MoyaProvider<Target>.EndpointClosure = MoyaProvider<Target>.defaultEndpointMapping,
@@ -45,10 +56,22 @@ public class OnlineProvider<Target> where Target: Moya.TargetType {
         return actualRequest
           .filterSuccessfulStatusCodes()
           .do(onSuccess: { (response) in
-            /// can debug success response data in here.
+            if self.isDebugging {
+              let json = JSON(response.data)
+              printLog(json, tags: .network, .success)
+            }
           }, onError: { (error) in
-            /// can debug error in here.
+            if self.isDebugging, let error = error as? MoyaError {
+              printLog(error, tags: .network, .failure)
+            }
           })
       }
+  }
+}
+
+extension OnlineProvider {
+  public enum Mode {
+    case normal
+    case debug
   }
 }
