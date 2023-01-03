@@ -736,10 +736,10 @@
 			isa = PBXGroup;
 			children = (
 				63D163F0293CF06600326181 /* App */,
+				63A0EE51293F9EC4002FB1B5 /* Bindable */,
+				63A0EE39293F9A0E002FB1B5 /* BaseView */,
 				6335F74C293F60F800F24707 /* Mediator */,
 				6335F763293F63AC00F24707 /* ViewControllerManager */,
-				63A0EE39293F9A0E002FB1B5 /* BaseView */,
-				63A0EE51293F9EC4002FB1B5 /* Bindable */,
 				63A0EE65293FA0D5002FB1B5 /* RxExtension */,
 				63A0EE7A293FA36B002FB1B5 /* NetworkManager */,
 				63A0EEA029402139002FB1B5 /* Log */,
@@ -1598,7 +1598,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

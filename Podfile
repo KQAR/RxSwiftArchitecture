@@ -1,7 +1,7 @@
 source 'https://cdn.cocoapods.org'
 inhibit_all_warnings!
 
-platform:ios, '13.0'
+platform:ios, '11.0'
 use_frameworks!
 
 ## ==> Pods分组 <==
