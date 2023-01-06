@@ -22,7 +22,6 @@
 		6335F768293F63AC00F24707 /* ViewControllerManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6335F762293F63AC00F24707 /* ViewControllerManager.framework */; };
 		6335F769293F63AC00F24707 /* ViewControllerManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6335F762293F63AC00F24707 /* ViewControllerManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6335F76E293F63C200F24707 /* ViewControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6335F76D293F63C200F24707 /* ViewControllerManager.swift */; };
-		6335F770293F641D00F24707 /* UIViewController+Current.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6335F76F293F641D00F24707 /* UIViewController+Current.swift */; };
 		6338E0012951699B0046A36D /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6338E0002951699B0046A36D /* Optional.swift */; };
 		6338E00329516BA90046A36D /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6338E00229516BA90046A36D /* Notification.swift */; };
 		633A01E4295D41B90031DA92 /* Kingfisher+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633A01E2295D41B90031DA92 /* Kingfisher+Rx.swift */; };
@@ -128,7 +127,6 @@
 		D5CA38BB294768B300AF4175 /* CustomPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CA38BA294768B300AF4175 /* CustomPresentationController.swift */; };
 		D5CA38BE294769B300AF4175 /* AdDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CA38BD294769B300AF4175 /* AdDialog.swift */; };
 		D5CA38C029476C7700AF4175 /* ViewControllerPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CA38BF29476C7700AF4175 /* ViewControllerPresentable.swift */; };
-		D5CA38C32947750E00AF4175 /* UIWindow+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CA38C22947750E00AF4175 /* UIWindow+Extensions.swift */; };
 		D5CA38C9295C840C00AF4175 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CA38C8295C840C00AF4175 /* R.generated.swift */; };
 /* End PBXBuildFile section */
 
@@ -294,7 +292,6 @@
 		6335F756293F613800F24707 /* MediatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediatorProtocol.swift; sourceTree = "<group>"; };
 		6335F762293F63AC00F24707 /* ViewControllerManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ViewControllerManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6335F76D293F63C200F24707 /* ViewControllerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerManager.swift; sourceTree = "<group>"; };
-		6335F76F293F641D00F24707 /* UIViewController+Current.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Current.swift"; sourceTree = "<group>"; };
 		6338E0002951699B0046A36D /* Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
 		6338E00229516BA90046A36D /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		633A01E2295D41B90031DA92 /* Kingfisher+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Kingfisher+Rx.swift"; sourceTree = "<group>"; };
@@ -396,7 +393,6 @@
 		D5CA38BA294768B300AF4175 /* CustomPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPresentationController.swift; sourceTree = "<group>"; };
 		D5CA38BD294769B300AF4175 /* AdDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdDialog.swift; sourceTree = "<group>"; };
 		D5CA38BF29476C7700AF4175 /* ViewControllerPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerPresentable.swift; sourceTree = "<group>"; };
-		D5CA38C22947750E00AF4175 /* UIWindow+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Extensions.swift"; sourceTree = "<group>"; };
 		D5CA38C8295C840C00AF4175 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		E81E02DF8E8DD8E5D163F3CB /* Pods-Mediator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mediator.release.xcconfig"; path = "Target Support Files/Pods-Mediator/Pods-Mediator.release.xcconfig"; sourceTree = "<group>"; };
 		FB152E30468D4472A8B35E54 /* Pods_RxExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -536,8 +532,6 @@
 			isa = PBXGroup;
 			children = (
 				6335F76D293F63C200F24707 /* ViewControllerManager.swift */,
-				6335F76F293F641D00F24707 /* UIViewController+Current.swift */,
-				D5CA38C22947750E00AF4175 /* UIWindow+Extensions.swift */,
 			);
 			path = ViewControllerManager;
 			sourceTree = "<group>";
@@ -1599,8 +1593,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6335F770293F641D00F24707 /* UIViewController+Current.swift in Sources */,
-				D5CA38C32947750E00AF4175 /* UIWindow+Extensions.swift in Sources */,
 				6335F76E293F63C200F24707 /* ViewControllerManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
