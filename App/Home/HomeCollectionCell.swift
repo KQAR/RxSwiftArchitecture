@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import BaseView
 import Utility
+import FaveButton
 
 final class HomeCollectionCell: CollectionViewCell {
   
@@ -29,12 +30,17 @@ final class HomeCollectionCell: CollectionViewCell {
     label.font = UIFont.systemFont(ofSize: 13, weight: .regular)
   }
   
+  var faveButton = Init(FaveButton(frame: .zero, faveIconNormal: R.image.love())) { button in
+    button.normalColor = .white
+    button.selectedColor = .red
+  }
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
     contentView.layer.cornerRadius = 5
     contentView.backgroundColor = UIColor.RGBA(r: 2, g: 17, b: 29, a: 1.0)
     
-    contentView.addSubviews([imageView, titleLabel, contentLabel])
+    contentView.addSubviews([imageView, titleLabel, contentLabel, faveButton])
     imageView.snp.makeConstraints { make in
       make.left.top.bottom.equalToSuperview().inset(12)
       make.width.equalTo(imageView.snp.height)
@@ -50,6 +56,11 @@ final class HomeCollectionCell: CollectionViewCell {
       make.right.lessThanOrEqualTo(-15)
       make.bottom.equalTo(imageView)
     }
+    faveButton.snp.makeConstraints { make in
+      make.right.equalTo(-10)
+      make.centerY.equalTo(titleLabel)
+      make.width.height.equalTo(titleLabel.snp.height)
+    }
   }
   
   required init?(coder: NSCoder) {
@@ -58,6 +69,13 @@ final class HomeCollectionCell: CollectionViewCell {
   
   func bind(to viewModel: HomeCollectionCellViewModel) {
     disposeBag = DisposeBag()
+    
+    faveButton.rx.tap.asSignal()
+      .throttle(.milliseconds(300))
+      .map { _ in viewModel.homeItem }
+      .emit(to: viewModel.faveObserver)
+      .disposed(by: disposeBag)
+    
     viewModel.cover.drive(imageView.kf.rx.imageURL()).disposed(by: disposeBag)
     viewModel.title.drive(titleLabel.rx.text).disposed(by: disposeBag)
     viewModel.content.drive(contentLabel.rx.text).disposed(by: disposeBag)

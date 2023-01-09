@@ -14,13 +14,15 @@ import RxCocoa
 final class HomeCollectionCellViewModel: IdentifiableViewModel {
   
   let homeItem: HomeItem
+  let faveObserver: AnyObserver<HomeItem>
   
   let cover: Driver<URL?>
   let title: Driver<String?>
   let content: Driver<String?>
   
-  init(identify: UUID = UUID(), homeItem: HomeItem) {
+  init(identify: UUID = UUID(), homeItem: HomeItem, faveObserver: AnyObserver<HomeItem>) {
     self.homeItem = homeItem
+    self.faveObserver = faveObserver
     self.cover = Observable.just(URL(string: homeItem.cover.or(""))).asDriver(onErrorJustReturn: nil)
     self.title = Observable.just(homeItem.title).asDriver(onErrorJustReturn: nil)
     self.content = Observable.just(homeItem.content).asDriver(onErrorJustReturn: nil)

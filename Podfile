@@ -17,7 +17,8 @@ def viewPods
   pod 'MJRefresh'
   pod 'Toast-Swift', :git => 'https://github.com/KQAR/Toast-Swift.git'
   pod 'EmptyDataSet-Swift', :git => 'https://github.com/KQAR/EmptyDataSet-Swift.git'
-  pod "ESTabBarController-swift"
+  pod 'ESTabBarController-swift'
+  pod 'FaveButton', :git => 'https://github.com/KQAR/fave-button.git'
 end
 
 # Rx
