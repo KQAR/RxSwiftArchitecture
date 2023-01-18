@@ -21,8 +21,17 @@ extension HomeModel: DataStatusPresentable {
 }
 
 struct HomeItem: Codable {
-  var id: String?
+  var id: String
   var cover: String?
   var title: String?
   var content: String?
+  var beloved: Bool?
+  
+  mutating func updateLoved() {
+    guard beloved != nil else {
+      beloved = true
+      return
+    }
+    beloved?.toggle()
+  }
 }

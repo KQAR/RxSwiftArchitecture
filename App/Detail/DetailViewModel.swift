@@ -65,14 +65,17 @@ final class DetailViewModel: ViewModel, ViewModelType {
     
     input.collect
       .withLatestFrom(element)
-      .flatMap({ defail -> Observable<(Bool, Detail?)> in
-        var title = (defail?.collection).or(false) ? "是否取消收藏" : "是否确认收藏"
+      .flatMap({ detail -> Observable<(Bool, Detail?)> in
+        guard let detail = detail else {
+          tips.accept("发生错误")
+          return .empty()
+        }
         return input.wireframe.promptFor(
-          title,
+          detail.isCollect,
           cancelAction: DefaultWireframeAction.cancel,
           actions: [DefaultWireframeAction.ensure]
         )
-          .map { ($0.confirm, defail) }
+          .map { ($0.confirm, detail) }
       })
       .withUnretained(self)
       .flatMap { owner, arg -> Observable<Bool> in
