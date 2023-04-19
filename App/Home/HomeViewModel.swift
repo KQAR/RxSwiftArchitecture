@@ -87,16 +87,11 @@ final class HomeViewModel: ViewModel, ViewModelType {
     return Output(sections: sectionsRelay.asObservable())
   }
   
-  private var loveAction: AnyObserver<HomeItem> {
-    AnyObserver { [weak self] event in
-      switch event {
-      case .next(let homeItem):
-        printLog("love tap -> \(homeItem.id)")
-        guard let newSections = self?.updateItemsLoved(with: homeItem.id) else { return }
-        self?.sectionsRelay.accept(newSections)
-      default:
-        fatalError("观察序列出现错误或被关闭")
-      }
+  private var loveAction: Binder<HomeItem> {
+    Binder(self, scheduler: CurrentThreadScheduler.instance) { owner, homeItem in
+      printLog("love tap -> \(homeItem.id) currentThread is \(Thread.current)")
+      let newSections = owner.updateItemsLoved(with: homeItem.id)
+      owner.sectionsRelay.accept(newSections)
     }
   }
   

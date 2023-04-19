@@ -20,9 +20,9 @@ final class HomeCollectionCellViewModel: IdentifiableViewModel {
   let content: Driver<String?>
   let beloved: Driver<Bool>
   
-  let loveAction: AnyObserver<HomeItem>
+  let loveAction: Binder<HomeItem>
   
-  init(identify: UUID = UUID(), homeItem: HomeItem, loveAction: AnyObserver<HomeItem>) {
+  init(identify: UUID = UUID(), homeItem: HomeItem, loveAction: Binder<HomeItem>) {
     self.homeItem = homeItem
     self.loveAction = loveAction
     self.cover = Observable.just(URL(string: homeItem.cover.or(""))).asDriver(onErrorJustReturn: nil)
