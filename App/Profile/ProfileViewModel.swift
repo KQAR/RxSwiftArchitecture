@@ -31,17 +31,15 @@ class ProfileViewModel: ViewModel, ViewModelType {
     
     input.headerRefresh.asObservable()
       .withUnretained(self)
-      .flatMap { owner, _ -> Observable<[ProfileTableViewCellViewModel]> in
-        owner.headerRefresh()
-      }.subscribe(onNext: { items in
+      .flatMap { owner, _ in owner.headerRefresh() }
+      .subscribe(onNext: { items in
         itemsRelay.accept(items)
       }).disposed(by: disposeBag)
     
     input.footerRefresh.asObservable()
       .withUnretained(self)
-      .flatMap { owner, _ -> Observable<[ProfileTableViewCellViewModel]> in
-        owner.footerRefresh()
-      }.subscribe(onNext: { items in
+      .flatMap { owner, _ in owner.footerRefresh() }
+      .subscribe(onNext: { items in
         var originItems = itemsRelay.value
         originItems.append(contentsOf: items)
         itemsRelay.accept(originItems)
@@ -50,17 +48,17 @@ class ProfileViewModel: ViewModel, ViewModelType {
     return Output(items: itemsRelay.asDriver())
   }
   
-  private func headerRefresh() -> Observable<[ProfileTableViewCellViewModel]> {
+  private func headerRefresh() -> Infallible<[ProfileTableViewCellViewModel]> {
     return request()
       .track(headerLoading)
       .track(dataStaus)
-      .catchAndReturn([])
+      .asInfallible(onErrorJustReturn: [])
   }
   
-  private func footerRefresh() -> Observable<[ProfileTableViewCellViewModel]> {
+  private func footerRefresh() -> Infallible<[ProfileTableViewCellViewModel]> {
     return request()
       .track(footerLoading)
-      .catchAndReturn([])
+      .asInfallible(onErrorJustReturn: [])
   }
   
   private func request() -> Observable<[ProfileTableViewCellViewModel]> {

@@ -47,18 +47,14 @@ final class HomeViewModel: ViewModel, ViewModelType {
     
     input.headerRefresh.asObservable()
       .withUnretained(self)
-      .flatMap { owner, _ -> Observable<[HomeSectionModel]> in
-        return owner.headerRefresh()
-      }
+      .flatMap { owner, _ in owner.headerRefresh() }
       .subscribe(with: self, onNext: { owner, sections in
         owner.sectionsRelay.accept(sections)
       }).disposed(by: disposeBag)
     
     input.footerRefresh.asObservable()
       .withUnretained(self)
-      .flatMap { owner, _ -> Observable<[HomeSectionModel]> in
-        return owner.footerRefresh()
-      }
+      .flatMap { owner, _ in owner.footerRefresh() }
       .subscribe(with: self, onNext: { owner, sections in
         var originSections = owner.sectionsRelay.value
         originSections.append(contentsOf: sections)
@@ -108,17 +104,17 @@ final class HomeViewModel: ViewModel, ViewModelType {
     return [HomeSectionModel(model: .banner, items: items)]
   }
   
-  private func headerRefresh() -> Observable<[HomeSectionModel]> {
+  private func headerRefresh() -> Infallible<[HomeSectionModel]> {
     return requestItems()
       .track(headerLoading)
       .track(dataStaus)
-      .catchAndReturn([])
+      .asInfallible(onErrorJustReturn: [])
   }
   
-  private func footerRefresh() -> Observable<[HomeSectionModel]> {
+  private func footerRefresh() -> Infallible<[HomeSectionModel]> {
     return requestItems()
       .track(footerLoading)
-      .catchAndReturn([])
+      .asInfallible(onErrorJustReturn: [])
   }
   
   private func requestItems() -> Observable<[HomeSectionModel]> {
