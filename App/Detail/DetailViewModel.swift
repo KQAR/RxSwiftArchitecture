@@ -17,8 +17,8 @@ import Popups
 final class DetailViewModel: ViewModel, ViewModelType {
   
   public struct Input {
-    let refresh: Observable<Void>
-    let collect: Observable<Void>
+    let refresh: Signal<Void>
+    let collect: Signal<Void>
     let wireframe: Wireframe
   }
   public struct Output {
@@ -27,7 +27,7 @@ final class DetailViewModel: ViewModel, ViewModelType {
     let content: Driver<String?>
     let isCollected: Driver<Bool>
     let isCollectHidden: Driver<Bool>
-    let tips: Observable<String>
+    let tips: Signal<String>
   }
   
   private let id: String
@@ -55,7 +55,7 @@ final class DetailViewModel: ViewModel, ViewModelType {
       }
     }
     
-    input.refresh
+    input.refresh.asObservable()
       .withUnretained(self)
       .flatMap { owner, _ in
         return owner.request(id: owner.id)
@@ -63,7 +63,7 @@ final class DetailViewModel: ViewModel, ViewModelType {
         element.accept(model)
       }).disposed(by: disposeBag)
     
-    input.collect
+    input.collect.asObservable()
       .withLatestFrom(element)
       .flatMap({ detail -> Observable<(Bool, Detail?)> in
         guard let detail = detail else {
@@ -106,7 +106,7 @@ final class DetailViewModel: ViewModel, ViewModelType {
       content: content,
       isCollected: isCollected,
       isCollectHidden: isCollectedHidden,
-      tips: tips.asObservable()
+      tips: tips.asSignal()
     )
   }
   

@@ -59,9 +59,9 @@ public final class HomeViewController: CollectionViewController {
     
     let refresh = Observable.of(Observable.just(()), headerRefreshTrigger.asObservable()).merge()
     let input = HomeViewModel.Input(
-      headerRefresh: refresh,
-      footerRefresh: footerRefreshTrigger.asObservable(),
-      selection: collectionView.rx.modelSelected(HomeCollectionCellViewModel.self).asObservable()
+      headerRefresh: refresh.asSignal(onErrorJustReturn: ()),
+      footerRefresh: footerRefreshTrigger.asSignal(),
+      selection: collectionView.rx.modelSelected(HomeCollectionCellViewModel.self).asSignal()
     )
     let output = viewModel.transform(input: input)
     
@@ -72,7 +72,7 @@ public final class HomeViewController: CollectionViewController {
         return cell
       })
     
-    output.sections.asDriver(onErrorJustReturn: [])
+    output.sections
       .drive(collectionView.rx.items(dataSource: dataSource))
       .disposed(by: disposeBag)
   }

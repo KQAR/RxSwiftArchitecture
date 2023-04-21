@@ -31,8 +31,8 @@ final class DetailViewController: ViewController {
     
     let refresh = Observable.of(Observable.just(()), refreshTrigger.asObservable()).merge()
     let input = DetailViewModel.Input(
-      refresh: refresh,
-      collect: detailView.collect,
+      refresh: refresh.asSignal(onErrorJustReturn: ()),
+      collect: detailView.collect.asSignal(onErrorJustReturn: ()),
       wireframe: DefaultWireframe()
     )
     let output = viewModel.transform(input: input)
@@ -44,8 +44,7 @@ final class DetailViewController: ViewController {
     output.isCollected.drive(detailView.collectButtonIsSelected).disposed(by: disposeBag)
     output.isCollectHidden.drive(detailView.collectButtonHidden).disposed(by: disposeBag)
     output.tips
-      .withUnretained(self)
-      .subscribe(onNext: { owner, tips in
+      .emit(with: self, onNext: { owner, tips in
         owner.view?.makeToast(tips)
       }).disposed(by: disposeBag)
   }

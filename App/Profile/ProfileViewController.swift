@@ -35,12 +35,12 @@ public final class ProfileViewController: TableViewController {
     guard let viewModel = viewModel as? ProfileViewModel else { return }
     let refresh = Observable.of(Observable.just(()), headerRefreshTrigger.asObservable()).merge()
     let input = ProfileViewModel.Input(
-      headerRefresh: refresh,
-      footerRefresh: footerRefreshTrigger.asObservable()
+      headerRefresh: refresh.asSignal(onErrorJustReturn: ()),
+      footerRefresh: footerRefreshTrigger.asSignal()
     )
     let output = viewModel.transform(input: input)
     
-    output.items.asDriver(onErrorJustReturn: [])
+    output.items
       .drive(tableView.rx.items(
         cellIdentifier: ProfileTableViewCell.reuseIdentifier,
         cellType: ProfileTableViewCell.self)

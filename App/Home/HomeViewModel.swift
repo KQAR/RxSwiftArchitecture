@@ -30,12 +30,12 @@ typealias HomeSectionModel = AnimatableSectionModel<HomeModule, HomeCollectionCe
 final class HomeViewModel: ViewModel, ViewModelType {
   
   struct Input {
-    let headerRefresh: Observable<Void>
-    let footerRefresh: Observable<Void>
-    let selection: Observable<HomeCollectionCellViewModel>
+    let headerRefresh: Signal<Void>
+    let footerRefresh: Signal<Void>
+    let selection: Signal<HomeCollectionCellViewModel>
   }
   struct Output {
-    let sections: Observable<[HomeSectionModel]>
+    let sections: Driver<[HomeSectionModel]>
   }
   
   @Injected(Container.mediator) var mediator: MediatorProtocol
@@ -45,27 +45,21 @@ final class HomeViewModel: ViewModel, ViewModelType {
   
   func transform(input: Input) -> Output {
     
-    input.headerRefresh
+    input.headerRefresh.asObservable()
       .withUnretained(self)
       .flatMap { owner, _ -> Observable<[HomeSectionModel]> in
-        return owner.requestItems()
-          .track(owner.headerLoading)
-          .track(owner.dataStaus)
-          .catchAndReturn([])
+        return owner.headerRefresh()
       }
-      .withUnretained(self)
-      .subscribe(onNext: { owner, sections in
+      .subscribe(with: self, onNext: { owner, sections in
         owner.sectionsRelay.accept(sections)
       }).disposed(by: disposeBag)
-    input.footerRefresh
+    
+    input.footerRefresh.asObservable()
       .withUnretained(self)
       .flatMap { owner, _ -> Observable<[HomeSectionModel]> in
-        return owner.requestItems()
-          .track(owner.footerLoading)
-          .catchAndReturn([])
+        return owner.footerRefresh()
       }
-      .withUnretained(self)
-      .subscribe(onNext: { owner, sections in
+      .subscribe(with: self, onNext: { owner, sections in
         var originSections = owner.sectionsRelay.value
         originSections.append(contentsOf: sections)
         let reduceSections = originSections
@@ -76,15 +70,15 @@ final class HomeViewModel: ViewModel, ViewModelType {
           }
         owner.sectionsRelay.accept([reduceSections])
       }).disposed(by: disposeBag)
+    
     input.selection
-      .withUnretained(self)
-      .subscribe(onNext: { owner, cellViewModel in
+      .emit(with: self, onNext: { owner, cellViewModel in
         let id = cellViewModel.homeItem.id
 //        owner.mediator.goDetail(id: id)
         owner.mediator.goPayment(id: id, name: "")
       }).disposed(by: disposeBag)
     
-    return Output(sections: sectionsRelay.asObservable())
+    return Output(sections: sectionsRelay.asDriver())
   }
   
   private var loveAction: Binder<HomeItem> {
@@ -114,8 +108,21 @@ final class HomeViewModel: ViewModel, ViewModelType {
     return [HomeSectionModel(model: .banner, items: items)]
   }
   
+  private func headerRefresh() -> Observable<[HomeSectionModel]> {
+    return requestItems()
+      .track(headerLoading)
+      .track(dataStaus)
+      .catchAndReturn([])
+  }
+  
+  private func footerRefresh() -> Observable<[HomeSectionModel]> {
+    return requestItems()
+      .track(footerLoading)
+      .catchAndReturn([])
+  }
+  
   private func requestItems() -> Observable<[HomeSectionModel]> {
-    request().map { self.convert($0) }
+    return request().map { self.convert($0) }
   }
   
   private func request() -> Observable<HomeModel> {
