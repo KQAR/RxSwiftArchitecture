@@ -42,9 +42,10 @@ class Assembly {
   }
   
   static func detailViewController(id: String) -> UIViewController {
-    let viewModel = Container.detail(id)
-    var vc = Container.detailViewController()
-    vc.bindViewModel(to: viewModel)
-    return vc
+//    let viewModel = Container.detail(id)
+//    var vc = Container.detailViewController()
+//    vc.bindViewModel(to: viewModel)
+//    return vc
+    return Container.detailViewController(id)
   }
 }

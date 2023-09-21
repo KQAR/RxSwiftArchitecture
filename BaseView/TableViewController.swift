@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 import MJRefresh
 
-open class TableViewController: ViewController {
+open class TableViewController: ViewController, ViewRefreshable {
   
   public let headerRefreshTrigger = PublishRelay<Void>()
   public let footerRefreshTrigger = PublishRelay<Void>()
@@ -35,12 +35,8 @@ open class TableViewController: ViewController {
   /// 如果要使用其他自定义刷新控件，请在子类重写该方法
   open func setupRefreshControl() {
     // MJRefresh
-    tableView.mj_header = RefreshHeaderControl(refreshingBlock: { [weak self] in
-      self?.headerRefreshTrigger.accept(())
-    })
-    tableView.mj_footer = RefreshFooterControl(refreshingBlock: { [weak self] in
-      self?.footerRefreshTrigger.accept(())
-    })
+    tableView.mj_header = refreshHeader
+    tableView.mj_footer = refreshFooter
   }
   
   open override func bindViewModel() {

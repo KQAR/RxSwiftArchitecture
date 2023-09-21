@@ -14,6 +14,11 @@ struct Detail: Codable {
   var content: String?
   var collection: Bool?
   
+  var coverURL: URL? {
+    guard let cover else { return nil }
+    return URL(string: cover)
+  }
+  
   var isCollect: String {
     return collection.or(false) ? "是否取消收藏" : "是否确认收藏"
   }

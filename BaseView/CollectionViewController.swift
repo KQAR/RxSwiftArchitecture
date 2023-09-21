@@ -11,7 +11,7 @@ import RxCocoa
 import MJRefresh
 import Log
 
-open class CollectionViewController: ViewController {
+open class CollectionViewController: ViewController, ViewRefreshable {
   
   public let headerRefreshTrigger = PublishRelay<Void>()
   public let footerRefreshTrigger = PublishRelay<Void>()
@@ -38,12 +38,8 @@ open class CollectionViewController: ViewController {
   
   /// 如果要使用其他自定义刷新控件，请在子类重写该方法
   open func setupRefreshControl() {
-    collectionView.mj_header = RefreshHeaderControl(refreshingBlock: { [weak self] in
-      self?.headerRefreshTrigger.accept(())
-    })
-    collectionView.mj_footer = RefreshFooterControl(refreshingBlock: { [weak self] in
-      self?.footerRefreshTrigger.accept(())
-    })
+    collectionView.mj_header = refreshHeader
+    collectionView.mj_footer = refreshFooter
   }
   
   open override func bindViewModel() {

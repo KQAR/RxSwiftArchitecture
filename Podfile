@@ -35,6 +35,7 @@ def rxPods
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'RxDataSources'
+  pod 'ReactorKit'
 end
 
 # 网络
