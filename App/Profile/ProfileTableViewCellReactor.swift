@@ -7,8 +7,9 @@
 
 import Foundation
 import ReactorKit
+import Bindable
 
-class ProfileTableViewCellReactor: Reactor {
+class ProfileTableViewCellReactor: IdentifiableViewModel, Reactor {
   
   typealias Action = Never
   typealias Mutation = Never
@@ -19,7 +20,8 @@ class ProfileTableViewCellReactor: Reactor {
   
   let initialState: State
   
-  init(userInfo: UserInfo) {
+  init(identity: UUID = UUID(), userInfo: UserInfo) {
     initialState = State(userInfo: userInfo)
+    super.init(identity: identity)
   }
 }
