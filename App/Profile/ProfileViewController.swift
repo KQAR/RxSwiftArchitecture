@@ -30,22 +30,22 @@ public final class ProfileViewController: TableViewController {
     }
   }
   
-  public override func bindViewModel() {
-    super.bindViewModel()
-    guard let viewModel = viewModel as? ProfileViewModel else { return }
-    let refresh = Observable.of(Observable.just(()), headerRefreshTrigger.asObservable()).merge()
-    let input = ProfileViewModel.Input(
-      headerRefresh: refresh.asSignal(onErrorJustReturn: ()),
-      footerRefresh: footerRefreshTrigger.asSignal()
-    )
-    let output = viewModel.transform(input: input)
-    
-    output.items
-      .drive(tableView.rx.items(
-        cellIdentifier: ProfileTableViewCell.reuseIdentifier,
-        cellType: ProfileTableViewCell.self)
-      ) { row, viewModel, cell in
-        cell.bind(to: viewModel)
-      }.disposed(by: disposeBag)
-  }
+//  public override func bindViewModel() {
+//    super.bindViewModel()
+//    guard let viewModel = viewModel as? ProfileViewModel else { return }
+//    let refresh = Observable.of(Observable.just(()), headerRefreshTrigger.asObservable()).merge()
+//    let input = ProfileViewModel.Input(
+//      headerRefresh: refresh.asSignal(onErrorJustReturn: ()),
+//      footerRefresh: footerRefreshTrigger.asSignal()
+//    )
+//    let output = viewModel.transform(input: input)
+//    
+//    output.items
+//      .drive(tableView.rx.items(
+//        cellIdentifier: ProfileTableViewCell.reuseIdentifier,
+//        cellType: ProfileTableViewCell.self)
+//      ) { row, viewModel, cell in
+//        cell.bind(to: viewModel)
+//      }.disposed(by: disposeBag)
+//  }
 }

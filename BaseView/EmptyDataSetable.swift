@@ -65,33 +65,33 @@ public enum EmptyDataState {
 
 public protocol EmptyDataSetable: EmptyDataSetSource, EmptyDataSetDelegate {
   var emptyDataSetButtonTap: PublishRelay<Void> { get }
-  var emptyDataSetStatus: BehaviorRelay<EmptyDataState> { get }
+  var emptyDataSetStatus: EmptyDataState { get set }
 }
 
 // MARK: - EmptyDataSet Source
 
 extension EmptyDataSetable {
   public func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
-    return NSAttributedString(string: emptyDataSetStatus.value.title, attributes: [
+    return NSAttributedString(string: emptyDataSetStatus.title, attributes: [
       .font: UIFont.systemFont(ofSize: 14, weight: .semibold),
       .foregroundColor: UIColor.gray
     ])
   }
   
   public func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
-    return NSAttributedString(string: emptyDataSetStatus.value.description)
+    return NSAttributedString(string: emptyDataSetStatus.description)
   }
   
   public func image(forEmptyDataSet scrollView: UIScrollView) -> UIImage? {
-    return emptyDataSetStatus.value.image
+    return emptyDataSetStatus.image
   }
   
   public func imageTintColor(forEmptyDataSet scrollView: UIScrollView) -> UIColor? {
-    return emptyDataSetStatus.value.imageTintColor
+    return emptyDataSetStatus.imageTintColor
   }
   
   public func backgroundColor(forEmptyDataSet scrollView: UIScrollView) -> UIColor? {
-    return emptyDataSetStatus.value.backgroundColor
+    return emptyDataSetStatus.backgroundColor
   }
 }
 
@@ -99,11 +99,11 @@ extension EmptyDataSetable {
 
 extension EmptyDataSetable {
   public func emptyDataSetShouldDisplay(_ scrollView: UIScrollView) -> Bool {
-    return emptyDataSetStatus.value.emptyViewShouldDisplay
+    return emptyDataSetStatus.emptyViewShouldDisplay
   }
   
   public func emptyDataSetShouldAllowScroll(_ scrollView: UIScrollView) -> Bool {
-    return emptyDataSetStatus.value.emptyViewShouldAllowScroll
+    return emptyDataSetStatus.emptyViewShouldAllowScroll
   }
   
   public func emptyDataSet(_ scrollView: UIScrollView, didTapButton button: UIButton) {

@@ -1,25 +1,18 @@
 //
-//  ViewController.swift
+//  DataSetViewController.swift
 //  BaseView
 //
-//  Created by Jarvis on 2022/12/6.
+//  Created by Jarvis on 2023/9/21.
 //
 
 import UIKit
+import Foundation
 import RxSwift
 import RxCocoa
-import ReactorKit
 import Lottie
-import Toast_Swift
-import Factory
-import EmptyDataSet_Swift
-import Bindable
-import NetworkManager
 import Log
 
-open class ViewController: UIViewController, EmptyDataSetable, ViewAnimateLoadable {
-  
-  let isAppeared = BehaviorRelay(value: false)
+open class DataSetViewController: UIViewController, EmptyDataSetable {
   
   var navigationTitle = "" {
     didSet {
@@ -27,10 +20,12 @@ open class ViewController: UIViewController, EmptyDataSetable, ViewAnimateLoadab
     }
   }
   
+  let isAppeared = BehaviorRelay(value: false)
+  
   public let emptyDataSetButtonTap = PublishRelay<Void>()
   public var emptyDataSetStatus: EmptyDataState = .normal
   
-  public var animationLoadingView: AnimatableView = {
+  private var lottieLoadingView: LottieAnimationView = {
     let animationView = LottieAnimationView()
     animationView.contentMode = .scaleAspectFit
     animationView.loopMode = .loop
@@ -78,24 +73,6 @@ open class ViewController: UIViewController, EmptyDataSetable, ViewAnimateLoadab
     
   }
   
-//  open func bindViewModel() {
-//    viewModel.loading.asObservable().bind(to: rx.isLoading).disposed(by: disposeBag)
-//    
-//    // Empty Data Status
-//    viewModel.dataStaus.asObservable()
-//      .map{ dataStatus -> EmptyDataState in
-//        switch dataStatus {
-//        case .normal:
-//          return .normal
-//        case .empty:
-//          return .empty
-//        case .error(_):
-//          return .empty
-//        }
-//      }.bind(to: rx.emptyDataSetStatus)
-//      .disposed(by: disposeBag)
-//  }
-  
   deinit {
     printLog("###- \(Self.self) deinit -###")
   }
@@ -103,7 +80,7 @@ open class ViewController: UIViewController, EmptyDataSetable, ViewAnimateLoadab
 
 // MARK: - UIGestureRecognizerDelegate
 
-extension ViewController: UIGestureRecognizerDelegate {
+extension DataSetViewController: UIGestureRecognizerDelegate {
   public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
     // 处理当navigationController的rootViewContoller响应左滑返回手势时，再push下一个页面会导致下一个页面无法显示
     if gestureRecognizer == navigationController?.interactivePopGestureRecognizer &&

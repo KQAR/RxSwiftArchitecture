@@ -26,4 +26,16 @@ extension ViewRefreshable {
       self?.footerRefreshTrigger.accept(())
     })
   }
+  
+  var lottieRefreshHeader: LottieRefreshHeaderControl {
+    LottieRefreshHeaderControl(refreshingBlock: { [weak self] in
+      self?.headerRefreshTrigger.accept(())
+    })
+  }
+  
+  var lottieRefreshFooter: LottieRefreshFooterControl {
+    LottieRefreshFooterControl(refreshingBlock: { [weak self] in
+      self?.footerRefreshTrigger.accept(())
+    })
+  }
 }

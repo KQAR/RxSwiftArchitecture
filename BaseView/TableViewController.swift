@@ -39,19 +39,19 @@ open class TableViewController: ViewController, ViewRefreshable {
     tableView.mj_footer = refreshFooter
   }
   
-  open override func bindViewModel() {
-    super.bindViewModel()
-    
-    viewModel.headerLoading.asObservable().bind(to: tableView.mj_header!.rx.isAnimating).disposed(by: disposeBag)
-    viewModel.footerLoading.asObservable().bind(to: tableView.mj_footer!.rx.isAnimating).disposed(by: disposeBag)
-    viewModel.pagingIndicator.asObservable().bind(to: tableView.mj_footer!.rx.noMoreData).disposed(by: disposeBag)
-    
-    viewModel.headerLoading.asObservable()
-      .skip(1)
-      .filter { !$0 }
-      .withUnretained(self)
-      .subscribe(onNext: { owner, _ in
-        owner.tableView.reloadEmptyDataSet()
-      }).disposed(by: disposeBag)
-  }
+//  open override func bindViewModel() {
+//    super.bindViewModel()
+//    
+//    viewModel.headerLoading.asObservable().bind(to: tableView.mj_header!.rx.isAnimating).disposed(by: disposeBag)
+//    viewModel.footerLoading.asObservable().bind(to: tableView.mj_footer!.rx.isAnimating).disposed(by: disposeBag)
+//    viewModel.pagingIndicator.asObservable().bind(to: tableView.mj_footer!.rx.noMoreData).disposed(by: disposeBag)
+//    
+//    viewModel.headerLoading.asObservable()
+//      .skip(1)
+//      .filter { !$0 }
+//      .withUnretained(self)
+//      .subscribe(onNext: { owner, _ in
+//        owner.tableView.reloadEmptyDataSet()
+//      }).disposed(by: disposeBag)
+//  }
 }

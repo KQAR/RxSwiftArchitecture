@@ -42,25 +42,25 @@ open class CollectionViewController: ViewController, ViewRefreshable {
     collectionView.mj_footer = refreshFooter
   }
   
-  open override func bindViewModel() {
-    super.bindViewModel()
-    
-    viewModel.headerLoading.asObservable()
-      .bind(to: collectionView.mj_header!.rx.isAnimating)
-      .disposed(by: disposeBag)
-    viewModel.footerLoading.asObservable()
-      .bind(to: collectionView.mj_footer!.rx.isAnimating)
-      .disposed(by: disposeBag)
-    viewModel.pagingIndicator.asObservable()
-      .bind(to: collectionView.mj_footer!.rx.noMoreData)
-      .disposed(by: disposeBag)
-    
-    viewModel.headerLoading.asObservable()
-      .skip(1)
-      .filter { !$0 }
-      .withUnretained(self)
-      .subscribe(onNext: { owner, _ in
-        owner.collectionView.reloadEmptyDataSet()
-      }).disposed(by: disposeBag)
-  }
+//  open override func bindViewModel() {
+//    super.bindViewModel()
+//    
+//    viewModel.headerLoading.asObservable()
+//      .bind(to: collectionView.mj_header!.rx.isAnimating)
+//      .disposed(by: disposeBag)
+//    viewModel.footerLoading.asObservable()
+//      .bind(to: collectionView.mj_footer!.rx.isAnimating)
+//      .disposed(by: disposeBag)
+//    viewModel.pagingIndicator.asObservable()
+//      .bind(to: collectionView.mj_footer!.rx.noMoreData)
+//      .disposed(by: disposeBag)
+//    
+//    viewModel.headerLoading.asObservable()
+//      .skip(1)
+//      .filter { !$0 }
+//      .withUnretained(self)
+//      .subscribe(onNext: { owner, _ in
+//        owner.collectionView.reloadEmptyDataSet()
+//      }).disposed(by: disposeBag)
+//  }
 }
