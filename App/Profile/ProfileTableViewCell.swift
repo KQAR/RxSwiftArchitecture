@@ -7,8 +7,9 @@
 
 import UIKit
 import BaseView
+import ReactorKit
 
-class ProfileTableViewCell: TableViewCell {
+class ProfileTableViewCell: TableViewCell, ReactorKit.View {
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     
@@ -18,7 +19,11 @@ class ProfileTableViewCell: TableViewCell {
     fatalError("init(coder:) has not been implemented")
   }
   
-  func bind(to viewModel: ProfileTableViewCellViewModel) {
+  func bind(reactor: ProfileViewReactor) {
     
   }
+  
+//  func bind(to viewModel: ProfileTableViewCellViewModel) {
+//    
+//  }
 }

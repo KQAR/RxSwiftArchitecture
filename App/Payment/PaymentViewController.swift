@@ -21,13 +21,13 @@ public class PaymentViewController: ViewController {
     
     let button = UIButton()
     button.setTitle("Go", for: .normal)
-    button.rx.tap
-      .withUnretained(self)
-      .flatMap { owner, _ in
-        return AdDialog.popupAction(in: owner, animated: true)
-      }.subscribe(onNext: { action in
-        printLog("\(action.description) tap ~ ")
-      }).disposed(by: disposeBag)
+//    button.rx.tap
+//      .withUnretained(self)
+//      .flatMap { owner, _ in
+//        return AdDialog.popupAction(in: owner, animated: true)
+//      }.subscribe(onNext: { action in
+//        printLog("\(action.description) tap ~ ")
+//      }).disposed(by: disposeBag)
     view.addSubview(button)
     button.snp.makeConstraints { make in
       make.top.equalTo(200)
@@ -42,8 +42,8 @@ public class PaymentViewController: ViewController {
     navigationController?.pushViewController(viewController, animated: true)
   }
   
-  public override func bindViewModel() {
-    
-  }
+//  public override func bindViewModel() {
+//    
+//  }
 }
 

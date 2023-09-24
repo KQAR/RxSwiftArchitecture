@@ -10,6 +10,7 @@ import Factory
 import Mediator
 import BaseView
 import Bindable
+import ReactorKit
 
 public typealias ViewModelFactory = Factory<ViewModel>
 public typealias ViewControllerFactory = Factory<ViewController>
@@ -36,7 +37,13 @@ public extension Container {
   static let homeViewController = ViewControllerFactory { HomeViewController() }
   static let profileViewController = ViewControllerFactory { ProfileViewController() }
   static let paymentViewController = ViewControllerFactory { PaymentViewController() }
-  static let detailViewController = ViewControllerFactory { DetailViewController() }
+//  static let detailViewController = Factory<View> { DetailViewController() }
+  static let detailViewController = ParameterFactory<String, UIViewController> { id in
+    let vc = DetailViewController()
+    let reactor = DetailReactor(id: id)
+    vc.reactor = reactor
+    return vc
+  }
   
   // MARK: - Injection Mediator
   

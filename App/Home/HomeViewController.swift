@@ -53,29 +53,29 @@ public final class HomeViewController: CollectionViewController {
     })
   }
   
-  public override func bindViewModel() {
-    super.bindViewModel()
-    guard let viewModel = viewModel as? HomeViewModel else { return }
-    
-    let refresh = Observable.of(Observable.just(()), headerRefreshTrigger.asObservable()).merge()
-    let input = HomeViewModel.Input(
-      headerRefresh: refresh.asSignal(onErrorJustReturn: ()),
-      footerRefresh: footerRefreshTrigger.asSignal(),
-      selection: collectionView.rx.modelSelected(HomeCollectionCellViewModel.self).asSignal()
-    )
-    let output = viewModel.transform(input: input)
-    
-    let dataSource = RxCollectionViewSectionedAnimatedDataSource<HomeSectionModel>(
-      configureCell: { dataSource, collectionView, indexPath, item in
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionCell.reuseIdentifier, for: indexPath) as! HomeCollectionCell
-        cell.bind(to: item)
-        return cell
-      })
-    
-    output.sections
-      .drive(collectionView.rx.items(dataSource: dataSource))
-      .disposed(by: disposeBag)
-  }
+//  public override func bindViewModel() {
+//    super.bindViewModel()
+//    guard let viewModel = viewModel as? HomeViewModel else { return }
+//    
+//    let refresh = Observable.of(Observable.just(()), headerRefreshTrigger.asObservable()).merge()
+//    let input = HomeViewModel.Input(
+//      headerRefresh: refresh.asSignal(onErrorJustReturn: ()),
+//      footerRefresh: footerRefreshTrigger.asSignal(),
+//      selection: collectionView.rx.modelSelected(HomeCollectionCellViewModel.self).asSignal()
+//    )
+//    let output = viewModel.transform(input: input)
+//    
+//    let dataSource = RxCollectionViewSectionedAnimatedDataSource<HomeSectionModel>(
+//      configureCell: { dataSource, collectionView, indexPath, item in
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionCell.reuseIdentifier, for: indexPath) as! HomeCollectionCell
+//        cell.bind(to: item)
+//        return cell
+//      })
+//    
+//    output.sections
+//      .drive(collectionView.rx.items(dataSource: dataSource))
+//      .disposed(by: disposeBag)
+//  }
 }
 
 extension HomeViewController: UINavigationControllerDelegate {

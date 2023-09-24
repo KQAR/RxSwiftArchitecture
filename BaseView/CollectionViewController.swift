@@ -11,7 +11,7 @@ import RxCocoa
 import MJRefresh
 import Log
 
-open class CollectionViewController: ViewController {
+open class CollectionViewController: ViewController, ViewRefreshable {
   
   public let headerRefreshTrigger = PublishRelay<Void>()
   public let footerRefreshTrigger = PublishRelay<Void>()
@@ -38,33 +38,29 @@ open class CollectionViewController: ViewController {
   
   /// 如果要使用其他自定义刷新控件，请在子类重写该方法
   open func setupRefreshControl() {
-    collectionView.mj_header = RefreshHeaderControl(refreshingBlock: { [weak self] in
-      self?.headerRefreshTrigger.accept(())
-    })
-    collectionView.mj_footer = RefreshFooterControl(refreshingBlock: { [weak self] in
-      self?.footerRefreshTrigger.accept(())
-    })
+    collectionView.mj_header = refreshHeader
+    collectionView.mj_footer = refreshFooter
   }
   
-  open override func bindViewModel() {
-    super.bindViewModel()
-    
-    viewModel.headerLoading.asObservable()
-      .bind(to: collectionView.mj_header!.rx.isAnimating)
-      .disposed(by: disposeBag)
-    viewModel.footerLoading.asObservable()
-      .bind(to: collectionView.mj_footer!.rx.isAnimating)
-      .disposed(by: disposeBag)
-    viewModel.pagingIndicator.asObservable()
-      .bind(to: collectionView.mj_footer!.rx.noMoreData)
-      .disposed(by: disposeBag)
-    
-    viewModel.headerLoading.asObservable()
-      .skip(1)
-      .filter { !$0 }
-      .withUnretained(self)
-      .subscribe(onNext: { owner, _ in
-        owner.collectionView.reloadEmptyDataSet()
-      }).disposed(by: disposeBag)
-  }
+//  open override func bindViewModel() {
+//    super.bindViewModel()
+//    
+//    viewModel.headerLoading.asObservable()
+//      .bind(to: collectionView.mj_header!.rx.isAnimating)
+//      .disposed(by: disposeBag)
+//    viewModel.footerLoading.asObservable()
+//      .bind(to: collectionView.mj_footer!.rx.isAnimating)
+//      .disposed(by: disposeBag)
+//    viewModel.pagingIndicator.asObservable()
+//      .bind(to: collectionView.mj_footer!.rx.noMoreData)
+//      .disposed(by: disposeBag)
+//    
+//    viewModel.headerLoading.asObservable()
+//      .skip(1)
+//      .filter { !$0 }
+//      .withUnretained(self)
+//      .subscribe(onNext: { owner, _ in
+//        owner.collectionView.reloadEmptyDataSet()
+//      }).disposed(by: disposeBag)
+//  }
 }
