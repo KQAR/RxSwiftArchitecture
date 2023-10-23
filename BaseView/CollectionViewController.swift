@@ -38,8 +38,8 @@ open class CollectionViewController: ViewController, ViewRefreshable {
   
   /// 如果要使用其他自定义刷新控件，请在子类重写该方法
   open func setupRefreshControl() {
-    collectionView.mj_header = refreshHeader
-    collectionView.mj_footer = refreshFooter
+    collectionView.mj_header = lottieRefreshHeader
+    collectionView.mj_footer = lottieRefreshFooter
   }
   
 //  open override func bindViewModel() {

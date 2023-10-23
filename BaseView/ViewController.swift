@@ -19,6 +19,8 @@ import Log
 
 open class ViewController: UIViewController, EmptyDataSetable, ViewAnimateLoadable {
   
+  public var disposeBag = DisposeBag()
+  
   let isAppeared = BehaviorRelay(value: false)
   
   var navigationTitle = "" {

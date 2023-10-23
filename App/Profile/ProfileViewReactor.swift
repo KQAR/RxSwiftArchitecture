@@ -7,46 +7,66 @@
 
 import RxSwift
 import RxCocoa
+import RxExtension
 import ReactorKit
 import Factory
 import Mediator
 import NetworkManager
 import Foundation
 
-class ProfileViewReactor: Reactor {
+public class ProfileViewReactor: Reactor {
   
-  enum Action {
+  public enum Action {
     case headerRefresh
     case footerRefresh
   }
   
-  enum Mutation {
-    case set(item: String)
+  public enum Mutation {
+    case setHeaderRefresh(Bool)
+    case setFooterRefresh(Bool)
+    case set(items: [ProfileTableViewCellReactor])
   }
   
-  struct State {
+  public struct State {
     var headerLoading: Bool = false
     var footerLoading: Bool = false
     var items: [ProfileTableViewCellReactor] = []
+    var dataStatus: DataStatus = .empty
   }
   
-  var initialState: State = .init()
+  public var initialState: State = .init()
   
   @Injected(Container.mediator) var mediator: MediatorProtocol
   @Injected(Container.profileRequestApi_stubbing) var network: NetworkManager<ProfileRequestApi>
   
-  func reduce(state: State, mutation: Mutation) -> State {
-    return State()
+  public func mutate(action: Action) -> Observable<Mutation> {
+    switch action {
+    case .headerRefresh:
+      guard !currentState.headerLoading && !currentState.footerLoading else { return .empty() }
+      let startRefreshing = Observable<Mutation>.just(.setHeaderRefresh(true))
+      let endRefreshing = Observable<Mutation>.just(.setHeaderRefresh(false))
+      let request = request().map { Mutation.set(items: $0) }
+      return .concat([startRefreshing, request, endRefreshing])
+    case .footerRefresh:
+      guard !currentState.headerLoading && !currentState.footerLoading else { return .empty() }
+      let startRefreshing = Observable<Mutation>.just(.setFooterRefresh(true))
+      let endRefreshing = Observable<Mutation>.just(.setFooterRefresh(false))
+      let request = request().map { Mutation.set(items: $0) }
+      return .concat([startRefreshing, request, endRefreshing])
+    }
   }
   
-  private func headerRefresh() -> Infallible<[ProfileTableViewCellReactor]> {
-    return request()
-      .asInfallible(onErrorJustReturn: [])
-  }
-  
-  private func footerRefresh() -> Infallible<[ProfileTableViewCellReactor]> {
-    return request()
-      .asInfallible(onErrorJustReturn: [])
+  public func reduce(state: State, mutation: Mutation) -> State {
+    var newState = state
+    switch mutation {
+    case .set(items: let items):
+      newState.items = items
+    case .setHeaderRefresh(let headerLoading):
+      newState.headerLoading = headerLoading
+    case .setFooterRefresh(let footerLoading):
+      newState.footerLoading = footerLoading
+    }
+    return newState
   }
   
   private func request() -> Observable<[ProfileTableViewCellReactor]> {
@@ -57,5 +77,6 @@ class ProfileViewReactor: Reactor {
           ProfileTableViewCellReactor(userInfo: userInfo)
         }
       }
+      .catchAndReturn([])
   }
 }

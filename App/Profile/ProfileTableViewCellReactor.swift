@@ -9,16 +9,16 @@ import Foundation
 import ReactorKit
 import Bindable
 
-class ProfileTableViewCellReactor: IdentifiableViewModel, Reactor {
+public class ProfileTableViewCellReactor: IdentifiableViewModel, Reactor {
   
-  typealias Action = Never
-  typealias Mutation = Never
+  public typealias Action = Never
+  public typealias Mutation = Never
   
-  struct State {
+  public struct State {
     let userInfo: UserInfo
   }
   
-  let initialState: State
+  public let initialState: State
   
   init(identity: UUID = UUID(), userInfo: UserInfo) {
     initialState = State(userInfo: userInfo)

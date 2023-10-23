@@ -9,7 +9,7 @@ import Foundation
 import MJRefresh
 import RxSwift
 
-extension MJRefreshComponent {
+public extension MJRefreshComponent {
   var isAnimating: Bool {
     get { return isRefreshing }
     set {
@@ -21,7 +21,7 @@ extension MJRefreshComponent {
   }
 }
 
-extension MJRefreshFooter {
+public extension MJRefreshFooter {
   var noMoreData: Bool {
     get { return state == .noMoreData }
     set {

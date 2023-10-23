@@ -35,7 +35,13 @@ public extension Container {
   // MARK: - Injection View Controller
   
   static let homeViewController = ViewControllerFactory { HomeViewController() }
-  static let profileViewController = ViewControllerFactory { ProfileViewController() }
+  static let profileViewController = ViewControllerFactory {
+    let vc = ProfileViewController()
+    vc.loadViewIfNeeded()
+    let reactor = ProfileViewReactor()
+    vc.reactor = reactor
+    return vc
+  }
   static let paymentViewController = ViewControllerFactory { PaymentViewController() }
 //  static let detailViewController = Factory<View> { DetailViewController() }
   static let detailViewController = ParameterFactory<String, UIViewController> { id in

@@ -10,8 +10,9 @@ import RxSwift
 import RxDataSources
 import BaseView
 import SnapKit
+import ReactorKit
 
-public final class ProfileViewController: TableViewController {
+public final class ProfileViewController: TableViewController, ReactorKit.View {
   
   public override func viewDidLoad() {
     super.viewDidLoad()
@@ -28,6 +29,17 @@ public final class ProfileViewController: TableViewController {
     tableView.snp.makeConstraints { make in
       make.edges.equalTo(view.safeAreaLayoutGuide)
     }
+  }
+  
+  public func bind(reactor: ProfileViewReactor) {
+    // action (View -> Reactor)
+    let refresh = Observable.of(Observable.just(()), headerRefreshTrigger.asObservable()).merge()
+    refresh.map { Reactor.Action.headerRefresh }.bind(to: reactor.action).disposed(by: disposeBag)
+    footerRefreshTrigger.map { Reactor.Action.footerRefresh }.bind(to: reactor.action).disposed(by: disposeBag)
+    // state (Reactor -> View)
+    reactor.state.map(\.headerLoading).bind(to: tableView.mj_header!.rx.isAnimating).disposed(by: disposeBag)
+    reactor.state.map(\.footerLoading).bind(to: tableView.mj_footer!.rx.isAnimating).disposed(by: disposeBag)
+    reactor.state.map(\.dataStatus.emptyDataState).bind(to: rx.emptyDataSetStatus).disposed(by: disposeBag)
   }
   
 //  public override func bindViewModel() {

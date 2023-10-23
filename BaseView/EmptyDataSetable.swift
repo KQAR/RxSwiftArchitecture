@@ -9,7 +9,21 @@ import UIKit
 import Foundation
 import RxSwift
 import RxCocoa
+import RxExtension
 import EmptyDataSet_Swift
+
+public extension DataStatus {
+  var emptyDataState: EmptyDataState {
+    switch self {
+    case .normal:
+      return .normal
+    case .empty:
+      return .empty
+    case .error(_):
+      return .empty
+    }
+  }
+}
 
 public enum EmptyDataState {
   case normal
