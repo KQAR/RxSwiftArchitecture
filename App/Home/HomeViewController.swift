@@ -13,8 +13,9 @@ import RxDataSources
 import Mediator
 import BaseView
 import Log
+import ReactorKit
 
-public final class HomeViewController: CollectionViewController {
+public final class HomeViewController: CollectionViewController, View {
   
   enum Metrics {
     static let minimumLineSpacing: CGFloat = 10
@@ -44,29 +45,24 @@ public final class HomeViewController: CollectionViewController {
     }
   }
   
-//  public override func bindViewModel() {
-//    super.bindViewModel()
-//    guard let viewModel = viewModel as? HomeViewModel else { return }
-//    
-//    let refresh = Observable.of(Observable.just(()), headerRefreshTrigger.asObservable()).merge()
-//    let input = HomeViewModel.Input(
-//      headerRefresh: refresh.asSignal(onErrorJustReturn: ()),
-//      footerRefresh: footerRefreshTrigger.asSignal(),
-//      selection: collectionView.rx.modelSelected(HomeCollectionCellViewModel.self).asSignal()
-//    )
-//    let output = viewModel.transform(input: input)
-//    
-//    let dataSource = RxCollectionViewSectionedAnimatedDataSource<HomeSectionModel>(
-//      configureCell: { dataSource, collectionView, indexPath, item in
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionCell.reuseIdentifier, for: indexPath) as! HomeCollectionCell
-//        cell.bind(to: item)
-//        return cell
-//      })
-//    
-//    output.sections
-//      .drive(collectionView.rx.items(dataSource: dataSource))
-//      .disposed(by: disposeBag)
-//  }
+  public func bind(reactor: HomeReactor) {
+    // action (View -> Reactor)
+    let refresh = Observable.of(Observable.just(()), headerRefreshTrigger.asObservable()).merge()
+    refresh.map { Reactor.Action.headerRefresh }.bind(to: reactor.action).disposed(by: disposeBag)
+    footerRefreshTrigger.map { Reactor.Action.footerRefresh }.bind(to: reactor.action).disposed(by: disposeBag)
+    // state (Reactor -> View)
+    reactor.state.map(\.headerLoading).bind(to: collectionView.mj_header!.rx.isAnimating).disposed(by: disposeBag)
+    reactor.state.map(\.footerLoading).bind(to: collectionView.mj_footer!.rx.isAnimating).disposed(by: disposeBag)
+    reactor.state.map(\.dataStatus.emptyDataState).bind(to: rx.emptyDataSetStatus).disposed(by: disposeBag)
+    
+    let dataSource = RxCollectionViewSectionedAnimatedDataSource<HomeSectionReactor>(
+      configureCell: { dataSource, collectionView, indexPath, item in
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionCell.reuseIdentifier, for: indexPath) as! HomeCollectionCell
+        cell.bind(reactor: item)
+        return cell
+      })
+    reactor.state.map(\.items).bind(to: collectionView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
+  }
 }
 
 extension HomeViewController: UINavigationControllerDelegate {

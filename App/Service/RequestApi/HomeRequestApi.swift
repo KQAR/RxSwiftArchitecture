@@ -12,6 +12,7 @@ enum HomeRequestApi {
   case bannerInfo
   case userTag
   case detail(id: String)
+  case gameList
 }
 
 extension HomeRequestApi: TargetType {
@@ -25,6 +26,8 @@ extension HomeRequestApi: TargetType {
       return "/api/userTag"
     case .detail:
       return "/api/detail"
+    case .gameList:
+      return "/api/games"
     }
   }
   
@@ -33,7 +36,7 @@ extension HomeRequestApi: TargetType {
   }
   
   var method: Method {
-    return .post
+    return .get
   }
   
   var task: Task {

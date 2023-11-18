@@ -9,7 +9,7 @@ import Moya
 
 struct Host: RawRepresentable {
   /// 测试地址
-  static let test = Host(rawValue: "http://api.test.com")
+  static let test = Host(rawValue: "https://www.freetogame.com")
   /// 本地机器地址
   static let local = Host(rawValue: "http://172.25.20.154:9200")
   /// 线上地址

@@ -9,8 +9,9 @@ import UIKit
 import RxSwift
 import BaseView
 import Utility
+import ReactorKit
 
-final class HomeCollectionCell: CollectionViewCell {
+final class HomeCollectionCell: CollectionViewCell, View {
   
   var imageView = Init(UIImageView()) { imageView in
     imageView.layer.cornerRadius = 8
@@ -66,18 +67,13 @@ final class HomeCollectionCell: CollectionViewCell {
     fatalError("init(coder:) has not been implemented")
   }
   
-  func bind(to viewModel: HomeCollectionCellViewModel) {
+  func bind(reactor: HomeCollectionCellReactor) {
     disposeBag = DisposeBag()
+    reactor.state.map(\.freeGame.cover).bind(to: imageView.kf.rx.imageURL()).disposed(by: disposeBag)
+    reactor.state.map(\.freeGame.title).bind(to: titleLabel.rx.text).disposed(by: disposeBag)
+    reactor.state.map(\.freeGame.short_description).bind(to: contentLabel.rx.text).disposed(by: disposeBag)
+//    reactor.state.map(\.homeItem.belovedState).bind(to: loveButton.rx.isSelected).disposed(by: disposeBag)
     
-    viewModel.cover.drive(imageView.kf.rx.imageURL()).disposed(by: disposeBag)
-    viewModel.title.drive(titleLabel.rx.text).disposed(by: disposeBag)
-    viewModel.content.drive(contentLabel.rx.text).disposed(by: disposeBag)
-    viewModel.beloved.drive(loveButton.rx.isSelected).disposed(by: disposeBag)
-    
-    loveButton.rx.tap.asSignal()
-      .throttle(.milliseconds(300))
-      .map { viewModel.homeItem }
-      .emit(to: viewModel.loveAction)
-      .disposed(by: disposeBag)
+    loveButton.rx.tap.map { Reactor.Action.likeTap }.bind(to: reactor.action).disposed(by: disposeBag)
   }
 }

@@ -15,6 +15,12 @@ open class TableViewController: ViewController, ViewRefreshable {
   public let headerRefreshTrigger = PublishRelay<Void>()
   public let footerRefreshTrigger = PublishRelay<Void>()
   
+  public override var emptyDataSetStatus: EmptyDataState {
+    didSet {
+      tableView.reloadEmptyDataSet()
+    }
+  }
+  
   public lazy var tableView: TableView = {
     let view = TableView(frame: .zero, style: .plain)
     view.estimatedRowHeight = UITableView.automaticDimension

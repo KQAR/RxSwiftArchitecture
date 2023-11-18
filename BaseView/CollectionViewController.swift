@@ -16,6 +16,12 @@ open class CollectionViewController: ViewController, ViewRefreshable {
   public let headerRefreshTrigger = PublishRelay<Void>()
   public let footerRefreshTrigger = PublishRelay<Void>()
   
+  public override var emptyDataSetStatus: EmptyDataState {
+    didSet {
+      collectionView.reloadEmptyDataSet()
+    }
+  }
+  
   public lazy var collectionView: UICollectionView = {
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     collectionView.backgroundColor = .white

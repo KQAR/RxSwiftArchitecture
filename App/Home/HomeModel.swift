@@ -20,12 +20,23 @@ extension HomeModel: DataStatusPresentable {
   }
 }
 
-struct HomeItem: Codable {
+public struct HomeItem: Codable {
   var id: String
   var cover: String?
   var title: String?
   var content: String?
   var beloved: Bool?
+  
+  var belovedState: Bool {
+    return beloved ?? false
+  }
+  
+  var coverUrl: URL? {
+    guard let cover else {
+      return nil
+    }
+    return URL(string: cover)
+  }
   
   mutating func updateLoved() {
     guard beloved != nil else {

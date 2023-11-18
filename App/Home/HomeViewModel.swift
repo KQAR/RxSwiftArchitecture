@@ -15,15 +15,7 @@ import Bindable
 import NetworkManager
 import Log
 
-enum HomeModule: Int, IdentifiableType {
-  case banner
-  case content
-  case bottom
-  
-  var identity: Int {
-    return rawValue
-  }
-}
+
 
 typealias HomeSectionModel = AnimatableSectionModel<HomeModule, HomeCollectionCellViewModel>
 
